@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/horizoniq-compass-openapi-original.yml + docs
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization:
+    Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'
+  sources:
+  - openapi/horizoniq-compass-openapi-original.yml
+docs: https://compass-horizoniq.readme.io/reference/authentication
