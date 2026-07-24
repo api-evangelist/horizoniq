@@ -1,0 +1,620 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items User Accounts API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: User Accounts
+  description: Enpionts related to user accounts
+paths:
+  /users/{userUUID}:
+    delete:
+      description: Delete user account
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Delete User Account
+      tags:
+      - User Accounts
+      operationId: deleteUsersByUserUUID
+    get:
+      description: Retrieves a JSON object containing a single user account by userUUID.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get User Account
+      tags:
+      - User Accounts
+      operationId: getUsersByUserUUID
+    patch:
+      description: Update user account
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdatePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Update User Account
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUID
+  /users/roles:
+    get:
+      description: Available user roles.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRoleListModel'
+          description: 200 response
+      summary: Retrieve Available User Roles
+      tags:
+      - User Accounts
+      operationId: getUsersRoles
+  /users:
+    get:
+      description: Retrieves a JSON object containing a list of user accounts.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListModel'
+          description: 200 response
+      summary: List User Accounts
+      tags:
+      - User Accounts
+      operationId: getUsers
+    post:
+      description: Add user account
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddPostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Add User Account
+      tags:
+      - User Accounts
+      operationId: createUsers
+  /users/{userUUID}/admin-disabled:
+    patch:
+      description: Update user, remove administrator permissions.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Disable User Admin
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDAdminDisabled
+  /users/{userUUID}/admin-enabled:
+    patch:
+      description: Update user, add administrator permissions.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Enable User Admin
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDAdminEnabled
+  /users/{userUUID}/roles/{roleUUID}:
+    patch:
+      description: Remove user Role
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: The UUID of the user role, can be retrieved from the roles list endpoint.
+        in: path
+        name: roleUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Remove User Role
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDRolesByRoleUUID
+  /users/{userUUID}/roles:
+    patch:
+      description: Add user Role
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRolePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Add User Role
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDRoles
+components:
+  schemas:
+    UserGetModel:
+      type: object
+      properties:
+        netsuiteContactId:
+          type: number
+        lastName:
+          type: string
+        uberContactId:
+          type: number
+        passwordExpireDate:
+          type: string
+        supportAccounts:
+          type: array
+          items:
+            type: string
+        bearerType:
+          type: string
+        updatedDate:
+          type: string
+        type:
+          type: integer
+        uuid:
+          type: string
+        uid:
+          type: string
+        imageUri:
+          type: string
+        agreedEulaVersions:
+          type: array
+          items:
+            type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        secretEnabled:
+          type: boolean
+        company:
+          type: object
+          properties:
+            displayName:
+              type: string
+            description:
+              type: string
+            active:
+              type: boolean
+            externalId:
+              type: string
+            updatedDate:
+              type: string
+            type:
+              type: integer
+            uuid:
+              type: string
+            total_servers_no_agents:
+              type: integer
+            uberClientId:
+              type: number
+            referrer:
+              type: string
+            imageUri:
+              type: string
+            createdDate:
+              type: string
+            provider:
+              type: string
+            ldap:
+              type: string
+            name:
+              type: string
+            total_servers:
+              type: integer
+            eulaUuid:
+              type: string
+            id:
+              type: number
+            projectId:
+              type: string
+            total_servers_agents:
+              type: integer
+            netsuiteClientId:
+              type: number
+        id:
+          type: number
+        acceptedEulaLatest:
+          type: boolean
+        email:
+          type: string
+        externalId:
+          type: number
+        active:
+          type: boolean
+        firstName:
+          type: string
+        createdDate:
+          type: string
+        phone:
+          type: string
+        adminEnabled:
+          type: boolean
+        username:
+          type: string
+        status:
+          type: integer
+    UserAddPostModel:
+      required:
+      - email
+      - firstName
+      - lastName
+      - username
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+    UserRoleGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPermissionGetModel'
+        name:
+          type: string
+        description:
+          type: string
+        uuid:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    UserAddResponseModel:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
+    UserListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGetModel'
+        direction:
+          type: integer
+    UserPermissionGetModel:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        name:
+          type: string
+        uuid:
+          type: string
+        value:
+          type: string
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+    UserUpdatePatchModel:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+    UserRoleListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRoleGetModel'
+        direction:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

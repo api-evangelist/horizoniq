@@ -1,0 +1,175 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items Managed Firewalls API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Managed Firewalls
+  description: Endpoints related to managed firewalls
+paths:
+  /firewalls/{firewallUUID}:
+    get:
+      description: Retrieves a JSON object containing a single managed firewall.
+      parameters:
+      - description: The UUID of the managed firewall, can be retrieved from the firewall list endpoint.
+        in: path
+        name: firewallUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Firewall
+      tags:
+      - Managed Firewalls
+      operationId: getFirewallsByFirewallUUID
+  /firewalls:
+    get:
+      description: Retrieves a JSON object containing a list of managed firewalls currently provisioned in inventory.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallListModel'
+          description: 200 response
+      summary: List Firewalls
+      tags:
+      - Managed Firewalls
+      operationId: getFirewalls
+components:
+  schemas:
+    FirewallGetModel:
+      type: object
+      properties:
+        failoverStandbyStatus:
+          type: string
+        serialNumber:
+          type: string
+        notes:
+          type: string
+        ipAddress:
+          type: string
+        className:
+          type: string
+        manageUuid:
+          type: string
+        companyUuid:
+          type: string
+        updatedDate:
+          type: number
+        uuid:
+          type: string
+        version:
+          type: string
+        uberClientId:
+          type: number
+        failoverMateVersion:
+          type: string
+        license:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        fwConfigUuid:
+          type: string
+        manageId:
+          type: number
+        name:
+          type: string
+        failoverEnabled:
+          type: boolean
+        model:
+          type: string
+        status:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    FirewallListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/FirewallGetModel'
+        direction:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

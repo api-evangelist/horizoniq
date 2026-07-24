@@ -1,0 +1,208 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items Images API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Images
+  description: Endpoints related to images
+paths:
+  /images:
+    get:
+      description: Retrieves a JSON object containing a list of public and private images currently in catalog.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageListModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+      summary: List Images
+      tags:
+      - Images
+      operationId: getImages
+    post:
+      description: Uploads an Operating System image to be used with server installs.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImageUploadFormModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+      summary: Upload Image
+      tags:
+      - Images
+      operationId: createImages
+components:
+  schemas:
+    ImageListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              skip_upgrade:
+                type: boolean
+              os:
+                type: string
+              service_price:
+                type: number
+              min_disk:
+                type: integer
+              service_plan:
+                type: string
+              region_id:
+                type: string
+              includes_cpanel:
+                type: string
+              cloud_init:
+                type: boolean
+              type:
+                type: string
+              uuid:
+                type: string
+              version:
+                type: string
+              client_id:
+                type: string
+              hourly_per_gb:
+                type: number
+              ready:
+                type: boolean
+              price:
+                type: number
+              name:
+                type: string
+              gb_on_disk:
+                type: number
+              is_custom:
+                type: string
+              id:
+                type: integer
+              arch:
+                type: string
+              cloud_id:
+                type: string
+              cpanel_price:
+                type: number
+              min_ram:
+                type: integer
+              region_code:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ImageUploadFormModel:
+      required:
+      - image
+      - imagename
+      - osname
+      - osversion
+      type: object
+      properties:
+        image:
+          type: string
+          description: The QCOW2 file of your image (3GB limit)
+          format: binary
+        imagename:
+          type: string
+          description: The descriptive name of your image to help you identify it (e.g. my-centos-image)
+        osversion:
+          type: string
+          description: The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)
+        osname:
+          type: string
+          description: The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

@@ -1,0 +1,690 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items Support API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Support
+  description: Endpoints related to support cases
+paths:
+  /support-cases/{caseId}/attachments/{attachmentId}:
+    get:
+      description: Downloads a single support case attachment.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: The ID of the support case attachment, can be retrieved from the support case attachment list endpoint.
+        in: path
+        name: attachmentId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+          description: 200 response
+      summary: Download Attachment
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdAttachmentsByAttachmentId
+  /support-cases/{caseId}/attachments:
+    get:
+      description: Retrieves a JSON object containing all attachments for support case.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseAttachmentListModel'
+          description: 200 response
+      summary: Get Support Case Attachments
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdAttachments
+    post:
+      description: Upload one or more attachments for support case using multipart/form-data Content-type header.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SupportCaseAttachmentUploadFormModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Upload Attachment
+      tags:
+      - Support
+      operationId: createSupportCasesByCaseIdAttachments
+  /support-cases/{caseId}/comments:
+    get:
+      description: Retrieves a JSON object containing all comments for support case.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseCommentListModel'
+          description: 200 response
+      summary: Get Support Case Comments
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdComments
+    post:
+      description: Adds a comment on the support case indicated by caseId.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCaseCommentPostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseCommentAddedModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Comment On Support Case
+      tags:
+      - Support
+      operationId: createSupportCasesByCaseIdComments
+  /support-cases/{caseId}:
+    get:
+      description: Retrieves a JSON object containing a single support case by case ID.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Support Case
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseId
+    patch:
+      description: 'Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or re-opened through the API.**'
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCasePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseUpdatedModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Update Support Case State
+      tags:
+      - Support
+      operationId: updateSupportCasesByCaseId
+  /support-cases:
+    get:
+      description: Retrieves a JSON object containing a list of support cases.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseListModel'
+          description: 200 response
+      summary: List Support Cases
+      tags:
+      - Support
+      operationId: getSupportCases
+    post:
+      description: Creates a new support case.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCasePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseGetModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Create Support Case
+      tags:
+      - Support
+      operationId: createSupportCases
+components:
+  schemas:
+    SupportCategoryGetModel:
+      type: object
+      properties:
+        departmentName:
+          type: string
+        name:
+          type: string
+        id:
+          type: number
+        department:
+          $ref: '#/components/schemas/SupportDepartmentGetModel'
+        subcategory:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportSubcategoryGetModel'
+        uuid:
+          type: string
+    SupportCaseListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseGetModel'
+        direction:
+          type: integer
+    SupportCasePostModel:
+      required:
+      - description
+      - priority
+      - shortDescription
+      type: object
+      properties:
+        netsuiteBillingId:
+          type: string
+        description:
+          type: string
+        shortDescription:
+          type: string
+        priority:
+          type: string
+          enum:
+          - Low
+          - Moderate
+          - High
+          - Critical
+    SupportCaseGetModel:
+      type: object
+      properties:
+        billingId:
+          type: string
+        contactFirstName:
+          type: string
+        description:
+          type: string
+        contactType:
+          type: string
+        updatedDate:
+          type: number
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        uberClientId:
+          type: number
+        urgency:
+          type: string
+        id:
+          type: string
+        state:
+          type: string
+        department:
+          type: string
+        isReplyAllowed:
+          type: boolean
+        internalUuid:
+          type: string
+        contactEmail:
+          type: string
+        impact:
+          type: string
+        active:
+          type: boolean
+        shortDescription:
+          type: string
+        priority:
+          type: string
+        classification:
+          type: string
+        replyCount:
+          type: string
+        createdDate:
+          type: number
+        assignmentGroup:
+          type: string
+        contactLastName:
+          type: string
+        location:
+          $ref: '#/components/schemas/SupportLocationGetModel'
+        assignee:
+          type: string
+        category:
+          $ref: '#/components/schemas/SupportCategoryGetModel'
+        subcategory:
+          $ref: '#/components/schemas/SupportSubcategoryGetModel'
+    SupportCaseAttachmentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+        direction:
+          type: integer
+    SupportCaseCommentGetModel:
+      type: object
+      properties:
+        cc:
+          type: string
+        authorEmail:
+          type: string
+        createdDate:
+          type: number
+        authorName:
+          type: string
+        id:
+          type: string
+        to:
+          type: string
+        body:
+          type: string
+    SupportDepartmentGetModel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        uuid:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SupportCaseCommentAddedModel:
+      type: object
+      properties:
+        createdDate:
+          type: number
+        updatedBy:
+          type: string
+        caseNumber:
+          type: string
+        statusMessage:
+          type: string
+        status:
+          type: string
+    SupportCaseAttachmentUploadFormModel:
+      required:
+      - files0
+      type: object
+      properties:
+        files0:
+          type: string
+          format: binary
+        files1:
+          type: string
+          format: binary
+    SupportCaseCommentPostModel:
+      required:
+      - comment
+      type: object
+      properties:
+        comment:
+          type: string
+    SupportCaseCommentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseCommentGetModel'
+        direction:
+          type: integer
+    SupportCasePatchModel:
+      required:
+      - reason
+      - state
+      type: object
+      properties:
+        reason:
+          type: string
+        state:
+          type: string
+          enum:
+          - open
+          - closed
+          - on_hold
+    SupportLocationGetModel:
+      type: object
+      properties:
+        country:
+          type: string
+        zipCode:
+          type: string
+        createdDate:
+          type: number
+        sysId:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        name:
+          type: string
+        manageDcName:
+          type: string
+        state:
+          type: string
+        updatedDate:
+          type: number
+        locationCode:
+          type: string
+        uuid:
+          type: string
+    SupportCaseUpdatedModel:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+    SupportCaseAttachmentGetModel:
+      type: object
+      properties:
+        fileName:
+          type: string
+        createdDate:
+          type: number
+        fileSize:
+          type: number
+        id:
+          type: string
+    SupportSubcategoryGetModel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: number
+        uuid:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

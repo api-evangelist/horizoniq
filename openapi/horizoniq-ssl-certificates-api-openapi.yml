@@ -1,0 +1,334 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items SSL Certificates API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: SSL Certificates
+paths:
+  /ssl-certificates/{certificateId}:
+    get:
+      description: Retrieves a JSON object containing a single SSL certificate by certificateId.
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: getSslCertificatesByCertificateId
+  /ssl-certificates:
+    get:
+      description: Retrieves a JSON object containing a list of SSL certificates.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateListModel'
+          description: 200 response
+      summary: List SSL Certificates
+      tags:
+      - SSL Certificates
+      operationId: getSslCertificates
+  /ssl-certificates/{certificateId}/finalize:
+    post:
+      description: "Finalize the creation of an SSL certificate.<br><br> \n[block:callout] { \"type\": \"danger\", \"title\": \"Warning:\", \"body\": \"A valid approver email address returned from certificate initialization must be used to finalize your certificate.\" } [/block]\n"
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateFinalizePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessStringModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Finalize SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesByCertificateIdFinalize
+  /ssl-certificates/{certificateId}/resend-approval:
+    post:
+      description: Re-send the ssl certificate approval.
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessStringModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: SSL Certificate approval
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesByCertificateIdResendApproval
+  /ssl-certificates/initialize:
+    post:
+      description: "Initialize the creation of a new SSL certificate.<br><br> \n[block:callout] { \"type\": \"info\", \"title\": \"Information:\", \"body\": \"On successful hostname validation, this operation will return a list of valid approver email addresses, one of which must be used to finalize your certificate.\" } [/block]\n"
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateInitializePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateInitializeResponseModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Initialize SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesInitialize
+components:
+  schemas:
+    CertificateInitializeResponseModel:
+      type: object
+      properties:
+        approverEmails:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+        certId:
+          type: string
+    CertificateListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              createdDate:
+                type: number
+              expireDate:
+                type: number
+              certId:
+                type: string
+              isExpired:
+                type: boolean
+              status:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        filters:
+          type: array
+        direction:
+          type: integer
+    CertificateFinalizePostModel:
+      required:
+      - approverEmailAddress
+      - csr
+      type: object
+      properties:
+        csr:
+          type: string
+        approverEmailAddress:
+          type: string
+    SuccessStringModel:
+      type: object
+      properties:
+        success:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    CertificateInitializePostModel:
+      required:
+      - contactEmailAddress
+      - contactFirstName
+      - contactLastName
+      - contactPhoneNumber
+      - hostname
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        hostname:
+          type: string
+        contactFirstName:
+          type: string
+        contactLastName:
+          type: string
+        contactPhoneNumber:
+          type: string
+    CertificateGetModel:
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        orderType:
+          type: string
+        globalSignCertFound:
+          type: boolean
+        contactFirstName:
+          type: string
+        intermediateCertificate:
+          type: string
+        certId:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        expireDate:
+          type: number
+        contactLastName:
+          type: string
+        contactPhoneNumber:
+          type: string
+        isExpired:
+          type: boolean
+        serviceId:
+          type: string
+        x509Certificate:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

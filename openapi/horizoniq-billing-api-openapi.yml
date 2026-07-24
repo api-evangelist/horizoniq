@@ -1,0 +1,446 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items Billing API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Billing
+  description: Endpoints related to Billing
+paths:
+  /billing/credits:
+    get:
+      description: Retrieves a JSON object containing a list of credits.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditListModel'
+          description: 200 response
+      summary: List Credits
+      tags:
+      - Billing
+      operationId: getBillingCredits
+  /billing/invoices/{invoiceUUID}/csv:
+    get:
+      description: Retrieves a JSON object containing a single invoice CSV by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetCsvModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice CSV
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUIDCsv
+  /billing/invoices/{invoiceUUID}/pdf:
+    get:
+      description: Retrieves a JSON object containing a single invoice PDF by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetPdfModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice PDF
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUIDPdf
+  /billing/invoices/{invoiceUUID}:
+    get:
+      description: Retrieves a JSON object containing a single invoice by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUID
+  /billing/invoices:
+    get:
+      description: Retrieves a JSON object containing a list of invoices.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: 'Filter invoices by status: paid, unpaid or disregarded.'
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListModel'
+          description: 200 response
+      summary: List Invoices
+      tags:
+      - Billing
+      operationId: getBillingInvoices
+  /billing/services/active:
+    get:
+      description: Retrieves a JSON object containing a list of active billable services.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListModel'
+          description: 200 response
+      summary: List Active Services
+      tags:
+      - Billing
+      operationId: getBillingServicesActive
+  /billing/services/cancelled:
+    get:
+      description: Retrieves a JSON object containing a list of cancelled billable services.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListModel'
+          description: 200 response
+      summary: List Cancelled Services
+      tags:
+      - Billing
+      operationId: getBillingServicesCancelled
+components:
+  schemas:
+    CreditListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    InvoiceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        status:
+          type: string
+        direction:
+          type: integer
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    InvoiceGetPdfModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    ServiceGetModel:
+      type: object
+      properties:
+        billingFrequency:
+          type: string
+        baseCost:
+          type: number
+        cost:
+          type: number
+        code:
+          type: string
+        quantity:
+          type: integer
+        discount:
+          type: number
+        isActive:
+          type: boolean
+        uuid:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        lastRenewDate:
+          type: number
+        children:
+          type: array
+          items:
+            type: object
+        servicePlanTitle:
+          type: string
+        name:
+          type: string
+        servicePlanCode:
+          type: string
+        id:
+          type: integer
+        planServicePackageUuid:
+          type: string
+        renewDate:
+          type: number
+    InvoiceGetCsvModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    ServiceListModel:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceGetModel'
+    InvoiceGetModel:
+      type: object
+      properties:
+        amount_unpaid:
+          type: number
+        invoice_services_count:
+          type: string
+        amount_credited:
+          type: number
+        due_date:
+          type: number
+        overdue_date:
+          type: number
+        amount_due:
+          type: number
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+        payment_date:
+          type: number
+        status:
+          type: string
+    CreditGetModel:
+      type: object
+      properties:
+        reason:
+          type: string
+        amount:
+          type: number
+        payment_type:
+          type: string
+        balance:
+          type: number
+        payment_number:
+          type: string
+        active:
+          type: boolean
+        comment:
+          type: string
+        comment_total:
+          type: integer
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

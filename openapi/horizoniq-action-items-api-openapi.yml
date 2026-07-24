@@ -1,0 +1,468 @@
+openapi: 3.0.1
+info:
+  title: Compass Action Items API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Action Items
+  description: Endpoints related to Action Items
+paths:
+  /action-items/{actionItemUUID}:
+    get:
+      description: Retrieves a JSON object containing a single action item by UUID.
+      parameters:
+      - description: The UUID of the action item, can be retrieved from the action item list endpoint.
+        in: path
+        name: actionItemUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsGetModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Action Item
+      tags:
+      - Action Items
+      operationId: getActionItemsByActionItemUUID
+  /action-items:
+    get:
+      description: Retrieves a JSON object containing a list of all system action items grouped by category.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: filterBy
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsGroupListModel'
+          description: 200 response
+      summary: List Grouped Action Items
+      tags:
+      - Action Items
+      operationId: getActionItems
+  /action-items/acknowledgment:
+    patch:
+      description: Acknowledge one or more action items.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionItemsAckModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsAckResponseModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Acknowledge Action Items
+      tags:
+      - Action Items
+      operationId: updateActionItemsAcknowledgment
+components:
+  schemas:
+    ActionItemsAckResponseModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              lastUpdated:
+                type: string
+              deactivateMessage:
+                type: array
+                items:
+                  type: string
+              active:
+                type: boolean
+              uuid:
+                type: string
+        errors:
+          type: boolean
+    ActionItemsAckModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              uuid:
+                type: string
+    ActionItemsListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    ActionItemsGroupListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: integer
+              actionItems:
+                $ref: '#/components/schemas/ActionItemsListModel'
+              name:
+                type: string
+              systemUuid:
+                type: string
+        limit:
+          type: integer
+        categories:
+          type: object
+          properties:
+            all:
+              type: integer
+            patch:
+              type: integer
+            database:
+              type: integer
+            vrops:
+              type: integer
+            assignedToMe:
+              type: integer
+            infrastructure:
+              type: integer
+            service:
+              type: integer
+            network:
+              type: integer
+            hardware:
+              type: integer
+        totalActionItems:
+          type: integer
+    ActionItemsGetModel:
+      type: object
+      properties:
+        sub_source:
+          type: string
+        metadata:
+          type: object
+          properties:
+            alertImpact:
+              type: string
+            alertSubType:
+              type: string
+            resourceId:
+              type: string
+            alertType:
+              type: string
+            resource:
+              type: object
+              properties:
+                resourceHealthValue:
+                  type: integer
+                dpcAdapter:
+                  type: object
+                  properties:
+                    vcenterHostname:
+                      type: string
+                    createdDate:
+                      type: number
+                    name:
+                      type: string
+                    uuid:
+                      type: string
+                createdDate:
+                  type: number
+                resourceHealth:
+                  type: string
+                name:
+                  type: string
+                uuid:
+                  type: string
+                adapterUuid:
+                  type: string
+                resourceType:
+                  type: string
+            alertLevel:
+              type: string
+            suspendUntilDate:
+              type: number
+            updatedDate:
+              type: number
+            uuid:
+              type: string
+            controlState:
+              type: string
+            symptoms:
+              type: array
+              items:
+                type: object
+                properties:
+                  symptomDefinition:
+                    type: object
+                    properties:
+                      resourceKindKey:
+                        type: string
+                      adapterKindKey:
+                        type: string
+                      cancelCycles:
+                        type: integer
+                      conditionSeverity:
+                        type: string
+                      conditionThresholdType:
+                        type: string
+                      conditionTargetKey:
+                        type: string
+                      conditionEventType:
+                        type: string
+                      conditionOperatorSymbol:
+                        type: string
+                      waitCycles:
+                        type: integer
+                      symptomDefinitionIdKey:
+                        type: string
+                      conditionKey:
+                        type: string
+                      conditionIsInstanced:
+                        type: boolean
+                      conditionOperator:
+                        type: string
+                      name:
+                        type: string
+                      conditionValue:
+                        type: string
+                      conditionFaultKey:
+                        type: string
+                      conditionType:
+                        type: string
+                      metrics:
+                        type: object
+                        properties:
+                          conditionMetric:
+                            type: object
+                            properties:
+                              dataType2:
+                                type: string
+                              unit:
+                                type: string
+                              defaultMonitored:
+                                type: boolean
+                              instanceType:
+                                type: string
+                              name:
+                                type: string
+                              property:
+                                type: boolean
+                              description:
+                                type: string
+                              rollupType:
+                                type: string
+                              monitoring:
+                                type: boolean
+                              key:
+                                type: string
+                          conditionTargetMetric:
+                            type: object
+                            properties:
+                              dataType2:
+                                type: string
+                              defaultMonitored:
+                                type: boolean
+                              instanceType:
+                                type: string
+                              name:
+                                type: string
+                              property:
+                                type: boolean
+                              description:
+                                type: string
+                              rollupType:
+                                type: string
+                              monitoring:
+                                type: boolean
+                              key:
+                                type: string
+                      conditionValueType:
+                        type: string
+                      conditionFaultEvents:
+                        type: string
+                  message:
+                    type: string
+            createdDate:
+              type: number
+            alertDefinitionId:
+              type: string
+            alertDefinitionName:
+              type: string
+            status:
+              type: string
+        monitor_id:
+          type: string
+        active_action_items_id:
+          type: string
+        created_at:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
+        uuid:
+          type: string
+        distinct_type:
+          type: string
+        deactivate_message:
+          type: array
+          items:
+            type: string
+        last_recovered_at:
+          type: number
+        formula_id:
+          type: string
+        threshold_value_unit:
+          type: string
+        snooze:
+          type: array
+          items:
+            type: integer
+        severity:
+          type: integer
+        last_updated:
+          type: string
+        company_id:
+          type: string
+        object_type:
+          type: string
+        count:
+          type: integer
+        active:
+          type: boolean
+        server_id:
+          type: string
+        object_id:
+          type: string
+        current_value:
+          type: string
+        current_value_unit:
+          type: string
+        threshold_value:
+          type: string
+        threshold_operator:
+          type: string
+        category:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization: Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'
