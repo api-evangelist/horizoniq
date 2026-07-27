@@ -1,0 +1,30 @@
+{
+  "provider": "horizoniq",
+  "sources": [
+    "horizoniq-action-items-api-openapi.yml",
+    "horizoniq-billing-api-openapi.yml",
+    "horizoniq-devices-api-openapi.yml",
+    "horizoniq-images-api-openapi.yml",
+    "horizoniq-managed-firewalls-api-openapi.yml",
+    "horizoniq-servers-api-openapi.yml",
+    "horizoniq-ssl-certificates-api-openapi.yml",
+    "horizoniq-support-api-openapi.yml",
+    "horizoniq-user-accounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "horizoniq-action-items-api-openapi.yml",
+    "horizoniq-billing-api-openapi.yml",
+    "horizoniq-devices-api-openapi.yml",
+    "horizoniq-images-api-openapi.yml",
+    "horizoniq-managed-firewalls-api-openapi.yml",
+    "horizoniq-servers-api-openapi.yml",
+    "horizoniq-ssl-certificates-api-openapi.yml",
+    "horizoniq-support-api-openapi.yml",
+    "horizoniq-user-accounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

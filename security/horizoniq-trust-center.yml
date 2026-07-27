@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://www.horizoniq.com/compliance/
+url: https://www.horizoniq.com/compliance/
+certifications:
+- SOC 2
+- ISO 27001
+- PCI DSS
+evidence:
+- source: https://www.horizoniq.com/compliance/
+  keywords:
+  - soc 2
+  - iso 27001
+  - pci dss

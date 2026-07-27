@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/horizoniq-compass-openapi-original.yml
+format: plain-json-message
+envelope:
+  note: Error responses return standard HTTP status codes with a JSON body containing a human-readable
+    message. Not RFC 9457 problem+json.
+  reference: https://compass-horizoniq.readme.io/reference/general-api-information
+problems:
+- status: 207
+  title: Multi-Status - per-item results for a bulk/multi operation
+  occurrences: 1
+  example_operations:
+  - updateServersMaintenance
+- status: 400
+  title: Bad Request - missing/invalid parameters or unauthorized action
+  occurrences: 13
+  example_operations:
+  - createImages
+  - createServersByServerUUIDReboot
+  - createServersByServerUUIDReinstall
+  - createSupportCases
+  - createSupportCasesByCaseIdComments
+  - getActionItemsByActionItemUUID
+- status: 404
+  title: Not Found - the requested resource does not exist
+  occurrences: 20
+  example_operations:
+  - createServersByServerUUIDReboot
+  - createServersByServerUUIDReinstall
+  - createSslCertificatesByCertificateIdFinalize
+  - createSslCertificatesByCertificateIdResendApproval
+  - createSslCertificatesInitialize
+  - getActionItemsByActionItemUUID
+- status: 409
+  title: Conflict - the request conflicts with current resource state
+  occurrences: 2
+  example_operations:
+  - createServersByServerUUIDReboot
+  - createServersByServerUUIDReinstall
+- status: 500
+  title: Internal Server Error - a server-side error occurred
+  occurrences: 18
+  example_operations:
+  - createSupportCasesByCaseIdAttachments
+  - createSupportCasesByCaseIdComments
+  - createUsers
+  - deleteUsersByUserUUID
+  - getActionItemsByActionItemUUID
+  - getServersByServerUUIDActionItems
+- status: 501
+  title: Not Implemented - the operation is not available
+  occurrences: 5
+  example_operations:
+  - createServersByServerUUIDReboot
+  - createServersByServerUUIDReinstall
+  - createSupportCases
+  - getServersByServerUUIDImages
+  - updateSupportCasesByCaseId

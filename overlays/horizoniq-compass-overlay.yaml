@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for HorizonIQ Compass API
+  version: 1.0.0
+extends: openapi/horizoniq-compass-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment:
+      assembled_from: https://compass-horizoniq.readme.io/reference per-endpoint OpenAPI fragments
+      operationIds: added deterministically from method+path
+      securityScheme: documented Compass Bearer API token added as bearerAuth
+      date: '2026-07-19'
+- target: $.info
+  update:
+    contact:
+      name: HorizonIQ Support
+      url: https://www.horizoniq.com/contact-us/

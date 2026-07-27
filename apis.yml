@@ -1,8 +1,26 @@
 aid: horizoniq
 name: HorizonIQ
-description: 'HorizonIQ is a company surfaced as a portfolio company of dcm-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  HorizonIQ (formerly INAP / Internap) is a US infrastructure provider delivering fully managed
+  private cloud, bare metal servers, and GPU dedicated servers, along with block and object storage,
+  backup and recovery, connectivity, load balancing, firewalls, and DDoS mitigation across its data
+  center footprint. Its Compass platform gives customers self-service provisioning, monitoring, and
+  automation, exposed programmatically through the Compass REST API for managing servers, devices,
+  managed firewalls, OS images, SSL certificates, billing, users, action items, and support cases.
+  HorizonIQ holds SOC 2 Type II, ISO 27001, and PCI DSS certifications.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.horizoniq.com/wp-content/uploads/2024/01/HorizonIQ_FullColor_Horizontal.png
 url: https://raw.githubusercontent.com/api-evangelist/horizoniq/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +30,227 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Enterprise
-apis: []
+- Cloud
+- Bare Metal
+- Infrastructure
+- Private Cloud
+- Hosting
+- Data Center
+- Compute
+- Storage
+apis:
+- aid: horizoniq:horizoniq-action-items-api
+  name: HorizonIQ Action Items API
+  description: Endpoints related to Action Items
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Action Items
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-action-items-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-billing-api
+  name: HorizonIQ Billing API
+  description: Endpoints related to Billing
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-billing-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-devices-api
+  name: HorizonIQ Devices API
+  description: Endpoints related to devices
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-devices-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-images-api
+  name: HorizonIQ Images API
+  description: Endpoints related to images
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-images-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-managed-firewalls-api
+  name: HorizonIQ Managed Firewalls API
+  description: Endpoints related to managed firewalls
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Managed Firewalls
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-managed-firewalls-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-servers-api
+  name: HorizonIQ Servers API
+  description: Endpoints related to Servers
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Servers
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-servers-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-ssl-certificates-api
+  name: HorizonIQ SSL Certificates API
+  description: The SSL Certificates API from HorizonIQ — 5 operation(s) for ssl certificates.
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - SSL Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-ssl-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-support-api
+  name: HorizonIQ Support API
+  description: Endpoints related to support cases
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - Support
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-support-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
+- aid: horizoniq:horizoniq-user-accounts-api
+  name: HorizonIQ User Accounts API
+  description: Enpionts related to user accounts
+  humanURL: https://compass-horizoniq.readme.io/reference/introduction
+  baseURL: https://api.compass.horizoniq.com/v1
+  tags:
+  - User Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/horizoniq-user-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://compass-horizoniq.readme.io/docs
+  - type: APIReference
+    url: https://compass-horizoniq.readme.io/reference/introduction
+  - type: GettingStarted
+    url: https://compass-horizoniq.readme.io/reference/general-api-information
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://compass-horizoniq.readme.io/
+- type: Documentation
+  url: https://compass-horizoniq.readme.io/docs
+- type: APIReference
+  url: https://compass-horizoniq.readme.io/reference/introduction
+- type: GettingStarted
+  url: https://compass-horizoniq.readme.io/reference/general-api-information
+- type: Authentication
+  url: authentication/horizoniq-authentication.yml
+- type: OpenAPI
+  url: openapi/horizoniq-compass-openapi-original.yml
+- type: Overlay
+  url: overlays/horizoniq-compass-overlay.yaml
+- type: MCPServer
+  url: mcp/horizoniq-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/horizoniq-llms.txt
+- type: Conventions
+  url: conventions/horizoniq-conventions.yml
+- type: DataModel
+  url: data-model/horizoniq-data-model.yml
+- type: ErrorCatalog
+  url: errors/horizoniq-problem-types.yml
+- type: Conformance
+  url: conformance/horizoniq-conformance.yml
+- type: Lifecycle
+  url: lifecycle/horizoniq-lifecycle.yml
+- type: AgenticAccess
+  url: agentic-access/horizoniq-agentic-access.yml
+- type: WellKnown
+  url: well-known/horizoniq-well-known.yml
+- type: TrustCenter
+  url: security/horizoniq-trust-center.yml
+- type: Compliance
+  url: https://www.horizoniq.com/compliance/
+- type: DomainSecurity
+  url: security/horizoniq-domain-security.yml
+- type: Blog
+  url: https://www.horizoniq.com/blog/
+- type: Support
+  url: https://www.horizoniq.com/contact-us/
+- type: Pricing
+  url: https://shop.horizoniq.com/
+- type: SignUp
+  url: https://horizoniq.com/free-trial
+- type: Login
+  url: https://compass.horizoniq.com
+- type: TermsOfService
+  url: https://www.horizoniq.com/legal
+- type: PrivacyPolicy
+  url: https://www.horizoniq.com/privacy-policy/
 - type: Website
   url: https://www.horizoniq.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

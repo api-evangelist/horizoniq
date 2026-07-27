@@ -1,0 +1,185 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/horizoniq-compass-openapi-original.yml
+note: Candidate tool list derived from the HorizonIQ Compass OpenAPI operations. HorizonIQ publishes no
+  official hosted MCP server as of this date; these tools map 1:1 to REST operations and would require
+  the Compass Bearer API token.
+server:
+  name: horizoniq-compass
+  transport: stdio
+  auth: bearer (Compass API token)
+tools:
+- name: deleteUsersByUserUUID
+  description: Delete user account
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#deleteUsersByUserUUID
+- name: getUsersByUserUUID
+  description: Retrieves a JSON object containing a single user account by userUUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getUsersByUserUUID
+- name: updateUsersByUserUUID
+  description: Update user account
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateUsersByUserUUID
+- name: getActionItemsByActionItemUUID
+  description: Retrieves a JSON object containing a single action item by UUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getActionItemsByActionItemUUID
+- name: getActionItems
+  description: Retrieves a JSON object containing a list of all system action items grouped by category.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getActionItems
+- name: getBillingCredits
+  description: Retrieves a JSON object containing a list of credits.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingCredits
+- name: getBillingInvoicesByInvoiceUUIDCsv
+  description: Retrieves a JSON object containing a single invoice CSV by invoiceUUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingInvoicesByInvoiceUUIDCsv
+- name: getBillingInvoicesByInvoiceUUIDPdf
+  description: Retrieves a JSON object containing a single invoice PDF by invoiceUUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingInvoicesByInvoiceUUIDPdf
+- name: getBillingInvoicesByInvoiceUUID
+  description: Retrieves a JSON object containing a single invoice by invoiceUUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingInvoicesByInvoiceUUID
+- name: getBillingInvoices
+  description: Retrieves a JSON object containing a list of invoices.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingInvoices
+- name: getBillingServicesActive
+  description: Retrieves a JSON object containing a list of active billable services.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingServicesActive
+- name: getBillingServicesCancelled
+  description: Retrieves a JSON object containing a list of cancelled billable services.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getBillingServicesCancelled
+- name: getDevicesByDeviceUUID
+  description: Retrieves a JSON object containing a single device by UUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getDevicesByDeviceUUID
+- name: getDevices
+  description: Retrieves a JSON object containing a list of devices.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getDevices
+- name: getFirewallsByFirewallUUID
+  description: Retrieves a JSON object containing a single managed firewall.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getFirewallsByFirewallUUID
+- name: getFirewalls
+  description: Retrieves a JSON object containing a list of managed firewalls currently provisioned in
+    inventory.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getFirewalls
+- name: getImages
+  description: Retrieves a JSON object containing a list of public and private images currently in catalog.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getImages
+- name: createImages
+  description: Uploads an Operating System image to be used with server installs.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createImages
+- name: getServersByServerUUIDActionItemsInactive
+  description: Retrieves a JSON object containing a list of inactive action items for a system / server.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDActionItemsInactive
+- name: getServersByServerUUIDActionItems
+  description: Retrieves a JSON object containing a list of action items for a system / server.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDActionItems
+- name: getServersByServerUUIDImages
+  description: Retrieves a JSON object containing a list of images by serverUUID available for server
+    reinstall.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDImages
+- name: getServersByServerUUIDInstallProgress
+  description: Retrieves a JSON object containing the progress of server install by UUID. This UUID can
+    be retrieved from /servers.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDInstallProgress
+- name: getServersByServerUUIDNetworks
+  description: Retrieves a JSON object containing the server public and private networks by UUID. This
+    UUID can be retrieved from /servers.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDNetworks
+- name: getServersByServerUUIDRdns
+  description: Retrieves a JSON object containing the server reverse DNS configuration. This UUID can
+    be retrieved from /servers.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDRdns
+- name: getServersByServerUUIDRootPassword
+  description: Retrieves a JSON object containing the server root passowrd by server UUID. This UUID can
+    be retrieved from /servers.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUIDRootPassword
+- name: updateServersByServerUUIDRootPassword
+  description: 'Updates root password in portal to the value set on the server by serverUUID. This UUID
+    can be retrieved from /servers.<br><br> '
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateServersByServerUUIDRootPassword
+- name: getServersByServerUUID
+  description: Retrieves a JSON object containing a single server by serverUUID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServersByServerUUID
+- name: getServers
+  description: Retrieves a JSON object containing a list of servers currently provisioned in inventory.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getServers
+- name: getSslCertificatesByCertificateId
+  description: Retrieves a JSON object containing a single SSL certificate by certificateId.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSslCertificatesByCertificateId
+- name: getSslCertificates
+  description: Retrieves a JSON object containing a list of SSL certificates.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSslCertificates
+- name: getSupportCasesByCaseIdAttachmentsByAttachmentId
+  description: Downloads a single support case attachment.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSupportCasesByCaseIdAttachmentsByAttachmentId
+- name: getSupportCasesByCaseIdAttachments
+  description: Retrieves a JSON object containing all attachments for support case.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSupportCasesByCaseIdAttachments
+- name: createSupportCasesByCaseIdAttachments
+  description: Upload one or more attachments for support case using multipart/form-data Content-type
+    header.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSupportCasesByCaseIdAttachments
+- name: getSupportCasesByCaseIdComments
+  description: Retrieves a JSON object containing all comments for support case.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSupportCasesByCaseIdComments
+- name: createSupportCasesByCaseIdComments
+  description: Adds a comment on the support case indicated by caseId.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSupportCasesByCaseIdComments
+- name: getSupportCasesByCaseId
+  description: Retrieves a JSON object containing a single support case by case ID.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSupportCasesByCaseId
+- name: updateSupportCasesByCaseId
+  description: 'Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or
+    re-opened through the API.**'
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateSupportCasesByCaseId
+- name: getSupportCases
+  description: Retrieves a JSON object containing a list of support cases.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getSupportCases
+- name: createSupportCases
+  description: Creates a new support case.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSupportCases
+- name: getUsersRoles
+  description: Available user roles.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getUsersRoles
+- name: getUsers
+  description: Retrieves a JSON object containing a list of user accounts.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#getUsers
+- name: createUsers
+  description: Add user account
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createUsers
+- name: updateActionItemsAcknowledgment
+  description: Acknowledge one or more action items.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateActionItemsAcknowledgment
+- name: updateServersMaintenance
+  description: 'Activate / deactivate maintenance mode for one or more servers. Activating maintenance
+    mode suppresses alerts for the server(s).<br><br> '
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateServersMaintenance
+- name: updateServersByServerUUIDRdnsByRdnsRecUUID
+  description: Apply new FQDN to reverse DNS record.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateServersByServerUUIDRdnsByRdnsRecUUID
+- name: updateUsersByUserUUIDAdminDisabled
+  description: Update user, remove administrator permissions.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateUsersByUserUUIDAdminDisabled
+- name: updateUsersByUserUUIDAdminEnabled
+  description: Update user, add administrator permissions.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateUsersByUserUUIDAdminEnabled
+- name: updateUsersByUserUUIDRolesByRoleUUID
+  description: Remove user Role
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateUsersByUserUUIDRolesByRoleUUID
+- name: updateUsersByUserUUIDRoles
+  description: Add user Role
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#updateUsersByUserUUIDRoles
+- name: createServersByServerUUIDReboot
+  description: 'Requests the reboot of a server by serverUUID. A simple JSON object containing success:
+    true | false is returned.'
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createServersByServerUUIDReboot
+- name: createServersByServerUUIDReinstall
+  description: Start a server re-installation
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createServersByServerUUIDReinstall
+- name: createSslCertificatesByCertificateIdFinalize
+  description: 'Finalize the creation of an SSL certificate.<br><br> '
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSslCertificatesByCertificateIdFinalize
+- name: createSslCertificatesByCertificateIdResendApproval
+  description: Re-send the ssl certificate approval.
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSslCertificatesByCertificateIdResendApproval
+- name: createSslCertificatesInitialize
+  description: 'Initialize the creation of a new SSL certificate.<br><br> '
+  source_operation: openapi/horizoniq-compass-openapi-original.yml#createSslCertificatesInitialize

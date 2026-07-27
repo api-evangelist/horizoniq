@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/horizoniq-compass-openapi-original.yml
+skills:
+- file: horizoniq-reinstall-server.md
+  name: Reinstall a HorizonIQ bare metal server
+  api: openapi/horizoniq-compass-openapi-original.yml
+  operations: [getServers, getServersByServerUUIDImages, createServersByServerUUIDReinstall, getServersByServerUUIDInstallProgress, getServersByServerUUIDRootPassword]
+- file: horizoniq-provision-ssl-certificate.md
+  name: Provision a HorizonIQ SSL certificate
+  api: openapi/horizoniq-compass-openapi-original.yml
+  operations: [createSslCertificatesInitialize, createSslCertificatesByCertificateIdResendApproval, createSslCertificatesByCertificateIdFinalize, getSslCertificatesByCertificateId]
+- file: horizoniq-manage-team-access.md
+  name: Manage HorizonIQ Compass team access
+  api: openapi/horizoniq-compass-openapi-original.yml
+  operations: [getUsers, getUsersRoles, createUsers, updateUsersByUserUUIDRoles, updateUsersByUserUUIDAdminEnabled, deleteUsersByUserUUID]

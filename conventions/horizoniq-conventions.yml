@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: https://compass-horizoniq.readme.io/reference/general-api-information
+authentication:
+  style: bearer-api-token
+  header: 'Authorization: Bearer <token>'
+  issuance: Compass portal > Profile > API Tokens > Create New Api Token (label + expiration)
+  ref: authentication/horizoniq-authentication.yml
+transport:
+  https_required: true
+pagination:
+  style: limit-offset
+  params:
+  - limit
+  - offset
+  - sortby
+  - direction
+  filters: filter/status filters documented per list endpoint
+  ref: General API Information
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented.
+errors:
+  envelope: HTTP status code + JSON message
+  format: plain-json (not RFC 9457)
+  ref: errors/horizoniq-problem-types.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.compass.horizoniq.com/v1
+  ref: lifecycle/horizoniq-lifecycle.yml
+resource_ids:
+  style: UUID
+  examples:
+  - serverUUID
+  - userUUID
+  - invoiceUUID
+  - deviceUUID
+  - firewallUUID
+  - actionItemUUID
+  - caseId
+  - certificateId

@@ -1,0 +1,65 @@
+# Compass Documentation
+
+> Documentation for Compass
+
+## Guides
+- [Documentation](https://compass-horizoniq.readme.io/docs.md): Compass documentation
+
+## API Reference
+- [Introduction](https://compass-horizoniq.readme.io/reference/introduction.md)
+- [General API Information](https://compass-horizoniq.readme.io/reference/general-api-information.md)
+- [Authentication](https://compass-horizoniq.readme.io/reference/authentication.md)
+- [List Servers](https://compass-horizoniq.readme.io/reference/get_servers.md): Retrieves a JSON object containing a list of servers currently provisioned in inventory.
+- [Server Maintenance](https://compass-horizoniq.readme.io/reference/patch_servers-maintenance.md): Activate / deactivate maintenance mode for one or more servers. Activating maintenance mode suppresses alerts for the server(s).<br><br> [block:callout] { "type": "info", "title": "Information.", "body": "This operation is only for monitored servers." } [/block]
+- [Get Server](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid.md): Retrieves a JSON object containing a single server by serverUUID.
+- [List Server Action Items](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-action-items.md): Retrieves a JSON object containing a list of action items for a system / server.
+- [List Inactive Server Action Items](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-action-items-inactive.md): Retrieves a JSON object containing a list of inactive action items for a system / server.
+- [List Server Reinstall Images](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-images.md): Retrieves a JSON object containing a list of images by serverUUID available for server reinstall.
+- [Get Server Install Progress](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-install-progress.md): Retrieves a JSON object containing the progress of server install by UUID. This UUID can be retrieved from /servers.
+- [Get Server Networks](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-networks.md): Retrieves a JSON object containing the server public and private networks by UUID. This UUID can be retrieved from /servers.
+- [Get Server Reverse DNS](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-rdns.md): Retrieves a JSON object containing the server reverse DNS configuration. This UUID can be retrieved from /servers.
+- [Update Reverse DNS Record](https://compass-horizoniq.readme.io/reference/patch_servers-serveruuid-rdns-rdnsrecuuid.md): Apply new FQDN to reverse DNS record.
+- [Reboot Server](https://compass-horizoniq.readme.io/reference/post_servers-serveruuid-reboot.md): Requests the reboot of a server by serverUUID. A simple JSON object containing success: true | false is returned.
+- [Reinstall Server](https://compass-horizoniq.readme.io/reference/post_servers-serveruuid-reinstall.md): Start a server re-installation
+- [Get Root Password](https://compass-horizoniq.readme.io/reference/get_servers-serveruuid-root-password.md): Retrieves a JSON object containing the server root passowrd by server UUID. This UUID can be retrieved from /servers.
+- [Update Root Password](https://compass-horizoniq.readme.io/reference/patch_servers-serveruuid-root-password.md): Updates root password in portal to the value set on the server by serverUUID. This UUID can be retrieved from /servers.<br><br> [block:callout] { "type": "danger", "title": "Warning:", "body": "This operation does not set the actual password on the server. After changing your root password on your server, update here to keep in sync." } [/block]
+- [List Credits](https://compass-horizoniq.readme.io/reference/get_billing-credits.md): Retrieves a JSON object containing a list of credits.
+- [List Invoices](https://compass-horizoniq.readme.io/reference/get_billing-invoices.md): Retrieves a JSON object containing a list of invoices.
+- [Get Invoice](https://compass-horizoniq.readme.io/reference/get_billing-invoices-invoiceuuid.md): Retrieves a JSON object containing a single invoice by invoiceUUID.
+- [Get Invoice CSV](https://compass-horizoniq.readme.io/reference/get_billing-invoices-invoiceuuid-csv.md): Retrieves a JSON object containing a single invoice CSV by invoiceUUID.
+- [Get Invoice PDF](https://compass-horizoniq.readme.io/reference/get_billing-invoices-invoiceuuid-pdf.md): Retrieves a JSON object containing a single invoice PDF by invoiceUUID.
+- [List Active Services](https://compass-horizoniq.readme.io/reference/get_billing-services-active.md): Retrieves a JSON object containing a list of active billable services.
+- [List Cancelled Services](https://compass-horizoniq.readme.io/reference/get_billing-services-cancelled.md): Retrieves a JSON object containing a list of cancelled billable services.
+- [List Grouped Action Items](https://compass-horizoniq.readme.io/reference/get_action-items.md): Retrieves a JSON object containing a list of all system action items grouped by category.
+- [Acknowledge Action Items](https://compass-horizoniq.readme.io/reference/patch_action-items-acknowledgment.md): Acknowledge one or more action items.
+- [Get Action Item](https://compass-horizoniq.readme.io/reference/get_action-items-actionitemuuid.md): Retrieves a JSON object containing a single action item by UUID.
+- [List User Accounts](https://compass-horizoniq.readme.io/reference/get_users.md): Retrieves a JSON object containing a list of user accounts.
+- [Add User Account](https://compass-horizoniq.readme.io/reference/post_users.md): Add user account
+- [Retrieve Available User Roles](https://compass-horizoniq.readme.io/reference/get_users-roles.md): Available user roles.
+- [Delete User Account](https://compass-horizoniq.readme.io/reference/delete_users-useruuid.md): Delete user account
+- [Get User Account](https://compass-horizoniq.readme.io/reference/get_users-useruuid.md): Retrieves a JSON object containing a single user account by userUUID.
+- [Update User Account](https://compass-horizoniq.readme.io/reference/patch_users-useruuid.md): Update user account
+- [Disable User Admin](https://compass-horizoniq.readme.io/reference/patch_users-useruuid-admin-disabled.md): Update user, remove administrator permissions.
+- [Enable User Admin](https://compass-horizoniq.readme.io/reference/patch_users-useruuid-admin-enabled.md): Update user, add administrator permissions.
+- [Add User Role](https://compass-horizoniq.readme.io/reference/patch_users-useruuid-roles.md): Add user Role
+- [Remove User Role](https://compass-horizoniq.readme.io/reference/patch_users-useruuid-roles-roleuuid.md): Remove user Role
+- [List Devices](https://compass-horizoniq.readme.io/reference/get_devices.md): Retrieves a JSON object containing a list of devices.
+- [Get Device](https://compass-horizoniq.readme.io/reference/get_devices-deviceuuid.md): Retrieves a JSON object containing a single device by UUID.
+- [List Firewalls](https://compass-horizoniq.readme.io/reference/get_firewalls.md): Retrieves a JSON object containing a list of managed firewalls currently provisioned in inventory.
+- [Get Firewall](https://compass-horizoniq.readme.io/reference/get_firewalls-firewalluuid.md): Retrieves a JSON object containing a single managed firewall.
+- [List Support Cases](https://compass-horizoniq.readme.io/reference/get_support-cases.md): Retrieves a JSON object containing a list of support cases.
+- [Create Support Case](https://compass-horizoniq.readme.io/reference/post_support-cases.md): Creates a new support case.
+- [Get Support Case](https://compass-horizoniq.readme.io/reference/get_support-cases-caseid.md): Retrieves a JSON object containing a single support case by case ID.
+- [Update Support Case State](https://compass-horizoniq.readme.io/reference/patch_support-cases-caseid.md): Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or re-opened through the API.**
+- [Get Support Case Attachments](https://compass-horizoniq.readme.io/reference/get_support-cases-caseid-attachments.md): Retrieves a JSON object containing all attachments for support case.
+- [Upload Attachment](https://compass-horizoniq.readme.io/reference/post_support-cases-caseid-attachments.md): Upload one or more attachments for support case using multipart/form-data Content-type header.
+- [Download Attachment](https://compass-horizoniq.readme.io/reference/get_support-cases-caseid-attachments-attachmentid.md): Downloads a single support case attachment.
+- [Get Support Case Comments](https://compass-horizoniq.readme.io/reference/get_support-cases-caseid-comments.md): Retrieves a JSON object containing all comments for support case.
+- [Comment On Support Case](https://compass-horizoniq.readme.io/reference/post_support-cases-caseid-comments.md): Adds a comment on the support case indicated by caseId.
+- [List SSL Certificates](https://compass-horizoniq.readme.io/reference/get_ssl-certificates.md): Retrieves a JSON object containing a list of SSL certificates.
+- [Initialize SSL Certificate](https://compass-horizoniq.readme.io/reference/post_ssl-certificates-initialize.md): Initialize the creation of a new SSL certificate.<br><br> [block:callout] { "type": "info", "title": "Information:", "body": "On successful hostname validation, this operation will return a list of valid approver email addresses, one of which must be used to finalize your certificate." } [/block]
+- [Get SSL Certificate](https://compass-horizoniq.readme.io/reference/get_ssl-certificates-certificateid.md): Retrieves a JSON object containing a single SSL certificate by certificateId.
+- [Finalize SSL Certificate](https://compass-horizoniq.readme.io/reference/post_ssl-certificates-certificateid-finalize.md): Finalize the creation of an SSL certificate.<br><br> [block:callout] { "type": "danger", "title": "Warning:", "body": "A valid approver email address returned from certificate initialization must be used to finalize your certificate." } [/block]
+- [SSL Certificate approval](https://compass-horizoniq.readme.io/reference/post_ssl-certificates-certificateid-resend-approval.md): Re-send the ssl certificate approval.
+- [List Images](https://compass-horizoniq.readme.io/reference/get_images.md): Retrieves a JSON object containing a list of public and private images currently in catalog.
+- [Upload Image](https://compass-horizoniq.readme.io/reference/post_images.md): Uploads an Operating System image to be used with server installs.

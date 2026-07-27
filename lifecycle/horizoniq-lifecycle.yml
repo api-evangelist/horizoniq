@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: searched
+source: https://compass-horizoniq.readme.io/reference/ + https://www.horizoniq.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.compass.horizoniq.com/v1
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation/Sunset-header policy found.
+status_page: null
+status_page_note: No public status page found (status.horizoniq.com does not resolve; /status returns
+  404).
+sla:
+  url: https://www.horizoniq.com/
+  note: HorizonIQ markets managed SLAs; no machine-readable SLA endpoint published.
+deprecated_operations: []

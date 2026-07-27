@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/horizoniq-compass-openapi-original.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; auth is a bearer API token.
+- id: http-bearer-token
+  conforms: true
+  evidence: 'Authorization: Bearer <api-token> documented and applied globally.'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 4xx/5xx responses return a plain JSON message object, not application/problem+json.
+- id: pagination-limit-offset
+  conforms: true
+  evidence: List endpoints accept limit + offset (with sortby/direction) query parameters.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key header documented in the API or docs.
+- id: openapi-3
+  conforms: true
+  evidence: Published as OpenAPI 3.0.1 fragments per endpoint.
+- id: tls-required
+  conforms: true
+  evidence: HTTPS is required for all API requests (General API Information).

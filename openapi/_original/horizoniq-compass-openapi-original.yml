@@ -1,0 +1,3972 @@
+openapi: 3.0.1
+info:
+  title: Compass API
+  version: '2023-05-30T22:28:43Z'
+  description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers,
+    devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action
+    items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI
+    fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented
+    Bearer securityScheme added by API Evangelist.
+servers:
+- url: https://api.compass.horizoniq.com/{basePath}
+  variables:
+    basePath:
+      default: v1
+security:
+- bearerAuth: []
+tags:
+- name: Action Items
+  description: Endpoints related to Action Items
+- name: Billing
+  description: Endpoints related to Billing
+- name: Devices
+  description: Endpoints related to devices
+- name: Images
+  description: Endpoints related to images
+- name: Managed Firewalls
+  description: Endpoints related to managed firewalls
+- name: Servers
+  description: Endpoints related to Servers
+- name: Support
+  description: Endpoints related to support cases
+- name: User Accounts
+  description: Enpionts related to user accounts
+paths:
+  /users/{userUUID}:
+    delete:
+      description: Delete user account
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Delete User Account
+      tags:
+      - User Accounts
+      operationId: deleteUsersByUserUUID
+    get:
+      description: Retrieves a JSON object containing a single user account by userUUID.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get User Account
+      tags:
+      - User Accounts
+      operationId: getUsersByUserUUID
+    patch:
+      description: Update user account
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdatePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Update User Account
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUID
+  /action-items/{actionItemUUID}:
+    get:
+      description: Retrieves a JSON object containing a single action item by UUID.
+      parameters:
+      - description: The UUID of the action item, can be retrieved from the action item list endpoint.
+        in: path
+        name: actionItemUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsGetModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Action Item
+      tags:
+      - Action Items
+      operationId: getActionItemsByActionItemUUID
+  /action-items:
+    get:
+      description: Retrieves a JSON object containing a list of all system action items grouped by category.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: filterBy
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsGroupListModel'
+          description: 200 response
+      summary: List Grouped Action Items
+      tags:
+      - Action Items
+      operationId: getActionItems
+  /billing/credits:
+    get:
+      description: Retrieves a JSON object containing a list of credits.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditListModel'
+          description: 200 response
+      summary: List Credits
+      tags:
+      - Billing
+      operationId: getBillingCredits
+  /billing/invoices/{invoiceUUID}/csv:
+    get:
+      description: Retrieves a JSON object containing a single invoice CSV by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetCsvModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice CSV
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUIDCsv
+  /billing/invoices/{invoiceUUID}/pdf:
+    get:
+      description: Retrieves a JSON object containing a single invoice PDF by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetPdfModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice PDF
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUIDPdf
+  /billing/invoices/{invoiceUUID}:
+    get:
+      description: Retrieves a JSON object containing a single invoice by invoiceUUID.
+      parameters:
+      - description: The UUID of the invoice, can be retrieved from the invoice list endpoint.
+        in: path
+        name: invoiceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Invoice
+      tags:
+      - Billing
+      operationId: getBillingInvoicesByInvoiceUUID
+  /billing/invoices:
+    get:
+      description: Retrieves a JSON object containing a list of invoices.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: 'Filter invoices by status: paid, unpaid or disregarded.'
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListModel'
+          description: 200 response
+      summary: List Invoices
+      tags:
+      - Billing
+      operationId: getBillingInvoices
+  /billing/services/active:
+    get:
+      description: Retrieves a JSON object containing a list of active billable services.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListModel'
+          description: 200 response
+      summary: List Active Services
+      tags:
+      - Billing
+      operationId: getBillingServicesActive
+  /billing/services/cancelled:
+    get:
+      description: Retrieves a JSON object containing a list of cancelled billable services.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListModel'
+          description: 200 response
+      summary: List Cancelled Services
+      tags:
+      - Billing
+      operationId: getBillingServicesCancelled
+  /devices/{deviceUUID}:
+    get:
+      description: Retrieves a JSON object containing a single device by UUID.
+      parameters:
+      - description: The UUID of the device, can be retrieved from the device list endpoint.
+        in: path
+        name: deviceUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Device
+      tags:
+      - Devices
+      operationId: getDevicesByDeviceUUID
+  /devices:
+    get:
+      description: Retrieves a JSON object containing a list of devices.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListModel'
+          description: 200 response
+      summary: List Devices
+      tags:
+      - Devices
+      operationId: getDevices
+  /firewalls/{firewallUUID}:
+    get:
+      description: Retrieves a JSON object containing a single managed firewall.
+      parameters:
+      - description: The UUID of the managed firewall, can be retrieved from the firewall list endpoint.
+        in: path
+        name: firewallUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Firewall
+      tags:
+      - Managed Firewalls
+      operationId: getFirewallsByFirewallUUID
+  /firewalls:
+    get:
+      description: Retrieves a JSON object containing a list of managed firewalls currently provisioned
+        in inventory.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallListModel'
+          description: 200 response
+      summary: List Firewalls
+      tags:
+      - Managed Firewalls
+      operationId: getFirewalls
+  /images:
+    get:
+      description: Retrieves a JSON object containing a list of public and private images currently in
+        catalog.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageListModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+      summary: List Images
+      tags:
+      - Images
+      operationId: getImages
+    post:
+      description: Uploads an Operating System image to be used with server installs.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImageUploadFormModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+      summary: Upload Image
+      tags:
+      - Images
+      operationId: createImages
+  /servers/{serverUUID}/action-items/inactive:
+    get:
+      description: Retrieves a JSON object containing a list of inactive action items for a system / server.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: limits the number of returned systems
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsListModel'
+          description: server list
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: List Inactive Server Action Items
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDActionItemsInactive
+  /servers/{serverUUID}/action-items:
+    get:
+      description: Retrieves a JSON object containing a list of action items for a system / server.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: limits the number of returned systems
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsListModel'
+          description: server list
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: List Server Action Items
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDActionItems
+  /servers/{serverUUID}/images:
+    get:
+      description: Retrieves a JSON object containing a list of images by serverUUID available for server
+        reinstall.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: limits the number of returned systems
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Name of filter, currently active is only filter supported.
+        in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageListModel'
+          description: server list
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: List Server Reinstall Images
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDImages
+  /servers/{serverUUID}/install-progress:
+    get:
+      description: Retrieves a JSON object containing the progress of server install by UUID. This UUID
+        can be retrieved from /servers.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallProgressResponseModel'
+          description: server list
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Server Install Progress
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDInstallProgress
+  /servers/{serverUUID}/networks:
+    get:
+      description: Retrieves a JSON object containing the server public and private networks by UUID.
+        This UUID can be retrieved from /servers.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerNetworksGetModel'
+          description: server list
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Server Networks
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDNetworks
+  /servers/{serverUUID}/rdns:
+    get:
+      description: Retrieves a JSON object containing the server reverse DNS configuration. This UUID
+        can be retrieved from /servers.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: limits the number of returned systems
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br>\
+          \ \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\"\
+          : \"The property value can be a valid regular expression to better define list results. The\
+          \ regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerReverseDNSGetModel'
+          description: server list
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Server Reverse DNS
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDRdns
+  /servers/{serverUUID}/root-password:
+    get:
+      description: Retrieves a JSON object containing the server root passowrd by server UUID. This UUID
+        can be retrieved from /servers.
+      parameters:
+      - description: 'TOTP AuthorizationKey. Required if user has enabled 2FA. (i.e. X-Additional-Authorization:
+          Totp XXXXXX)'
+        in: header
+        name: X-Additional-Authorization
+        schema:
+          type: string
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RootPasswordGetModel'
+          description: server list
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Get Root Password
+      tags:
+      - Servers
+      operationId: getServersByServerUUIDRootPassword
+    patch:
+      description: "Updates root password in portal to the value set on the server by serverUUID. This\
+        \ UUID can be retrieved from /servers.<br><br> \n[block:callout] { \"type\": \"danger\", \"title\"\
+        : \"Warning:\", \"body\": \"This operation does not set the actual password on the server. After\
+        \ changing your root password on your server, update here to keep in sync.\" } [/block]\n"
+      parameters:
+      - description: 'TOTP AuthorizationKey. Required if user has enabled 2FA. (i.e. X-Additional-Authorization:
+          Totp XXXXXX)'
+        in: header
+        name: X-Additional-Authorization
+        schema:
+          type: string
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RootPasswordPatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RootPasswordGetModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Update Root Password
+      tags:
+      - Servers
+      operationId: updateServersByServerUUIDRootPassword
+  /servers/{serverUUID}:
+    get:
+      description: Retrieves a JSON object containing a single server by serverUUID.
+      parameters:
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerGetModel'
+          description: server list
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Server
+      tags:
+      - Servers
+      operationId: getServersByServerUUID
+  /servers:
+    get:
+      description: Retrieves a JSON object containing a list of servers currently provisioned in inventory.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: limits the number of returned systems
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br>\
+          \ \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\"\
+          : \"The property value can be a valid regular expression to better define list results. The\
+          \ regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerListModel'
+          description: server list
+      summary: List Servers
+      tags:
+      - Servers
+      operationId: getServers
+  /ssl-certificates/{certificateId}:
+    get:
+      description: Retrieves a JSON object containing a single SSL certificate by certificateId.
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be
+          retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: getSslCertificatesByCertificateId
+  /ssl-certificates:
+    get:
+      description: Retrieves a JSON object containing a list of SSL certificates.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br>\
+          \ \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\"\
+          : \"The property value can be a valid regular expression to better define list results. The\
+          \ regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateListModel'
+          description: 200 response
+      summary: List SSL Certificates
+      tags:
+      - SSL Certificates
+      operationId: getSslCertificates
+  /support-cases/{caseId}/attachments/{attachmentId}:
+    get:
+      description: Downloads a single support case attachment.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: The ID of the support case attachment, can be retrieved from the support case attachment
+          list endpoint.
+        in: path
+        name: attachmentId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+          description: 200 response
+      summary: Download Attachment
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdAttachmentsByAttachmentId
+  /support-cases/{caseId}/attachments:
+    get:
+      description: Retrieves a JSON object containing all attachments for support case.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseAttachmentListModel'
+          description: 200 response
+      summary: Get Support Case Attachments
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdAttachments
+    post:
+      description: Upload one or more attachments for support case using multipart/form-data Content-type
+        header.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SupportCaseAttachmentUploadFormModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Upload Attachment
+      tags:
+      - Support
+      operationId: createSupportCasesByCaseIdAttachments
+  /support-cases/{caseId}/comments:
+    get:
+      description: Retrieves a JSON object containing all comments for support case.
+      parameters:
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseCommentListModel'
+          description: 200 response
+      summary: Get Support Case Comments
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseIdComments
+    post:
+      description: Adds a comment on the support case indicated by caseId.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCaseCommentPostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseCommentAddedModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Comment On Support Case
+      tags:
+      - Support
+      operationId: createSupportCasesByCaseIdComments
+  /support-cases/{caseId}:
+    get:
+      description: Retrieves a JSON object containing a single support case by case ID.
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseGetModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Get Support Case
+      tags:
+      - Support
+      operationId: getSupportCasesByCaseId
+    patch:
+      description: 'Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold
+        or re-opened through the API.**'
+      parameters:
+      - description: The ID of the support case, can be retrieved from the support case list endpoint.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCasePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseUpdatedModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Update Support Case State
+      tags:
+      - Support
+      operationId: updateSupportCasesByCaseId
+  /support-cases:
+    get:
+      description: Retrieves a JSON object containing a list of support cases.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br>\
+          \ \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\"\
+          : \"The property value can be a valid regular expression to better define list results. The\
+          \ regex must contain valid delimiters such as /.\" } [/block]\n"
+        in: query
+        name: filters
+        schema:
+          type: object
+        style: deepObject
+        explode: true
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseListModel'
+          description: 200 response
+      summary: List Support Cases
+      tags:
+      - Support
+      operationId: getSupportCases
+    post:
+      description: Creates a new support case.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportCasePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportCaseGetModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Create Support Case
+      tags:
+      - Support
+      operationId: createSupportCases
+  /users/roles:
+    get:
+      description: Available user roles.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRoleListModel'
+          description: 200 response
+      summary: Retrieve Available User Roles
+      tags:
+      - User Accounts
+      operationId: getUsersRoles
+  /users:
+    get:
+      description: Retrieves a JSON object containing a list of user accounts.
+      parameters:
+      - description: Object list sort direction.
+        in: query
+        name: direction
+        schema:
+          type: string
+      - description: Limits the number of returned objects.
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Name of key on which to sort object list.
+        in: query
+        name: sortby
+        schema:
+          type: string
+      - description: Designates the start index of the object list.
+        in: query
+        name: offset
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListModel'
+          description: 200 response
+      summary: List User Accounts
+      tags:
+      - User Accounts
+      operationId: getUsers
+    post:
+      description: Add user account
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddPostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Add User Account
+      tags:
+      - User Accounts
+      operationId: createUsers
+  /action-items/acknowledgment:
+    patch:
+      description: Acknowledge one or more action items.
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionItemsAckModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionItemsAckResponseModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Acknowledge Action Items
+      tags:
+      - Action Items
+      operationId: updateActionItemsAcknowledgment
+  /servers/maintenance:
+    patch:
+      description: "Activate / deactivate maintenance mode for one or more servers. Activating maintenance\
+        \ mode suppresses alerts for the server(s).<br><br> \n[block:callout] { \"type\": \"info\", \"\
+        title\": \"Information.\", \"body\": \"This operation is only for monitored servers.\" } [/block]\n"
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServersMaintenancePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerMaintenanceRespModel'
+          description: 200 response
+        '207':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerMaintenanceRespModel'
+          description: 207 response
+      summary: Server Maintenance
+      tags:
+      - Servers
+      operationId: updateServersMaintenance
+  /servers/{serverUUID}/rdns/{rdnsRecUUID}:
+    patch:
+      description: Apply new FQDN to reverse DNS record.
+      parameters:
+      - description: The UUID of the reverse DNS record, can be retrieved from the /servers/{serverUUID}/rdns
+          endpoint.
+        in: path
+        name: rdnsRecUUID
+        required: true
+        schema:
+          type: string
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerRdnsFqdnPatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+      summary: Update Reverse DNS Record
+      tags:
+      - Servers
+      operationId: updateServersByServerUUIDRdnsByRdnsRecUUID
+  /users/{userUUID}/admin-disabled:
+    patch:
+      description: Update user, remove administrator permissions.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Disable User Admin
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDAdminDisabled
+  /users/{userUUID}/admin-enabled:
+    patch:
+      description: Update user, add administrator permissions.
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Enable User Admin
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDAdminEnabled
+  /users/{userUUID}/roles/{roleUUID}:
+    patch:
+      description: Remove user Role
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: The UUID of the user role, can be retrieved from the roles list endpoint.
+        in: path
+        name: roleUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Remove User Role
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDRolesByRoleUUID
+  /users/{userUUID}/roles:
+    patch:
+      description: Add user Role
+      parameters:
+      - description: The UUID of the user, can be retrieved from the user list endpoint.
+        in: path
+        name: userUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRolePatchModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddResponseModel'
+          description: 200 response
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 500 response
+      summary: Add User Role
+      tags:
+      - User Accounts
+      operationId: updateUsersByUserUUIDRoles
+  /servers/{serverUUID}/reboot:
+    post:
+      description: 'Requests the reboot of a server by serverUUID. A simple JSON object containing success:
+        true | false is returned.'
+      parameters:
+      - description: Options include soft (proper reboot) or hard (force reboot).
+        in: query
+        name: rebootType
+        schema:
+          type: string
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 409 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Reboot Server
+      tags:
+      - Servers
+      operationId: createServersByServerUUIDReboot
+  /servers/{serverUUID}/reinstall:
+    post:
+      description: Start a server re-installation
+      parameters:
+      - description: 'TOTP AuthorizationKey. Required if user has enabled 2FA. (i.e. X-Additional-Authorization:
+          Totp XXXXXX)'
+        in: header
+        name: X-Additional-Authorization
+        schema:
+          type: string
+      - description: The UUID of the server, can be retrieved from the <span style=color:blue>**[List
+          Servers](./get_servers)**</span> endpoint.
+        in: path
+        name: serverUUID
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReinstallPostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReinstallModel'
+          description: 200 response
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 400 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 409 response
+        '501':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 501 response
+      summary: Reinstall Server
+      tags:
+      - Servers
+      operationId: createServersByServerUUIDReinstall
+  /ssl-certificates/{certificateId}/finalize:
+    post:
+      description: "Finalize the creation of an SSL certificate.<br><br> \n[block:callout] { \"type\"\
+        : \"danger\", \"title\": \"Warning:\", \"body\": \"A valid approver email address returned from\
+        \ certificate initialization must be used to finalize your certificate.\" } [/block]\n"
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be
+          retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateFinalizePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessStringModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Finalize SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesByCertificateIdFinalize
+  /ssl-certificates/{certificateId}/resend-approval:
+    post:
+      description: Re-send the ssl certificate approval.
+      parameters:
+      - description: The ID of the SSL certificate returned from certificate initialization or can be
+          retrieved from the certificate list endpoint.
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          type: string
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessStringModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: SSL Certificate approval
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesByCertificateIdResendApproval
+  /ssl-certificates/initialize:
+    post:
+      description: "Initialize the creation of a new SSL certificate.<br><br> \n[block:callout] { \"type\"\
+        : \"info\", \"title\": \"Information:\", \"body\": \"On successful hostname validation, this operation\
+        \ will return a list of valid approver email addresses, one of which must be used to finalize\
+        \ your certificate.\" } [/block]\n"
+      parameters:
+      - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateInitializePostModel'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateInitializeResponseModel'
+          description: 200 response
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: 404 response
+      summary: Initialize SSL Certificate
+      tags:
+      - SSL Certificates
+      operationId: createSslCertificatesInitialize
+components:
+  schemas:
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    ActionItemsGetModel:
+      type: object
+      properties:
+        sub_source:
+          type: string
+        metadata:
+          type: object
+          properties:
+            alertImpact:
+              type: string
+            alertSubType:
+              type: string
+            resourceId:
+              type: string
+            alertType:
+              type: string
+            resource:
+              type: object
+              properties:
+                resourceHealthValue:
+                  type: integer
+                dpcAdapter:
+                  type: object
+                  properties:
+                    vcenterHostname:
+                      type: string
+                    createdDate:
+                      type: number
+                    name:
+                      type: string
+                    uuid:
+                      type: string
+                createdDate:
+                  type: number
+                resourceHealth:
+                  type: string
+                name:
+                  type: string
+                uuid:
+                  type: string
+                adapterUuid:
+                  type: string
+                resourceType:
+                  type: string
+            alertLevel:
+              type: string
+            suspendUntilDate:
+              type: number
+            updatedDate:
+              type: number
+            uuid:
+              type: string
+            controlState:
+              type: string
+            symptoms:
+              type: array
+              items:
+                type: object
+                properties:
+                  symptomDefinition:
+                    type: object
+                    properties:
+                      resourceKindKey:
+                        type: string
+                      adapterKindKey:
+                        type: string
+                      cancelCycles:
+                        type: integer
+                      conditionSeverity:
+                        type: string
+                      conditionThresholdType:
+                        type: string
+                      conditionTargetKey:
+                        type: string
+                      conditionEventType:
+                        type: string
+                      conditionOperatorSymbol:
+                        type: string
+                      waitCycles:
+                        type: integer
+                      symptomDefinitionIdKey:
+                        type: string
+                      conditionKey:
+                        type: string
+                      conditionIsInstanced:
+                        type: boolean
+                      conditionOperator:
+                        type: string
+                      name:
+                        type: string
+                      conditionValue:
+                        type: string
+                      conditionFaultKey:
+                        type: string
+                      conditionType:
+                        type: string
+                      metrics:
+                        type: object
+                        properties:
+                          conditionMetric:
+                            type: object
+                            properties:
+                              dataType2:
+                                type: string
+                              unit:
+                                type: string
+                              defaultMonitored:
+                                type: boolean
+                              instanceType:
+                                type: string
+                              name:
+                                type: string
+                              property:
+                                type: boolean
+                              description:
+                                type: string
+                              rollupType:
+                                type: string
+                              monitoring:
+                                type: boolean
+                              key:
+                                type: string
+                          conditionTargetMetric:
+                            type: object
+                            properties:
+                              dataType2:
+                                type: string
+                              defaultMonitored:
+                                type: boolean
+                              instanceType:
+                                type: string
+                              name:
+                                type: string
+                              property:
+                                type: boolean
+                              description:
+                                type: string
+                              rollupType:
+                                type: string
+                              monitoring:
+                                type: boolean
+                              key:
+                                type: string
+                      conditionValueType:
+                        type: string
+                      conditionFaultEvents:
+                        type: string
+                  message:
+                    type: string
+            createdDate:
+              type: number
+            alertDefinitionId:
+              type: string
+            alertDefinitionName:
+              type: string
+            status:
+              type: string
+        monitor_id:
+          type: string
+        active_action_items_id:
+          type: string
+        created_at:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
+        uuid:
+          type: string
+        distinct_type:
+          type: string
+        deactivate_message:
+          type: array
+          items:
+            type: string
+        last_recovered_at:
+          type: number
+        formula_id:
+          type: string
+        threshold_value_unit:
+          type: string
+        snooze:
+          type: array
+          items:
+            type: integer
+        severity:
+          type: integer
+        last_updated:
+          type: string
+        company_id:
+          type: string
+        object_type:
+          type: string
+        count:
+          type: integer
+        active:
+          type: boolean
+        server_id:
+          type: string
+        object_id:
+          type: string
+        current_value:
+          type: string
+        current_value_unit:
+          type: string
+        threshold_value:
+          type: string
+        threshold_operator:
+          type: string
+        category:
+          type: string
+    ActionItemsListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
+          type: string
+    ActionItemsGroupListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: integer
+              actionItems:
+                $ref: '#/components/schemas/ActionItemsListModel'
+              name:
+                type: string
+              systemUuid:
+                type: string
+        limit:
+          type: integer
+        categories:
+          type: object
+          properties:
+            all:
+              type: integer
+            patch:
+              type: integer
+            database:
+              type: integer
+            vrops:
+              type: integer
+            assignedToMe:
+              type: integer
+            infrastructure:
+              type: integer
+            service:
+              type: integer
+            network:
+              type: integer
+            hardware:
+              type: integer
+        totalActionItems:
+          type: integer
+    CreditGetModel:
+      type: object
+      properties:
+        reason:
+          type: string
+        amount:
+          type: number
+        payment_type:
+          type: string
+        balance:
+          type: number
+        payment_number:
+          type: string
+        active:
+          type: boolean
+        comment:
+          type: string
+        comment_total:
+          type: integer
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+    CreditListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    InvoiceGetCsvModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    InvoiceGetPdfModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    InvoiceGetModel:
+      type: object
+      properties:
+        amount_unpaid:
+          type: number
+        invoice_services_count:
+          type: string
+        amount_credited:
+          type: number
+        due_date:
+          type: number
+        overdue_date:
+          type: number
+        amount_due:
+          type: number
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+        payment_date:
+          type: number
+        status:
+          type: string
+    InvoiceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        status:
+          type: string
+        direction:
+          type: integer
+    ServiceGetModel:
+      type: object
+      properties:
+        billingFrequency:
+          type: string
+        baseCost:
+          type: number
+        cost:
+          type: number
+        code:
+          type: string
+        quantity:
+          type: integer
+        discount:
+          type: number
+        isActive:
+          type: boolean
+        uuid:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        lastRenewDate:
+          type: number
+        children:
+          type: array
+          items:
+            type: object
+        servicePlanTitle:
+          type: string
+        name:
+          type: string
+        servicePlanCode:
+          type: string
+        id:
+          type: integer
+        planServicePackageUuid:
+          type: string
+        renewDate:
+          type: number
+    ServiceListModel:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceGetModel'
+    DeviceGetModel:
+      type: object
+      properties:
+        hostName:
+          type: string
+        serialNumber:
+          type: string
+        privateIp:
+          type: string
+        description:
+          type: string
+        publicIp:
+          type: string
+        model:
+          type: string
+        readOnlyFlag:
+          type: string
+        updatedDate:
+          type: number
+        uuid:
+          type: string
+        deviceId:
+          type: string
+        typs:
+          type: string
+        dc:
+          type: string
+    DeviceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    FirewallGetModel:
+      type: object
+      properties:
+        failoverStandbyStatus:
+          type: string
+        serialNumber:
+          type: string
+        notes:
+          type: string
+        ipAddress:
+          type: string
+        className:
+          type: string
+        manageUuid:
+          type: string
+        companyUuid:
+          type: string
+        updatedDate:
+          type: number
+        uuid:
+          type: string
+        version:
+          type: string
+        uberClientId:
+          type: number
+        failoverMateVersion:
+          type: string
+        license:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        fwConfigUuid:
+          type: string
+        manageId:
+          type: number
+        name:
+          type: string
+        failoverEnabled:
+          type: boolean
+        model:
+          type: string
+        status:
+          type: string
+    FirewallListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/FirewallGetModel'
+        direction:
+          type: integer
+    ImageListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              skip_upgrade:
+                type: boolean
+              os:
+                type: string
+              service_price:
+                type: number
+              min_disk:
+                type: integer
+              service_plan:
+                type: string
+              region_id:
+                type: string
+              includes_cpanel:
+                type: string
+              cloud_init:
+                type: boolean
+              type:
+                type: string
+              uuid:
+                type: string
+              version:
+                type: string
+              client_id:
+                type: string
+              hourly_per_gb:
+                type: number
+              ready:
+                type: boolean
+              price:
+                type: number
+              name:
+                type: string
+              gb_on_disk:
+                type: number
+              is_custom:
+                type: string
+              id:
+                type: integer
+              arch:
+                type: string
+              cloud_id:
+                type: string
+              cpanel_price:
+                type: number
+              min_ram:
+                type: integer
+              region_code:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: string
+    InstallProgressResponseModel:
+      type: object
+      properties:
+        progress:
+          type: string
+        step:
+          type: string
+        position:
+          type: string
+        uuid:
+          type: string
+        steps:
+          type: object
+          properties:
+            stopped:
+              type: string
+            adding:
+              type: string
+            reboot1:
+              type: string
+            rebooted1:
+              type: string
+            format:
+              type: string
+            install:
+              type: string
+            postinstall:
+              type: string
+            reboot2:
+              type: string
+            rebooted2:
+              type: string
+            upgrade:
+              type: string
+            post-upgrade:
+              type: string
+            finished:
+              type: string
+    ServerNetworksGetModel:
+      type: object
+      properties:
+        private:
+          type: array
+          items:
+            type: object
+            properties:
+              netmask:
+                type: string
+              prefix:
+                type: string
+              primary_ip:
+                type: string
+              cidr:
+                type: string
+              id:
+                type: string
+              created_date:
+                type: string
+              object_id:
+                type: string
+              gateway:
+                type: string
+              dc:
+                type: string
+              usable_ips:
+                type: array
+                items:
+                  type: string
+        public:
+          type: array
+          items:
+            type: object
+            properties:
+              netmask:
+                type: string
+              prefix:
+                type: string
+              primary_ip:
+                type: string
+              justification_request_id:
+                type: string
+              cidr:
+                type: string
+              id:
+                type: string
+              updated_date:
+                type: string
+              is_sub_assignment:
+                type: boolean
+              object_id:
+                type: string
+              gateway:
+                type: string
+              dc:
+                type: string
+              usable_ips:
+                type: array
+                items:
+                  type: string
+    ServerReverseDNSGetModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              fqdn:
+                type: string
+              ipAddress:
+                type: string
+              uuid:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        filters:
+          type: array
+        direction:
+          type: integer
+    RootPasswordGetModel:
+      type: object
+      properties:
+        password:
+          type: string
+    ServerGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        memory:
+          type: string
+        external_id:
+          type: string
+        os_release:
+          type: string
+        source:
+          type: string
+        storage:
+          type: string
+        type:
+          type: string
+        uuid:
+          type: string
+        hostname:
+          type: string
+        legacy_managed:
+          type: boolean
+        auto_patch:
+          type: boolean
+        mac_address:
+          type: string
+        managed:
+          type: boolean
+        monitoring_tier:
+          type: integer
+        plan_start_date:
+          type: number
+        plan_update_date:
+          type: number
+        os:
+          type: string
+        kernel:
+          type: string
+        ip:
+          type: string
+        os_arch:
+          type: string
+        cpu:
+          type: string
+        active:
+          type: boolean
+        network_interfaces:
+          type: object
+          properties:
+            private:
+              type: array
+              items:
+                type: object
+                properties:
+                  netmask:
+                    type: string
+                  prefix:
+                    type: string
+                  name:
+                    type: string
+                  active:
+                    type: boolean
+                  cidr:
+                    type: string
+                  datacenter:
+                    type: string
+                  id:
+                    type: string
+                  ip4:
+                    type: string
+                  type:
+                    type: string
+                  ip6:
+                    type: string
+                  gateway:
+                    type: string
+            public:
+              type: array
+              items:
+                type: object
+                properties:
+                  netmask:
+                    type: string
+                  prefix:
+                    type: string
+                  name:
+                    type: string
+                  active:
+                    type: boolean
+                  cidr:
+                    type: string
+                  datacenter:
+                    type: string
+                  id:
+                    type: string
+                  ip4:
+                    type: string
+                  type:
+                    type: string
+                  ip6:
+                    type: string
+                  gateway:
+                    type: string
+        name:
+          type: string
+        location:
+          type: string
+        created_date:
+          type: number
+        updated_date:
+          type: number
+        maintenance:
+          type: boolean
+        status:
+          type: string
+    ServerListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    CertificateGetModel:
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        orderType:
+          type: string
+        globalSignCertFound:
+          type: boolean
+        contactFirstName:
+          type: string
+        intermediateCertificate:
+          type: string
+        certId:
+          type: string
+        hostname:
+          type: string
+        createdDate:
+          type: number
+        expireDate:
+          type: number
+        contactLastName:
+          type: string
+        contactPhoneNumber:
+          type: string
+        isExpired:
+          type: boolean
+        serviceId:
+          type: string
+        x509Certificate:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+    CertificateListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              createdDate:
+                type: number
+              expireDate:
+                type: number
+              certId:
+                type: string
+              isExpired:
+                type: boolean
+              status:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        filters:
+          type: array
+        direction:
+          type: integer
+    SupportCaseAttachmentGetModel:
+      type: object
+      properties:
+        fileName:
+          type: string
+        createdDate:
+          type: number
+        fileSize:
+          type: number
+        id:
+          type: string
+    SupportCaseAttachmentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+        direction:
+          type: integer
+    SupportCaseCommentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseCommentGetModel'
+        direction:
+          type: integer
+    SupportCaseCommentGetModel:
+      type: object
+      properties:
+        cc:
+          type: string
+        authorEmail:
+          type: string
+        createdDate:
+          type: number
+        authorName:
+          type: string
+        id:
+          type: string
+        to:
+          type: string
+        body:
+          type: string
+    SupportCaseGetModel:
+      type: object
+      properties:
+        billingId:
+          type: string
+        contactFirstName:
+          type: string
+        description:
+          type: string
+        contactType:
+          type: string
+        updatedDate:
+          type: number
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        uberClientId:
+          type: number
+        urgency:
+          type: string
+        id:
+          type: string
+        state:
+          type: string
+        department:
+          type: string
+        isReplyAllowed:
+          type: boolean
+        internalUuid:
+          type: string
+        contactEmail:
+          type: string
+        impact:
+          type: string
+        active:
+          type: boolean
+        shortDescription:
+          type: string
+        priority:
+          type: string
+        classification:
+          type: string
+        replyCount:
+          type: string
+        createdDate:
+          type: number
+        assignmentGroup:
+          type: string
+        contactLastName:
+          type: string
+        location:
+          $ref: '#/components/schemas/SupportLocationGetModel'
+        assignee:
+          type: string
+        category:
+          $ref: '#/components/schemas/SupportCategoryGetModel'
+        subcategory:
+          $ref: '#/components/schemas/SupportSubcategoryGetModel'
+    SupportSubcategoryGetModel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: number
+        uuid:
+          type: string
+    SupportDepartmentGetModel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        uuid:
+          type: string
+    SupportLocationGetModel:
+      type: object
+      properties:
+        country:
+          type: string
+        zipCode:
+          type: string
+        createdDate:
+          type: number
+        sysId:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        name:
+          type: string
+        manageDcName:
+          type: string
+        state:
+          type: string
+        updatedDate:
+          type: number
+        locationCode:
+          type: string
+        uuid:
+          type: string
+    SupportCategoryGetModel:
+      type: object
+      properties:
+        departmentName:
+          type: string
+        name:
+          type: string
+        id:
+          type: number
+        department:
+          $ref: '#/components/schemas/SupportDepartmentGetModel'
+        subcategory:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportSubcategoryGetModel'
+        uuid:
+          type: string
+    SupportCaseListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseGetModel'
+        direction:
+          type: integer
+    UserPermissionGetModel:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        name:
+          type: string
+        uuid:
+          type: string
+        value:
+          type: string
+    UserRoleGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPermissionGetModel'
+        name:
+          type: string
+        description:
+          type: string
+        uuid:
+          type: string
+    UserRoleListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRoleGetModel'
+        direction:
+          type: integer
+    UserGetModel:
+      type: object
+      properties:
+        netsuiteContactId:
+          type: number
+        lastName:
+          type: string
+        uberContactId:
+          type: number
+        passwordExpireDate:
+          type: string
+        supportAccounts:
+          type: array
+          items:
+            type: string
+        bearerType:
+          type: string
+        updatedDate:
+          type: string
+        type:
+          type: integer
+        uuid:
+          type: string
+        uid:
+          type: string
+        imageUri:
+          type: string
+        agreedEulaVersions:
+          type: array
+          items:
+            type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        secretEnabled:
+          type: boolean
+        company:
+          type: object
+          properties:
+            displayName:
+              type: string
+            description:
+              type: string
+            active:
+              type: boolean
+            externalId:
+              type: string
+            updatedDate:
+              type: string
+            type:
+              type: integer
+            uuid:
+              type: string
+            total_servers_no_agents:
+              type: integer
+            uberClientId:
+              type: number
+            referrer:
+              type: string
+            imageUri:
+              type: string
+            createdDate:
+              type: string
+            provider:
+              type: string
+            ldap:
+              type: string
+            name:
+              type: string
+            total_servers:
+              type: integer
+            eulaUuid:
+              type: string
+            id:
+              type: number
+            projectId:
+              type: string
+            total_servers_agents:
+              type: integer
+            netsuiteClientId:
+              type: number
+        id:
+          type: number
+        acceptedEulaLatest:
+          type: boolean
+        email:
+          type: string
+        externalId:
+          type: number
+        active:
+          type: boolean
+        firstName:
+          type: string
+        createdDate:
+          type: string
+        phone:
+          type: string
+        adminEnabled:
+          type: boolean
+        username:
+          type: string
+        status:
+          type: integer
+    UserListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGetModel'
+        direction:
+          type: integer
+    ActionItemsAckResponseModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              lastUpdated:
+                type: string
+              deactivateMessage:
+                type: array
+                items:
+                  type: string
+              active:
+                type: boolean
+              uuid:
+                type: string
+        errors:
+          type: boolean
+    ActionItemsAckModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              uuid:
+                type: string
+    ServersMaintenancePatchModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
+    ServerMaintenanceObjectModel:
+      type: object
+      properties:
+        uuid:
+          type: string
+        maintenance:
+          type: boolean
+    ServerMaintenanceRespModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
+        errors:
+          type: array
+          items:
+            type: string
+    ServerRdnsFqdnPatchModel:
+      type: object
+      properties:
+        fqdn:
+          type: string
+    RootPasswordPatchModel:
+      type: object
+      properties:
+        password:
+          type: string
+    SupportCasePatchModel:
+      required:
+      - reason
+      - state
+      type: object
+      properties:
+        reason:
+          type: string
+        state:
+          type: string
+          enum:
+          - open
+          - closed
+          - on_hold
+    SupportCaseUpdatedModel:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+    UserAddResponseModel:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
+    UserUpdatePatchModel:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+    ImageUploadFormModel:
+      required:
+      - image
+      - imagename
+      - osname
+      - osversion
+      type: object
+      properties:
+        image:
+          type: string
+          description: The QCOW2 file of your image (3GB limit)
+          format: binary
+        imagename:
+          type: string
+          description: The descriptive name of your image to help you identify it (e.g. my-centos-image)
+        osversion:
+          type: string
+          description: The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5,
+            etc.)
+        osname:
+          type: string
+          description: The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux,
+            etc.)
+    ReinstallPostModel:
+      required:
+      - auto
+      - imageId
+      type: object
+      properties:
+        auto:
+          type: boolean
+          description: Set to **true** for automatic reinstall, set to **false** for technician reinstall.
+          default: true
+        imageId:
+          type: string
+          description: Retrieve valid image ID for server from <span style="color:blue">**[List Server
+            Reinstall Images](./get_servers-serveruuid-images)**</span> endpoint.
+        partitioning:
+          type: string
+          description: "Defines the disk layout for the installation. Specify a comma-separated list of\
+            \ partition definitions using: `mountpoint=size[:filesystem][:drivenumber]`\n\n- **mountpoint**\
+            \ — Target mount location (e.g., `/`, `/var`, `/data`). Use `none` to create an unformatted\
+            \ partition.  \n- **size** — Either a size in megabytes (e.g., `102400`), a percentage of\
+            \ total disk space (e.g., `50%`), or `rest` to consume remaining space.  \n- **filesystem**\
+            \ (optional) — Defaults to `ext3` (ext2 for /boot) if omitted. Supported filesystems include\
+            \ `ext2`, `ext3`, `ext4`, `xfs`, and `jfs`. Use `none` for unformatted partitions.  \n- **drivenumber**\
+            \ (optional) — Target disk number (e.g., `1`, `2`). Starts at disk `1`. If omitted, the primary\
+            \ disk is used.  \n\nExamples\n- One Drive Partitions String: `/=102400,/var=204800,/data=rest`\n\
+            \    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition\
+            \ using the remainder of the space on the drive, all with ext3 formatting\n- Multiple Drives\
+            \ Partitions String: `/=102400:ext4:1,/var=204800:ext4:1,/data=rest:ext4:1,/backup=rest:xfs:2,/tmp=102400:ext4:3,none=rest:none:3`\n\
+            \    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition\
+            \ using the remainder of the space on the drive, all with ext4 formatting\n    - Drive 2 has\
+            \ a single /backup partition formatted in XFS using the entire drive\n    - Drive 3 has a\
+            \ /tmp partition using 100GB formatted in ext4, with the remainder of the space on the drive\
+            \ in an unformatted partition\n\nSoftware RAID can be configured using the partitions string\
+            \ with the following format: `raid=size:raidlevel:drivenumber,raid=size:raidlevel:drivenumber,mountpoint=rest[:filesystem]:raid`\n\
+            - **size** — Functions as before, with `rest` being the recommended value to consume the full\
+            \ drive for RAID usage\n- **drivenumber** — Functions as before and is used to indicate which\
+            \ drives are participating in the RAID\n- **raidlevel** — The requested RAID level. Supported\
+            \ are `1` (mirroring) and `0` (striping)\n- **mountpoint** — Functions as before, except that\
+            \ `raid` is used instead of drive number for any partitions intended for the RAID\n\nExamples\n\
+            - RAID 1 partitions string: `raid=rest:1:1,raid=rest:1:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n\
+            \    - RAID 1 has both drives allocated fully with a 100GB root (/) partition formatted with\
+            \ ext4 and the remainder in the `/data` partition formatted with XFS\n- RAID 0 partitions\
+            \ string: `raid=rest:0:1,raid=rest:0:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n    - RAID\
+            \ 0 has both drives striped with a 100GB root (/) partition formatted with ext4 and the remainder\
+            \ in the `/data` partition formatted with XFS"
+        lvm:
+          type: boolean
+          description: Logical volume manager enabled.
+        gpt:
+          type: boolean
+          description: GUID partition table enabled.
+        instructions:
+          type: string
+          description: Instructions for technician reinstall
+    ReinstallModel:
+      type: object
+      properties:
+        password:
+          type: string
+        success:
+          type: boolean
+        message:
+          type: string
+    SuccessStringModel:
+      type: object
+      properties:
+        success:
+          type: string
+    CertificateFinalizePostModel:
+      required:
+      - approverEmailAddress
+      - csr
+      type: object
+      properties:
+        csr:
+          type: string
+        approverEmailAddress:
+          type: string
+    CertificateInitializeResponseModel:
+      type: object
+      properties:
+        approverEmails:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+        certId:
+          type: string
+    CertificateInitializePostModel:
+      required:
+      - contactEmailAddress
+      - contactFirstName
+      - contactLastName
+      - contactPhoneNumber
+      - hostname
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        hostname:
+          type: string
+        contactFirstName:
+          type: string
+        contactLastName:
+          type: string
+        contactPhoneNumber:
+          type: string
+    SupportCaseAttachmentUploadFormModel:
+      required:
+      - files0
+      type: object
+      properties:
+        files0:
+          type: string
+          format: binary
+        files1:
+          type: string
+          format: binary
+    SupportCaseCommentPostModel:
+      required:
+      - comment
+      type: object
+      properties:
+        comment:
+          type: string
+    SupportCaseCommentAddedModel:
+      type: object
+      properties:
+        createdDate:
+          type: number
+        updatedBy:
+          type: string
+        caseNumber:
+          type: string
+        statusMessage:
+          type: string
+        status:
+          type: string
+    SupportCasePostModel:
+      required:
+      - description
+      - priority
+      - shortDescription
+      type: object
+      properties:
+        netsuiteBillingId:
+          type: string
+        description:
+          type: string
+        shortDescription:
+          type: string
+        priority:
+          type: string
+          enum:
+          - Low
+          - Moderate
+          - High
+          - Critical
+    UserAddPostModel:
+      required:
+      - email
+      - firstName
+      - lastName
+      - username
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API token issued from the Compass portal (Profile > API Tokens). Sent as `Authorization:
+        Bearer <token>`. See https://compass-horizoniq.readme.io/reference/authentication'

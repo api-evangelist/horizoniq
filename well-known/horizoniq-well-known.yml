@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of HorizonIQ hosts
+note: >-
+  No genuine /.well-known/ documents are published. The Compass portal
+  (compass.horizoniq.com) is a single-page app that returns HTTP 200 with the
+  React shell (text/html) for every path, so those 200s are not real documents.
+  The API host returns 403 and the marketing host returns 404.
+hosts:
+- host: https://compass.horizoniq.com
+  documents:
+  - {path: /.well-known/security.txt, status: 200, real: false, note: SPA catch-all returns HTML shell, not RFC 9116}
+  - {path: /.well-known/openid-configuration, status: 200, real: false, note: SPA catch-all HTML}
+  - {path: /.well-known/oauth-authorization-server, status: 200, real: false, note: SPA catch-all HTML}
+  - {path: /.well-known/api-catalog, status: 200, real: false, note: SPA catch-all HTML}
+  - {path: /.well-known/ai-plugin.json, status: 200, real: false, note: SPA catch-all HTML}
+- host: https://api.compass.horizoniq.com
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+- host: https://www.horizoniq.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
