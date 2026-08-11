@@ -204,7 +204,7 @@ common:
 - type: Authentication
   url: authentication/horizoniq-authentication.yml
 - type: OpenAPI
-  url: openapi/horizoniq-compass-openapi-original.yml
+  url: openapi/_original/horizoniq-compass-openapi-original.yml
 - type: Overlay
   url: overlays/horizoniq-compass-overlay.yaml
 - type: MCPServer
