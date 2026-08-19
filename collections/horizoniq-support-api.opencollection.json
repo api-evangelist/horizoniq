@@ -1,0 +1,345 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items Support API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Support",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId/attachments/:attachmentId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case attachment, can be retrieved from the support case attachment list endpoint."
+              }
+            ]
+          },
+          "docs": "Downloads a single support case attachment."
+        },
+        {
+          "info": {
+            "name": "Get Support Case Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId/attachments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing all attachments for support case."
+        },
+        {
+          "info": {
+            "name": "Upload Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId/attachments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Upload one or more attachments for support case using multipart/form-data Content-type header."
+        },
+        {
+          "info": {
+            "name": "Get Support Case Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId/comments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing all comments for support case."
+        },
+        {
+          "info": {
+            "name": "Comment On Support Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId/comments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a comment on the support case indicated by caseId."
+        },
+        {
+          "info": {
+            "name": "Get Support Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single support case by case ID."
+        },
+        {
+          "info": {
+            "name": "Update Support Case State",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases/:caseId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the support case, can be retrieved from the support case list endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or re-opened through the API.**"
+        },
+        {
+          "info": {
+            "name": "List Support Cases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of support cases."
+        },
+        {
+          "info": {
+            "name": "Create Support Case",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/support-cases",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new support case."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

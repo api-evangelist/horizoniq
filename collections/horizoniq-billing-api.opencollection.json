@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items Billing API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/credits",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of credits."
+        },
+        {
+          "info": {
+            "name": "Get Invoice CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/invoices/:invoiceUUID/csv",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the invoice, can be retrieved from the invoice list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single invoice CSV by invoiceUUID."
+        },
+        {
+          "info": {
+            "name": "Get Invoice PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/invoices/:invoiceUUID/pdf",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the invoice, can be retrieved from the invoice list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single invoice PDF by invoiceUUID."
+        },
+        {
+          "info": {
+            "name": "Get Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/invoices/:invoiceUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invoiceUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the invoice, can be retrieved from the invoice list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single invoice by invoiceUUID."
+        },
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/invoices",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices by status: paid, unpaid or disregarded."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of invoices."
+        },
+        {
+          "info": {
+            "name": "List Active Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/services/active",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of active billable services."
+        },
+        {
+          "info": {
+            "name": "List Cancelled Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/billing/services/cancelled",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of cancelled billable services."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

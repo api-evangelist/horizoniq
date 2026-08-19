@@ -1,0 +1,560 @@
+{
+  "item": [
+    {
+      "id": "5732fc10-0e3f-4399-aea1-70bdb8d04d9b",
+      "name": "Images",
+      "description": {
+        "content": "Endpoints related to images",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ebb2ca7-aea6-4b52-92d2-d1baa11927ad",
+          "name": "List Images",
+          "request": {
+            "name": "List Images",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of public and private images currently in catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a29e789-e3a0-4ea1-857e-ce5a02ecab42",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 5148,\n  \"offset\": 4532,\n  \"values\": [\n    {\n      \"skip_upgrade\": true,\n      \"os\": \"string\",\n      \"service_price\": 1125.4886399172947,\n      \"min_disk\": 9127,\n      \"service_plan\": \"string\",\n      \"region_id\": \"string\",\n      \"includes_cpanel\": \"string\",\n      \"cloud_init\": false,\n      \"type\": \"string\",\n      \"uuid\": \"string\",\n      \"version\": \"string\",\n      \"client_id\": \"string\",\n      \"hourly_per_gb\": 367.5274739211809,\n      \"ready\": true,\n      \"price\": 8062.636680429374,\n      \"name\": \"string\",\n      \"gb_on_disk\": 7568.329374882094,\n      \"is_custom\": \"string\",\n      \"id\": 4143,\n      \"arch\": \"string\",\n      \"cloud_id\": \"string\",\n      \"cpanel_price\": 5017.880058436064,\n      \"min_ram\": 6662,\n      \"region_code\": \"string\"\n    },\n    {\n      \"skip_upgrade\": false,\n      \"os\": \"string\",\n      \"service_price\": 245.60772348704353,\n      \"min_disk\": 5586,\n      \"service_plan\": \"string\",\n      \"region_id\": \"string\",\n      \"includes_cpanel\": \"string\",\n      \"cloud_init\": true,\n      \"type\": \"string\",\n      \"uuid\": \"string\",\n      \"version\": \"string\",\n      \"client_id\": \"string\",\n      \"hourly_per_gb\": 6237.217354650005,\n      \"ready\": true,\n      \"price\": 4537.054164072134,\n      \"name\": \"string\",\n      \"gb_on_disk\": 6033.464996815077,\n      \"is_custom\": \"string\",\n      \"id\": 1788,\n      \"arch\": \"string\",\n      \"cloud_id\": \"string\",\n      \"cpanel_price\": 9030.430974322775,\n      \"min_ram\": 7690,\n      \"region_code\": \"string\"\n    }\n  ],\n  \"limit\": 2525,\n  \"sortBy\": \"string\",\n  \"direction\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09f2fc1e-a99b-4516-b526-dcb8d47290ad",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5285,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cefbde13-2597-4ec9-a5d7-0ba591708870",
+          "name": "Upload Image",
+          "request": {
+            "name": "Upload Image",
+            "description": {
+              "content": "Uploads an Operating System image to be used with server installs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "(Required) The QCOW2 file of your image (3GB limit)"
+                },
+                {
+                  "key": "imagename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The descriptive name of your image to help you identify it (e.g. my-centos-image)"
+                },
+                {
+                  "key": "osname",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)"
+                },
+                {
+                  "key": "osversion",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdc07a56-0338-4a73-9871-b254feb80886",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The QCOW2 file of your image (3GB limit)",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The descriptive name of your image to help you identify it (e.g. my-centos-image)",
+                        "type": "text/plain"
+                      },
+                      "key": "imagename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "osname",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "osversion",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3b5c274-e46e-4351-bb57-a532e773ff86",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The QCOW2 file of your image (3GB limit)",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The descriptive name of your image to help you identify it (e.g. my-centos-image)",
+                        "type": "text/plain"
+                      },
+                      "key": "imagename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "osname",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)",
+                        "type": "text/plain"
+                      },
+                      "key": "osversion",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5285,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4fd47ef5-a99b-48fc-915d-7ce19487ba11",
+    "name": "Compass Action Items Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}

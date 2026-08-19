@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items Images API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/images",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of public and private images currently in catalog."
+        },
+        {
+          "info": {
+            "name": "Upload Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/images",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads an Operating System image to be used with server installs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

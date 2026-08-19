@@ -1,0 +1,1965 @@
+{
+  "item": [
+    {
+      "id": "2c8c344e-62ef-45e0-aacc-56691c21377a",
+      "name": "Support",
+      "description": {
+        "content": "Endpoints related to support cases",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81516c12-95f0-4614-978f-8f9590c2a78d",
+          "name": "Download Attachment",
+          "request": {
+            "name": "Download Attachment",
+            "description": {
+              "content": "Downloads a single support case attachment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId",
+                "attachments",
+                ":attachmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attachmentId",
+                  "description": "(Required) The ID of the support case attachment, can be retrieved from the support case attachment list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5621ee14-941f-44b6-bb0e-0d29a17ff99a",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "attachments",
+                    ":attachmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attachmentId",
+                      "description": "(Required) The ID of the support case attachment, can be retrieved from the support case attachment list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fileName\": \"string\",\n  \"createdDate\": 4736.830267028114,\n  \"fileSize\": 3838.2062133026297,\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c57f7e97-3779-424b-a677-e6c6c841a3e9",
+          "name": "Get Support Case Attachments",
+          "request": {
+            "name": "Get Support Case Attachments",
+            "description": {
+              "content": "Retrieves a JSON object containing all attachments for support case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId",
+                "attachments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "014cff34-56ae-40fc-82a1-41f7c7bcd1dc",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "attachments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 8593,\n  \"offset\": 8544,\n  \"limit\": 1785,\n  \"sortBy\": \"string\",\n  \"list\": [\n    {\n      \"fileName\": \"string\",\n      \"createdDate\": 1725.7404638615803,\n      \"fileSize\": 3491.2160291555306,\n      \"id\": \"string\"\n    },\n    {\n      \"fileName\": \"string\",\n      \"createdDate\": 9670.254981006265,\n      \"fileSize\": 2969.1968359761445,\n      \"id\": \"string\"\n    }\n  ],\n  \"direction\": 6539\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83ffa298-b1b6-4395-9b06-2dc86cdddc57",
+          "name": "Upload Attachment",
+          "request": {
+            "name": "Upload Attachment",
+            "description": {
+              "content": "Upload one or more attachments for support case using multipart/form-data Content-type header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId",
+                "attachments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files0",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "files1",
+                  "type": "file",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "29914270-e008-4598-b720-d0a3c2d17ab1",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "attachments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files0",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "files1",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7832ffd-8b4f-41fa-bc96-d9158e384251",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "attachments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files0",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "files1",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abf3c94e-7c1a-44ab-b8bd-d4c0cd9f9a2a",
+          "name": "Get Support Case Comments",
+          "request": {
+            "name": "Get Support Case Comments",
+            "description": {
+              "content": "Retrieves a JSON object containing all comments for support case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2ac4f70-c282-4d4c-ab19-c1d0f90814e2",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 588,\n  \"offset\": 5680,\n  \"limit\": 1664,\n  \"sortBy\": \"string\",\n  \"list\": [\n    {\n      \"cc\": \"string\",\n      \"authorEmail\": \"string\",\n      \"createdDate\": 4265.836176187469,\n      \"authorName\": \"string\",\n      \"id\": \"string\",\n      \"to\": \"string\",\n      \"body\": \"string\"\n    },\n    {\n      \"cc\": \"string\",\n      \"authorEmail\": \"string\",\n      \"createdDate\": 9571.312850343806,\n      \"authorName\": \"string\",\n      \"id\": \"string\",\n      \"to\": \"string\",\n      \"body\": \"string\"\n    }\n  ],\n  \"direction\": 7353\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cd9e201-bea9-4471-82b5-f486d27c88f5",
+          "name": "Comment On Support Case",
+          "request": {
+            "name": "Comment On Support Case",
+            "description": {
+              "content": "Adds a comment on the support case indicated by caseId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d227ca53-4274-4a2c-8f52-de87e0464fb4",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdDate\": 5446.201702966045,\n  \"updatedBy\": \"string\",\n  \"caseNumber\": \"string\",\n  \"statusMessage\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a5d2465-dd5b-46a8-9031-80c7a85e6e1f",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39908844-bd93-4f3b-b5f2-3a7707c532a1",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32b298cf-3bf8-4a95-93a5-aaa827526a15",
+          "name": "Get Support Case",
+          "request": {
+            "name": "Get Support Case",
+            "description": {
+              "content": "Retrieves a JSON object containing a single support case by case ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf20fb75-6d73-409e-ad13-2eadf746b704",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingId\": \"string\",\n  \"contactFirstName\": \"string\",\n  \"description\": \"string\",\n  \"contactType\": \"string\",\n  \"updatedDate\": 8587.90523835163,\n  \"deviceId\": \"string\",\n  \"deviceName\": \"string\",\n  \"uberClientId\": 8138.741608997975,\n  \"urgency\": \"string\",\n  \"id\": \"string\",\n  \"state\": \"string\",\n  \"department\": \"string\",\n  \"isReplyAllowed\": false,\n  \"internalUuid\": \"string\",\n  \"contactEmail\": \"string\",\n  \"impact\": \"string\",\n  \"active\": false,\n  \"shortDescription\": \"string\",\n  \"priority\": \"string\",\n  \"classification\": \"string\",\n  \"replyCount\": \"string\",\n  \"createdDate\": 2113.5076584038247,\n  \"assignmentGroup\": \"string\",\n  \"contactLastName\": \"string\",\n  \"location\": {\n    \"country\": \"string\",\n    \"zipCode\": \"string\",\n    \"createdDate\": 2073.018360685491,\n    \"sysId\": \"string\",\n    \"city\": \"string\",\n    \"street\": \"string\",\n    \"name\": \"string\",\n    \"manageDcName\": \"string\",\n    \"state\": \"string\",\n    \"updatedDate\": 8388.470620551592,\n    \"locationCode\": \"string\",\n    \"uuid\": \"string\"\n  },\n  \"assignee\": \"string\",\n  \"category\": {\n    \"departmentName\": \"string\",\n    \"name\": \"string\",\n    \"id\": 9466.250023281946,\n    \"department\": {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"uuid\": \"string\"\n    },\n    \"subcategory\": [\n      {\n        \"name\": \"string\",\n        \"id\": 8386.923774769324,\n        \"uuid\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"id\": 7400.716234240246,\n        \"uuid\": \"string\"\n      }\n    ],\n    \"uuid\": \"string\"\n  },\n  \"subcategory\": {\n    \"name\": \"string\",\n    \"id\": 3550.007652591235,\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed397b92-26c6-425b-b7b2-c61026936b32",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "182900c4-5f50-4665-b239-e06effc7ed80",
+          "name": "Update Support Case State",
+          "request": {
+            "name": "Update Support Case State",
+            "description": {
+              "content": "Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or re-opened through the API.**",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases",
+                ":caseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "423d2d71-53d6-4e0c-9f3e-04d0a1b4bc69",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"state\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b781c4f1-fbb8-47db-a045-fc0c69f2aa79",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "112f3b9a-a765-4665-9e8d-3cc1f233d9b3",
+              "name": "501 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) The ID of the support case, can be retrieved from the support case list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b311f937-6405-4eab-9974-1f096610dcf4",
+          "name": "List Support Cases",
+          "request": {
+            "name": "List Support Cases",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of support cases.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d83b6168-71b3-4a08-8874-5834da1f0539",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 1059,\n  \"offset\": 6153,\n  \"limit\": 4962,\n  \"sortBy\": \"string\",\n  \"list\": [\n    {\n      \"billingId\": \"string\",\n      \"contactFirstName\": \"string\",\n      \"description\": \"string\",\n      \"contactType\": \"string\",\n      \"updatedDate\": 4104.34530613909,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"uberClientId\": 4852.871878694045,\n      \"urgency\": \"string\",\n      \"id\": \"string\",\n      \"state\": \"string\",\n      \"department\": \"string\",\n      \"isReplyAllowed\": false,\n      \"internalUuid\": \"string\",\n      \"contactEmail\": \"string\",\n      \"impact\": \"string\",\n      \"active\": false,\n      \"shortDescription\": \"string\",\n      \"priority\": \"string\",\n      \"classification\": \"string\",\n      \"replyCount\": \"string\",\n      \"createdDate\": 162.50502920196587,\n      \"assignmentGroup\": \"string\",\n      \"contactLastName\": \"string\",\n      \"location\": {\n        \"country\": \"string\",\n        \"zipCode\": \"string\",\n        \"createdDate\": 7725.122966984168,\n        \"sysId\": \"string\",\n        \"city\": \"string\",\n        \"street\": \"string\",\n        \"name\": \"string\",\n        \"manageDcName\": \"string\",\n        \"state\": \"string\",\n        \"updatedDate\": 8211.235733934376,\n        \"locationCode\": \"string\",\n        \"uuid\": \"string\"\n      },\n      \"assignee\": \"string\",\n      \"category\": {\n        \"departmentName\": \"string\",\n        \"name\": \"string\",\n        \"id\": 6655.628564473734,\n        \"department\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"uuid\": \"string\"\n        },\n        \"subcategory\": [\n          {\n            \"name\": \"string\",\n            \"id\": 2859.7773044117826,\n            \"uuid\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"id\": 7588.229542156677,\n            \"uuid\": \"string\"\n          }\n        ],\n        \"uuid\": \"string\"\n      },\n      \"subcategory\": {\n        \"name\": \"string\",\n        \"id\": 7474.631433648104,\n        \"uuid\": \"string\"\n      }\n    },\n    {\n      \"billingId\": \"string\",\n      \"contactFirstName\": \"string\",\n      \"description\": \"string\",\n      \"contactType\": \"string\",\n      \"updatedDate\": 160.85007580130429,\n      \"deviceId\": \"string\",\n      \"deviceName\": \"string\",\n      \"uberClientId\": 9662.197055961176,\n      \"urgency\": \"string\",\n      \"id\": \"string\",\n      \"state\": \"string\",\n      \"department\": \"string\",\n      \"isReplyAllowed\": false,\n      \"internalUuid\": \"string\",\n      \"contactEmail\": \"string\",\n      \"impact\": \"string\",\n      \"active\": false,\n      \"shortDescription\": \"string\",\n      \"priority\": \"string\",\n      \"classification\": \"string\",\n      \"replyCount\": \"string\",\n      \"createdDate\": 5343.916142219705,\n      \"assignmentGroup\": \"string\",\n      \"contactLastName\": \"string\",\n      \"location\": {\n        \"country\": \"string\",\n        \"zipCode\": \"string\",\n        \"createdDate\": 504.68591279090646,\n        \"sysId\": \"string\",\n        \"city\": \"string\",\n        \"street\": \"string\",\n        \"name\": \"string\",\n        \"manageDcName\": \"string\",\n        \"state\": \"string\",\n        \"updatedDate\": 2413.285269203019,\n        \"locationCode\": \"string\",\n        \"uuid\": \"string\"\n      },\n      \"assignee\": \"string\",\n      \"category\": {\n        \"departmentName\": \"string\",\n        \"name\": \"string\",\n        \"id\": 2566.5956809844592,\n        \"department\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"uuid\": \"string\"\n        },\n        \"subcategory\": [\n          {\n            \"name\": \"string\",\n            \"id\": 8867.083358922357,\n            \"uuid\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"id\": 8168.016286677148,\n            \"uuid\": \"string\"\n          }\n        ],\n        \"uuid\": \"string\"\n      },\n      \"subcategory\": {\n        \"name\": \"string\",\n        \"id\": 6605.968266072402,\n        \"uuid\": \"string\"\n      }\n    }\n  ],\n  \"direction\": 2072\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8b2174b-7826-4246-9273-be73cbb5b1bc",
+          "name": "Create Support Case",
+          "request": {
+            "name": "Create Support Case",
+            "description": {
+              "content": "Creates a new support case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "support-cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"netsuiteBillingId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "661fa31e-7b58-452b-a2d6-13370613a6fa",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"netsuiteBillingId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingId\": \"string\",\n  \"contactFirstName\": \"string\",\n  \"description\": \"string\",\n  \"contactType\": \"string\",\n  \"updatedDate\": 7304.502555699952,\n  \"deviceId\": \"string\",\n  \"deviceName\": \"string\",\n  \"uberClientId\": 7486.694156427712,\n  \"urgency\": \"string\",\n  \"id\": \"string\",\n  \"state\": \"string\",\n  \"department\": \"string\",\n  \"isReplyAllowed\": false,\n  \"internalUuid\": \"string\",\n  \"contactEmail\": \"string\",\n  \"impact\": \"string\",\n  \"active\": true,\n  \"shortDescription\": \"string\",\n  \"priority\": \"string\",\n  \"classification\": \"string\",\n  \"replyCount\": \"string\",\n  \"createdDate\": 7061.546480130681,\n  \"assignmentGroup\": \"string\",\n  \"contactLastName\": \"string\",\n  \"location\": {\n    \"country\": \"string\",\n    \"zipCode\": \"string\",\n    \"createdDate\": 94.33473212742905,\n    \"sysId\": \"string\",\n    \"city\": \"string\",\n    \"street\": \"string\",\n    \"name\": \"string\",\n    \"manageDcName\": \"string\",\n    \"state\": \"string\",\n    \"updatedDate\": 4995.722849074211,\n    \"locationCode\": \"string\",\n    \"uuid\": \"string\"\n  },\n  \"assignee\": \"string\",\n  \"category\": {\n    \"departmentName\": \"string\",\n    \"name\": \"string\",\n    \"id\": 4512.566058987789,\n    \"department\": {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"uuid\": \"string\"\n    },\n    \"subcategory\": [\n      {\n        \"name\": \"string\",\n        \"id\": 1752.0632787544143,\n        \"uuid\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"id\": 171.84545922268035,\n        \"uuid\": \"string\"\n      }\n    ],\n    \"uuid\": \"string\"\n  },\n  \"subcategory\": {\n    \"name\": \"string\",\n    \"id\": 853.8138145498264,\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6807d063-3fbc-4ccf-a0c6-c680a7ddb9e7",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"netsuiteBillingId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de1ddfed-c5f9-4cae-8957-1cc8f686cd0e",
+              "name": "501 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "support-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"netsuiteBillingId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9237,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c320e1f8-ce6b-4abc-8e8a-8e0764443aa5",
+    "name": "Compass Action Items Support API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}

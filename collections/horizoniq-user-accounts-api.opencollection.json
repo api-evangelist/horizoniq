@@ -1,0 +1,320 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items User Accounts API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single user account by userUUID."
+        },
+        {
+          "info": {
+            "name": "Update User Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update user account"
+        },
+        {
+          "info": {
+            "name": "Delete User Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ]
+          },
+          "docs": "Delete user account"
+        },
+        {
+          "info": {
+            "name": "Retrieve Available User Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/roles",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Available user roles."
+        },
+        {
+          "info": {
+            "name": "List User Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of user accounts."
+        },
+        {
+          "info": {
+            "name": "Add User Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add user account"
+        },
+        {
+          "info": {
+            "name": "Disable User Admin",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID/admin-disabled",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ]
+          },
+          "docs": "Update user, remove administrator permissions."
+        },
+        {
+          "info": {
+            "name": "Enable User Admin",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID/admin-enabled",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ]
+          },
+          "docs": "Update user, add administrator permissions."
+        },
+        {
+          "info": {
+            "name": "Remove User Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID/roles/:roleUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              },
+              {
+                "name": "roleUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user role, can be retrieved from the roles list endpoint."
+              }
+            ]
+          },
+          "docs": "Remove user Role"
+        },
+        {
+          "info": {
+            "name": "Add User Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/users/:userUUID/roles",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the user, can be retrieved from the user list endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add user Role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1232 @@
+{
+  "item": [
+    {
+      "id": "d3c37617-5aa5-4e58-aa6e-fd0988d2c206",
+      "name": "Billing",
+      "description": {
+        "content": "Endpoints related to Billing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccdbece0-2cea-4df5-bac7-62805f93985c",
+          "name": "List Credits",
+          "request": {
+            "name": "List Credits",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of credits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "credits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7eabbf06-d114-4db0-abda-fffd55aa11fc",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2378,\n  \"offset\": 4847,\n  \"values\": [\n    {\n      \"reason\": \"string\",\n      \"amount\": 6442.708067581875,\n      \"payment_type\": \"string\",\n      \"balance\": 4784.769795553314,\n      \"payment_number\": \"string\",\n      \"active\": false,\n      \"comment\": \"string\",\n      \"comment_total\": 7474,\n      \"id\": \"string\",\n      \"created_date\": 5732.691331438251,\n      \"uuid\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"amount\": 6687.921075276299,\n      \"payment_type\": \"string\",\n      \"balance\": 7398.188900046882,\n      \"payment_number\": \"string\",\n      \"active\": true,\n      \"comment\": \"string\",\n      \"comment_total\": 1937,\n      \"id\": \"string\",\n      \"created_date\": 3422.4129890195877,\n      \"uuid\": \"string\"\n    }\n  ],\n  \"limit\": 8275,\n  \"sortBy\": \"string\",\n  \"direction\": 2296\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e70d140-0c59-4cd3-bd75-762073d259ce",
+          "name": "Get Invoice CSV",
+          "request": {
+            "name": "Get Invoice CSV",
+            "description": {
+              "content": "Retrieves a JSON object containing a single invoice CSV by invoiceUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "invoices",
+                ":invoiceUUID",
+                "csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceUUID",
+                  "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2206c55-6426-4e60-966a-b99769dfc390",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a13a97f8-d58d-4dac-a421-c8a35f65c5d7",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7308,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4fa8f1b-6f79-4713-9cb7-bbef04d9d74e",
+          "name": "Get Invoice PDF",
+          "request": {
+            "name": "Get Invoice PDF",
+            "description": {
+              "content": "Retrieves a JSON object containing a single invoice PDF by invoiceUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "invoices",
+                ":invoiceUUID",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceUUID",
+                  "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf77fe7c-245f-4c7f-bcdb-54b80d2e1062",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5214c6da-0ea3-4725-aa92-8715b784288d",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7308,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e7faee8-04fc-4b90-ab67-53ef25b1d4d8",
+          "name": "Get Invoice",
+          "request": {
+            "name": "Get Invoice",
+            "description": {
+              "content": "Retrieves a JSON object containing a single invoice by invoiceUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "invoices",
+                ":invoiceUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceUUID",
+                  "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1584b3a3-3c30-4f7d-98d7-6c0efb434049",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount_unpaid\": 1610.68938515739,\n  \"invoice_services_count\": \"string\",\n  \"amount_credited\": 3501.1289007802925,\n  \"due_date\": 5455.708131856549,\n  \"overdue_date\": 2164.492600864862,\n  \"amount_due\": 6061.128881595578,\n  \"id\": \"string\",\n  \"created_date\": 7414.93373513,\n  \"uuid\": \"string\",\n  \"payment_date\": 387.62574103012315,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60dc05cf-f174-4cdd-9c71-6d74a2c726b8",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices",
+                    ":invoiceUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceUUID",
+                      "description": "(Required) The UUID of the invoice, can be retrieved from the invoice list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7308,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a449a90-6151-40d1-9f56-6a1c2d5c3837",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of invoices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter invoices by status: paid, unpaid or disregarded."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aef5bfd8-bb37-4903-95fd-20086b461bab",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9564,\n  \"offset\": 8120,\n  \"values\": [\n    {\n      \"amount_unpaid\": 5037.372878802279,\n      \"invoice_services_count\": \"string\",\n      \"amount_credited\": 9947.85017810541,\n      \"due_date\": 4069.8209621432725,\n      \"overdue_date\": 613.8614026986355,\n      \"amount_due\": 3209.2054576004202,\n      \"id\": \"string\",\n      \"created_date\": 6794.427209003867,\n      \"uuid\": \"string\",\n      \"payment_date\": 6850.207587019731,\n      \"status\": \"string\"\n    },\n    {\n      \"amount_unpaid\": 3888.1073325844563,\n      \"invoice_services_count\": \"string\",\n      \"amount_credited\": 6377.495431433049,\n      \"due_date\": 1440.4168988981337,\n      \"overdue_date\": 8205.430091759561,\n      \"amount_due\": 8730.782645973379,\n      \"id\": \"string\",\n      \"created_date\": 9196.82754045106,\n      \"uuid\": \"string\",\n      \"payment_date\": 1053.716392392271,\n      \"status\": \"string\"\n    }\n  ],\n  \"limit\": 612,\n  \"sortBy\": \"string\",\n  \"status\": \"string\",\n  \"direction\": 6850\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e01b7156-19b1-4529-a2a5-fad7fbd30c5c",
+          "name": "List Active Services",
+          "request": {
+            "name": "List Active Services",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of active billable services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "services",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29f84517-2631-4e75-b206-d68686d3c208",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "services",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"billingFrequency\": \"string\",\n    \"baseCost\": 9370.644013514526,\n    \"cost\": 9983.321339206435,\n    \"code\": \"string\",\n    \"quantity\": 8703,\n    \"discount\": 9882.304691915144,\n    \"isActive\": false,\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"createdDate\": 3934.877952619844,\n    \"lastRenewDate\": 4893.923344916402,\n    \"servicePlanTitle\": \"string\",\n    \"name\": \"string\",\n    \"servicePlanCode\": \"string\",\n    \"id\": 7585,\n    \"planServicePackageUuid\": \"string\",\n    \"renewDate\": 5683.176463566916\n  },\n  {\n    \"billingFrequency\": \"string\",\n    \"baseCost\": 7095.99179446983,\n    \"cost\": 7156.472050892448,\n    \"code\": \"string\",\n    \"quantity\": 299,\n    \"discount\": 3882.8256315528765,\n    \"isActive\": true,\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"createdDate\": 9852.779919512599,\n    \"lastRenewDate\": 1861.4047593514483,\n    \"servicePlanTitle\": \"string\",\n    \"name\": \"string\",\n    \"servicePlanCode\": \"string\",\n    \"id\": 8743,\n    \"planServicePackageUuid\": \"string\",\n    \"renewDate\": 6312.76612528109\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8b1f4bd-1367-4043-a031-f69dead552f2",
+          "name": "List Cancelled Services",
+          "request": {
+            "name": "List Cancelled Services",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of cancelled billable services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "billing",
+                "services",
+                "cancelled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48f7386e-dcaa-48ae-9fb3-1ca79e2c64cd",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing",
+                    "services",
+                    "cancelled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"billingFrequency\": \"string\",\n    \"baseCost\": 8107.838011209985,\n    \"cost\": 3322.9984561565716,\n    \"code\": \"string\",\n    \"quantity\": 2463,\n    \"discount\": 1347.6711840667522,\n    \"isActive\": false,\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"createdDate\": 9421.343385714954,\n    \"lastRenewDate\": 5883.789404968914,\n    \"servicePlanTitle\": \"string\",\n    \"name\": \"string\",\n    \"servicePlanCode\": \"string\",\n    \"id\": 2811,\n    \"planServicePackageUuid\": \"string\",\n    \"renewDate\": 2641.3053834459342\n  },\n  {\n    \"billingFrequency\": \"string\",\n    \"baseCost\": 822.0115948721407,\n    \"cost\": 2686.802154254999,\n    \"code\": \"string\",\n    \"quantity\": 5108,\n    \"discount\": 401.9301622860205,\n    \"isActive\": false,\n    \"uuid\": \"string\",\n    \"hostname\": \"string\",\n    \"createdDate\": 2336.040408077683,\n    \"lastRenewDate\": 6795.069629464338,\n    \"servicePlanTitle\": \"string\",\n    \"name\": \"string\",\n    \"servicePlanCode\": \"string\",\n    \"id\": 294,\n    \"planServicePackageUuid\": \"string\",\n    \"renewDate\": 2250.8499867061782\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b977dddc-403b-4aae-aedf-67962830b12b",
+    "name": "Compass Action Items Billing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}

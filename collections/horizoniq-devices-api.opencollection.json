@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items Devices API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/devices/:deviceUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the device, can be retrieved from the device list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single device by UUID."
+        },
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/devices",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of devices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

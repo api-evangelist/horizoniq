@@ -1,0 +1,1939 @@
+{
+  "item": [
+    {
+      "id": "696d4f81-5dec-4f3e-9d34-d5e1062ab569",
+      "name": "User Accounts",
+      "description": {
+        "content": "Enpionts related to user accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea6f29fe-3b61-4b9c-a445-fb84765cb638",
+          "name": "Delete User Account",
+          "request": {
+            "name": "Delete User Account",
+            "description": {
+              "content": "Delete user account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ecfc5bd-4597-4578-969e-4e34e4f7c0c0",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9767f191-b4ee-46c9-8406-401a46492904",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63b46a6-53c5-4f1f-8f86-f8accda0ef33",
+          "name": "Get User Account",
+          "request": {
+            "name": "Get User Account",
+            "description": {
+              "content": "Retrieves a JSON object containing a single user account by userUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbbb332f-6714-4918-8b5b-54875a9605cb",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"netsuiteContactId\": 4747.95504825245,\n  \"lastName\": \"string\",\n  \"uberContactId\": 2595.7457938114458,\n  \"passwordExpireDate\": \"string\",\n  \"supportAccounts\": [\n    \"string\",\n    \"string\"\n  ],\n  \"bearerType\": \"string\",\n  \"updatedDate\": \"string\",\n  \"type\": 2896,\n  \"uuid\": \"string\",\n  \"uid\": \"string\",\n  \"imageUri\": \"string\",\n  \"agreedEulaVersions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"permissions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"secretEnabled\": false,\n  \"company\": {\n    \"displayName\": \"string\",\n    \"description\": \"string\",\n    \"active\": true,\n    \"externalId\": \"string\",\n    \"updatedDate\": \"string\",\n    \"type\": 9205,\n    \"uuid\": \"string\",\n    \"total_servers_no_agents\": 3661,\n    \"uberClientId\": 7102.112319530637,\n    \"referrer\": \"string\",\n    \"imageUri\": \"string\",\n    \"createdDate\": \"string\",\n    \"provider\": \"string\",\n    \"ldap\": \"string\",\n    \"name\": \"string\",\n    \"total_servers\": 4228,\n    \"eulaUuid\": \"string\",\n    \"id\": 7374.272301373134,\n    \"projectId\": \"string\",\n    \"total_servers_agents\": 6367,\n    \"netsuiteClientId\": 1727.2171823310446\n  },\n  \"id\": 5544.604933968137,\n  \"acceptedEulaLatest\": true,\n  \"email\": \"string\",\n  \"externalId\": 7622.5773070372525,\n  \"active\": true,\n  \"firstName\": \"string\",\n  \"createdDate\": \"string\",\n  \"phone\": \"string\",\n  \"adminEnabled\": true,\n  \"username\": \"string\",\n  \"status\": 3042\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9b861a7-9e47-430e-915b-c1da0d14b51a",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b308df7-d609-4be6-9265-00c5268cfb40",
+          "name": "Update User Account",
+          "request": {
+            "name": "Update User Account",
+            "description": {
+              "content": "Update user account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\",\n  \"email\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17e3ba5b-95a4-46bc-ac16-9d140b160251",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\",\n  \"email\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46fe415b-d51a-4020-98cc-08b1725a341f",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\",\n  \"email\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "484017bd-17b0-4316-bb53-2999bf1d5580",
+          "name": "Retrieve Available User Roles",
+          "request": {
+            "name": "Retrieve Available User Roles",
+            "description": {
+              "content": "Available user roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c227b2d0-7fbb-4892-8774-1d2b5531b612",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2559,\n  \"offset\": 8283,\n  \"limit\": 6030,\n  \"sortBy\": \"string\",\n  \"list\": [\n    {\n      \"company_uuid\": \"string\",\n      \"permissions\": [\n        {\n          \"createdAt\": \"string\",\n          \"name\": \"string\",\n          \"uuid\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"createdAt\": \"string\",\n          \"name\": \"string\",\n          \"uuid\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"uuid\": \"string\"\n    },\n    {\n      \"company_uuid\": \"string\",\n      \"permissions\": [\n        {\n          \"createdAt\": \"string\",\n          \"name\": \"string\",\n          \"uuid\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"createdAt\": \"string\",\n          \"name\": \"string\",\n          \"uuid\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"uuid\": \"string\"\n    }\n  ],\n  \"direction\": 368\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0276bd4-d595-4328-8f40-8fb976116420",
+          "name": "List User Accounts",
+          "request": {
+            "name": "List User Accounts",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of user accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "076f926e-0295-49e0-8aa8-e3985b3b2721",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 3599,\n  \"offset\": 9780,\n  \"limit\": 8045,\n  \"sortBy\": \"string\",\n  \"list\": [\n    {\n      \"netsuiteContactId\": 9599.01821012294,\n      \"lastName\": \"string\",\n      \"uberContactId\": 8266.60652027459,\n      \"passwordExpireDate\": \"string\",\n      \"supportAccounts\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bearerType\": \"string\",\n      \"updatedDate\": \"string\",\n      \"type\": 3336,\n      \"uuid\": \"string\",\n      \"uid\": \"string\",\n      \"imageUri\": \"string\",\n      \"agreedEulaVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"permissions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secretEnabled\": true,\n      \"company\": {\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"active\": true,\n        \"externalId\": \"string\",\n        \"updatedDate\": \"string\",\n        \"type\": 4933,\n        \"uuid\": \"string\",\n        \"total_servers_no_agents\": 3807,\n        \"uberClientId\": 7175.407034978356,\n        \"referrer\": \"string\",\n        \"imageUri\": \"string\",\n        \"createdDate\": \"string\",\n        \"provider\": \"string\",\n        \"ldap\": \"string\",\n        \"name\": \"string\",\n        \"total_servers\": 7983,\n        \"eulaUuid\": \"string\",\n        \"id\": 4093.767636129365,\n        \"projectId\": \"string\",\n        \"total_servers_agents\": 1024,\n        \"netsuiteClientId\": 5164.528896525336\n      },\n      \"id\": 6439.660582826302,\n      \"acceptedEulaLatest\": false,\n      \"email\": \"string\",\n      \"externalId\": 3118.304518477473,\n      \"active\": false,\n      \"firstName\": \"string\",\n      \"createdDate\": \"string\",\n      \"phone\": \"string\",\n      \"adminEnabled\": true,\n      \"username\": \"string\",\n      \"status\": 6795\n    },\n    {\n      \"netsuiteContactId\": 4106.86505446802,\n      \"lastName\": \"string\",\n      \"uberContactId\": 5912.845470356165,\n      \"passwordExpireDate\": \"string\",\n      \"supportAccounts\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bearerType\": \"string\",\n      \"updatedDate\": \"string\",\n      \"type\": 2420,\n      \"uuid\": \"string\",\n      \"uid\": \"string\",\n      \"imageUri\": \"string\",\n      \"agreedEulaVersions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"permissions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secretEnabled\": true,\n      \"company\": {\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"active\": true,\n        \"externalId\": \"string\",\n        \"updatedDate\": \"string\",\n        \"type\": 6216,\n        \"uuid\": \"string\",\n        \"total_servers_no_agents\": 1990,\n        \"uberClientId\": 6393.857343685383,\n        \"referrer\": \"string\",\n        \"imageUri\": \"string\",\n        \"createdDate\": \"string\",\n        \"provider\": \"string\",\n        \"ldap\": \"string\",\n        \"name\": \"string\",\n        \"total_servers\": 1034,\n        \"eulaUuid\": \"string\",\n        \"id\": 2525.0004034066933,\n        \"projectId\": \"string\",\n        \"total_servers_agents\": 804,\n        \"netsuiteClientId\": 5603.233053755653\n      },\n      \"id\": 5983.824498234307,\n      \"acceptedEulaLatest\": false,\n      \"email\": \"string\",\n      \"externalId\": 3156.19542568791,\n      \"active\": true,\n      \"firstName\": \"string\",\n      \"createdDate\": \"string\",\n      \"phone\": \"string\",\n      \"adminEnabled\": true,\n      \"username\": \"string\",\n      \"status\": 8394\n    }\n  ],\n  \"direction\": 4023\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a8e139d-c9cf-4c56-83af-443fb56135e1",
+          "name": "Add User Account",
+          "request": {
+            "name": "Add User Account",
+            "description": {
+              "content": "Add user account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"username\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65922466-95e9-4dc7-9ace-03152f351d6e",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"username\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15c93586-0b10-434d-b7f6-bd962478bf2b",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"username\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"department\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eea86e93-8b05-476b-ab1a-ac4b7a507a44",
+          "name": "Disable User Admin",
+          "request": {
+            "name": "Disable User Admin",
+            "description": {
+              "content": "Update user, remove administrator permissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID",
+                "admin-disabled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf760826-762a-4d1c-b521-fa2771bdc9f5",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "admin-disabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95152b4c-f37b-4d9e-af4c-efe0db41b5d4",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "admin-disabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e55a9b29-6c1d-4aa4-8c06-c9621e5c5606",
+          "name": "Enable User Admin",
+          "request": {
+            "name": "Enable User Admin",
+            "description": {
+              "content": "Update user, add administrator permissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID",
+                "admin-enabled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d4e013a-10ed-4555-8289-519a5bcfbab3",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "admin-enabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecba8ab4-7c45-4fff-b24b-1c0d6ad7203d",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "admin-enabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "667c7a1b-ac60-48c7-971b-911b05d8d5c9",
+          "name": "Remove User Role",
+          "request": {
+            "name": "Remove User Role",
+            "description": {
+              "content": "Remove user Role",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID",
+                "roles",
+                ":roleUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleUUID",
+                  "description": "(Required) The UUID of the user role, can be retrieved from the roles list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18801da0-ae90-4621-b37d-4124a87814cb",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "roles",
+                    ":roleUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleUUID",
+                      "description": "(Required) The UUID of the user role, can be retrieved from the roles list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e136482-275c-4143-85b1-20daa051d30d",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "roles",
+                    ":roleUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleUUID",
+                      "description": "(Required) The UUID of the user role, can be retrieved from the roles list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef5af055-c981-44f6-993d-e167c743050e",
+          "name": "Add User Role",
+          "request": {
+            "name": "Add User Role",
+            "description": {
+              "content": "Add user Role",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userUUID",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userUUID",
+                  "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleUuid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b757b232-8bb4-4112-bb21-d159bd56a33f",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleUuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"href\": \"string\",\n  \"uuid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4465feaa-0409-4c97-89ff-b6e8cb04118a",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userUUID",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userUUID",
+                      "description": "(Required) The UUID of the user, can be retrieved from the user list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleUuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 6301,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2e4e5dd3-072a-459b-b56a-c77bfb95ad15",
+    "name": "Compass Action Items User Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items Servers API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Inactive Server Action Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/action-items/inactive",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limits the number of returned systems"
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of inactive action items for a system / server."
+        },
+        {
+          "info": {
+            "name": "List Server Action Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/action-items",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limits the number of returned systems"
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of action items for a system / server."
+        },
+        {
+          "info": {
+            "name": "List Server Reinstall Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/images",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limits the number of returned systems"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Name of filter, currently active is only filter supported."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of images by serverUUID available for server reinstall."
+        },
+        {
+          "info": {
+            "name": "Get Server Install Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/install-progress",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing the progress of server install by UUID. This UUID can be retrieved from /servers."
+        },
+        {
+          "info": {
+            "name": "Get Server Networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/networks",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing the server public and private networks by UUID. This UUID can be retrieved from /servers."
+        },
+        {
+          "info": {
+            "name": "Get Server Reverse DNS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/rdns",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limits the number of returned systems"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing the server reverse DNS configuration. This UUID can be retrieved from /servers."
+        },
+        {
+          "info": {
+            "name": "Get Root Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/root-password",
+            "headers": [
+              {
+                "name": "X-Additional-Authorization",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing the server root passowrd by server UUID. This UUID can be retrieved from /servers."
+        },
+        {
+          "info": {
+            "name": "Update Root Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/root-password",
+            "headers": [
+              {
+                "name": "X-Additional-Authorization",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates root password in portal to the value set on the server by serverUUID. This UUID can be retrieved from /servers.<br><br> \n[block:callout] { \"type\": \"danger\", \"title\": \"Warning:\", \"body\": \"This operation does not set the actual password on the server. After changing your root password on your server, update here to keep in sync.\" } [/block]\n"
+        },
+        {
+          "info": {
+            "name": "Get Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single server by serverUUID."
+        },
+        {
+          "info": {
+            "name": "List Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limits the number of returned systems"
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of servers currently provisioned in inventory."
+        },
+        {
+          "info": {
+            "name": "Server Maintenance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/maintenance",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate / deactivate maintenance mode for one or more servers. Activating maintenance mode suppresses alerts for the server(s).<br><br> \n[block:callout] { \"type\": \"info\", \"title\": \"Information.\", \"body\": \"This operation is only for monitored servers.\" } [/block]\n"
+        },
+        {
+          "info": {
+            "name": "Update Reverse DNS Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/rdns/:rdnsRecUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "rdnsRecUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the reverse DNS record, can be retrieved from the /servers/{serverUUID}/rdns endpoint."
+              },
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply new FQDN to reverse DNS record."
+        },
+        {
+          "info": {
+            "name": "Reboot Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/reboot",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "rebootType",
+                "value": "",
+                "type": "query",
+                "description": "Options include soft (proper reboot) or hard (force reboot)."
+              },
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ]
+          },
+          "docs": "Requests the reboot of a server by serverUUID. A simple JSON object containing success: true | false is returned."
+        },
+        {
+          "info": {
+            "name": "Reinstall Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/servers/:serverUUID/reinstall",
+            "headers": [
+              {
+                "name": "X-Additional-Authorization",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "serverUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the server, can be retrieved from the <span style=color:blue>**[List Servers](./get_servers)**</span> endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a server re-installation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

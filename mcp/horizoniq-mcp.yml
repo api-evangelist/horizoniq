@@ -183,3 +183,9 @@ tools:
 - name: createSslCertificatesInitialize
   description: 'Initialize the creation of a new SSL certificate.<br><br> '
   source_operation: openapi/horizoniq-compass-openapi-original.yml#createSslCertificatesInitialize
+deployment:
+  mode: none
+  verified: derived
+  tools: 54
+  checked: '2026-08-12'
+  source: catalog MCP census

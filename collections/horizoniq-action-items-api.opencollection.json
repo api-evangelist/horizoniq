@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Action Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Action Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/action-items/:actionItemUUID",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "actionItemUUID",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the action item, can be retrieved from the action item list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single action item by UUID."
+        },
+        {
+          "info": {
+            "name": "List Grouped Action Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/action-items",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "filterBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of all system action items grouped by category."
+        },
+        {
+          "info": {
+            "name": "Acknowledge Action Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.compass.horizoniq.com/{basePath}/action-items/acknowledgment",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Acknowledge one or more action items."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

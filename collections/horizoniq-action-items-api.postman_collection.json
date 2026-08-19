@@ -1,0 +1,847 @@
+{
+  "item": [
+    {
+      "id": "1b6ea25e-7397-48eb-b327-7d933d41c912",
+      "name": "Action Items",
+      "description": {
+        "content": "Endpoints related to Action Items",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee684ca3-9543-427a-bf71-a9fdea7cc815",
+          "name": "Get Action Item",
+          "request": {
+            "name": "Get Action Item",
+            "description": {
+              "content": "Retrieves a JSON object containing a single action item by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "action-items",
+                ":actionItemUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "actionItemUUID",
+                  "description": "(Required) The UUID of the action item, can be retrieved from the action item list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e109ad49-277f-4a3c-b967-fd4fb994d4b9",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    ":actionItemUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionItemUUID",
+                      "description": "(Required) The UUID of the action item, can be retrieved from the action item list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sub_source\": \"string\",\n  \"metadata\": {\n    \"alertImpact\": \"string\",\n    \"alertSubType\": \"string\",\n    \"resourceId\": \"string\",\n    \"alertType\": \"string\",\n    \"resource\": {\n      \"resourceHealthValue\": 966,\n      \"dpcAdapter\": {\n        \"vcenterHostname\": \"string\",\n        \"createdDate\": 2184.1902571089477,\n        \"name\": \"string\",\n        \"uuid\": \"string\"\n      },\n      \"createdDate\": 6664.984427044267,\n      \"resourceHealth\": \"string\",\n      \"name\": \"string\",\n      \"uuid\": \"string\",\n      \"adapterUuid\": \"string\",\n      \"resourceType\": \"string\"\n    },\n    \"alertLevel\": \"string\",\n    \"suspendUntilDate\": 4304.490290773461,\n    \"updatedDate\": 7436.401435854618,\n    \"uuid\": \"string\",\n    \"controlState\": \"string\",\n    \"symptoms\": [\n      {\n        \"symptomDefinition\": {\n          \"resourceKindKey\": \"string\",\n          \"adapterKindKey\": \"string\",\n          \"cancelCycles\": 7005,\n          \"conditionSeverity\": \"string\",\n          \"conditionThresholdType\": \"string\",\n          \"conditionTargetKey\": \"string\",\n          \"conditionEventType\": \"string\",\n          \"conditionOperatorSymbol\": \"string\",\n          \"waitCycles\": 8987,\n          \"symptomDefinitionIdKey\": \"string\",\n          \"conditionKey\": \"string\",\n          \"conditionIsInstanced\": true,\n          \"conditionOperator\": \"string\",\n          \"name\": \"string\",\n          \"conditionValue\": \"string\",\n          \"conditionFaultKey\": \"string\",\n          \"conditionType\": \"string\",\n          \"metrics\": {\n            \"conditionMetric\": {\n              \"dataType2\": \"string\",\n              \"unit\": \"string\",\n              \"defaultMonitored\": true,\n              \"instanceType\": \"string\",\n              \"name\": \"string\",\n              \"property\": false,\n              \"description\": \"string\",\n              \"rollupType\": \"string\",\n              \"monitoring\": false,\n              \"key\": \"string\"\n            },\n            \"conditionTargetMetric\": {\n              \"dataType2\": \"string\",\n              \"defaultMonitored\": false,\n              \"instanceType\": \"string\",\n              \"name\": \"string\",\n              \"property\": false,\n              \"description\": \"string\",\n              \"rollupType\": \"string\",\n              \"monitoring\": true,\n              \"key\": \"string\"\n            }\n          },\n          \"conditionValueType\": \"string\",\n          \"conditionFaultEvents\": \"string\"\n        },\n        \"message\": \"string\"\n      },\n      {\n        \"symptomDefinition\": {\n          \"resourceKindKey\": \"string\",\n          \"adapterKindKey\": \"string\",\n          \"cancelCycles\": 3572,\n          \"conditionSeverity\": \"string\",\n          \"conditionThresholdType\": \"string\",\n          \"conditionTargetKey\": \"string\",\n          \"conditionEventType\": \"string\",\n          \"conditionOperatorSymbol\": \"string\",\n          \"waitCycles\": 9947,\n          \"symptomDefinitionIdKey\": \"string\",\n          \"conditionKey\": \"string\",\n          \"conditionIsInstanced\": false,\n          \"conditionOperator\": \"string\",\n          \"name\": \"string\",\n          \"conditionValue\": \"string\",\n          \"conditionFaultKey\": \"string\",\n          \"conditionType\": \"string\",\n          \"metrics\": {\n            \"conditionMetric\": {\n              \"dataType2\": \"string\",\n              \"unit\": \"string\",\n              \"defaultMonitored\": false,\n              \"instanceType\": \"string\",\n              \"name\": \"string\",\n              \"property\": true,\n              \"description\": \"string\",\n              \"rollupType\": \"string\",\n              \"monitoring\": true,\n              \"key\": \"string\"\n            },\n            \"conditionTargetMetric\": {\n              \"dataType2\": \"string\",\n              \"defaultMonitored\": true,\n              \"instanceType\": \"string\",\n              \"name\": \"string\",\n              \"property\": true,\n              \"description\": \"string\",\n              \"rollupType\": \"string\",\n              \"monitoring\": false,\n              \"key\": \"string\"\n            }\n          },\n          \"conditionValueType\": \"string\",\n          \"conditionFaultEvents\": \"string\"\n        },\n        \"message\": \"string\"\n      }\n    ],\n    \"createdDate\": 4844.306790812406,\n    \"alertDefinitionId\": \"string\",\n    \"alertDefinitionName\": \"string\",\n    \"status\": \"string\"\n  },\n  \"monitor_id\": \"string\",\n  \"active_action_items_id\": \"string\",\n  \"created_at\": \"string\",\n  \"source\": \"string\",\n  \"type\": \"string\",\n  \"uuid\": \"string\",\n  \"distinct_type\": \"string\",\n  \"deactivate_message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"last_recovered_at\": 8312.497928075314,\n  \"formula_id\": \"string\",\n  \"threshold_value_unit\": \"string\",\n  \"snooze\": [\n    3038,\n    1172\n  ],\n  \"severity\": 9896,\n  \"last_updated\": \"string\",\n  \"company_id\": \"string\",\n  \"object_type\": \"string\",\n  \"count\": 4410,\n  \"active\": false,\n  \"server_id\": \"string\",\n  \"object_id\": \"string\",\n  \"current_value\": \"string\",\n  \"current_value_unit\": \"string\",\n  \"threshold_value\": \"string\",\n  \"threshold_operator\": \"string\",\n  \"category\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eec24c8e-8e1e-4b91-8ed3-31fc57d78848",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    ":actionItemUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionItemUUID",
+                      "description": "(Required) The UUID of the action item, can be retrieved from the action item list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcf2e0b3-edab-4aa9-b412-47f88effb0bf",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    ":actionItemUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionItemUUID",
+                      "description": "(Required) The UUID of the action item, can be retrieved from the action item list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3f323ab-8397-4819-8cc4-31a0889d7c08",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    ":actionItemUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionItemUUID",
+                      "description": "(Required) The UUID of the action item, can be retrieved from the action item list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fdf06d6-0516-4149-9f67-462e7e8ded87",
+          "name": "List Grouped Action Items",
+          "request": {
+            "name": "List Grouped Action Items",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of all system action items grouped by category.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "action-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "filterBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb95a505-9358-4a11-af88-157394936867",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filterBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2864,\n  \"offset\": 8869,\n  \"values\": [\n    {\n      \"severity\": 5436,\n      \"actionItems\": {\n        \"total\": 1223,\n        \"offset\": 1159,\n        \"limit\": 5857,\n        \"sortBy\": \"string\",\n        \"list\": [\n          {\n            \"sub_source\": \"string\",\n            \"metadata\": {\n              \"alertImpact\": \"string\",\n              \"alertSubType\": \"string\",\n              \"resourceId\": \"string\",\n              \"alertType\": \"string\",\n              \"resource\": {\n                \"resourceHealthValue\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"dpcAdapter\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"createdDate\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceHealth\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"uuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"adapterUuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"alertLevel\": \"string\",\n              \"suspendUntilDate\": 3648.655169783266,\n              \"updatedDate\": 6045.506599509702,\n              \"uuid\": \"string\",\n              \"controlState\": \"string\",\n              \"symptoms\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"createdDate\": 701.9314255058473,\n              \"alertDefinitionId\": \"string\",\n              \"alertDefinitionName\": \"string\",\n              \"status\": \"string\"\n            },\n            \"monitor_id\": \"string\",\n            \"active_action_items_id\": \"string\",\n            \"created_at\": \"string\",\n            \"source\": \"string\",\n            \"type\": \"string\",\n            \"uuid\": \"string\",\n            \"distinct_type\": \"string\",\n            \"deactivate_message\": [\n              \"string\",\n              \"string\"\n            ],\n            \"last_recovered_at\": 7126.561304385468,\n            \"formula_id\": \"string\",\n            \"threshold_value_unit\": \"string\",\n            \"snooze\": [\n              5554,\n              3216\n            ],\n            \"severity\": 8631,\n            \"last_updated\": \"string\",\n            \"company_id\": \"string\",\n            \"object_type\": \"string\",\n            \"count\": 1746,\n            \"active\": true,\n            \"server_id\": \"string\",\n            \"object_id\": \"string\",\n            \"current_value\": \"string\",\n            \"current_value_unit\": \"string\",\n            \"threshold_value\": \"string\",\n            \"threshold_operator\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"sub_source\": \"string\",\n            \"metadata\": {\n              \"alertImpact\": \"string\",\n              \"alertSubType\": \"string\",\n              \"resourceId\": \"string\",\n              \"alertType\": \"string\",\n              \"resource\": {\n                \"resourceHealthValue\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"dpcAdapter\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"createdDate\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceHealth\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"uuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"adapterUuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"alertLevel\": \"string\",\n              \"suspendUntilDate\": 6803.534622444978,\n              \"updatedDate\": 2766.0408729196606,\n              \"uuid\": \"string\",\n              \"controlState\": \"string\",\n              \"symptoms\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"createdDate\": 1161.138961547129,\n              \"alertDefinitionId\": \"string\",\n              \"alertDefinitionName\": \"string\",\n              \"status\": \"string\"\n            },\n            \"monitor_id\": \"string\",\n            \"active_action_items_id\": \"string\",\n            \"created_at\": \"string\",\n            \"source\": \"string\",\n            \"type\": \"string\",\n            \"uuid\": \"string\",\n            \"distinct_type\": \"string\",\n            \"deactivate_message\": [\n              \"string\",\n              \"string\"\n            ],\n            \"last_recovered_at\": 8373.2895444132,\n            \"formula_id\": \"string\",\n            \"threshold_value_unit\": \"string\",\n            \"snooze\": [\n              7197,\n              7771\n            ],\n            \"severity\": 1625,\n            \"last_updated\": \"string\",\n            \"company_id\": \"string\",\n            \"object_type\": \"string\",\n            \"count\": 8853,\n            \"active\": true,\n            \"server_id\": \"string\",\n            \"object_id\": \"string\",\n            \"current_value\": \"string\",\n            \"current_value_unit\": \"string\",\n            \"threshold_value\": \"string\",\n            \"threshold_operator\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"direction\": \"string\"\n      },\n      \"name\": \"string\",\n      \"systemUuid\": \"string\"\n    },\n    {\n      \"severity\": 1464,\n      \"actionItems\": {\n        \"total\": 5425,\n        \"offset\": 8619,\n        \"limit\": 1977,\n        \"sortBy\": \"string\",\n        \"list\": [\n          {\n            \"sub_source\": \"string\",\n            \"metadata\": {\n              \"alertImpact\": \"string\",\n              \"alertSubType\": \"string\",\n              \"resourceId\": \"string\",\n              \"alertType\": \"string\",\n              \"resource\": {\n                \"resourceHealthValue\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"dpcAdapter\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"createdDate\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceHealth\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"uuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"adapterUuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"alertLevel\": \"string\",\n              \"suspendUntilDate\": 7940.496958245389,\n              \"updatedDate\": 544.6195844822176,\n              \"uuid\": \"string\",\n              \"controlState\": \"string\",\n              \"symptoms\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"createdDate\": 1346.785054052615,\n              \"alertDefinitionId\": \"string\",\n              \"alertDefinitionName\": \"string\",\n              \"status\": \"string\"\n            },\n            \"monitor_id\": \"string\",\n            \"active_action_items_id\": \"string\",\n            \"created_at\": \"string\",\n            \"source\": \"string\",\n            \"type\": \"string\",\n            \"uuid\": \"string\",\n            \"distinct_type\": \"string\",\n            \"deactivate_message\": [\n              \"string\",\n              \"string\"\n            ],\n            \"last_recovered_at\": 6257.774505037358,\n            \"formula_id\": \"string\",\n            \"threshold_value_unit\": \"string\",\n            \"snooze\": [\n              4771,\n              2119\n            ],\n            \"severity\": 4669,\n            \"last_updated\": \"string\",\n            \"company_id\": \"string\",\n            \"object_type\": \"string\",\n            \"count\": 8397,\n            \"active\": true,\n            \"server_id\": \"string\",\n            \"object_id\": \"string\",\n            \"current_value\": \"string\",\n            \"current_value_unit\": \"string\",\n            \"threshold_value\": \"string\",\n            \"threshold_operator\": \"string\",\n            \"category\": \"string\"\n          },\n          {\n            \"sub_source\": \"string\",\n            \"metadata\": {\n              \"alertImpact\": \"string\",\n              \"alertSubType\": \"string\",\n              \"resourceId\": \"string\",\n              \"alertType\": \"string\",\n              \"resource\": {\n                \"resourceHealthValue\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"dpcAdapter\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"createdDate\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceHealth\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"uuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"adapterUuid\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"resourceType\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"alertLevel\": \"string\",\n              \"suspendUntilDate\": 7862.4284593710145,\n              \"updatedDate\": 874.1604943498182,\n              \"uuid\": \"string\",\n              \"controlState\": \"string\",\n              \"symptoms\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"createdDate\": 9374.427382684416,\n              \"alertDefinitionId\": \"string\",\n              \"alertDefinitionName\": \"string\",\n              \"status\": \"string\"\n            },\n            \"monitor_id\": \"string\",\n            \"active_action_items_id\": \"string\",\n            \"created_at\": \"string\",\n            \"source\": \"string\",\n            \"type\": \"string\",\n            \"uuid\": \"string\",\n            \"distinct_type\": \"string\",\n            \"deactivate_message\": [\n              \"string\",\n              \"string\"\n            ],\n            \"last_recovered_at\": 5547.047559694134,\n            \"formula_id\": \"string\",\n            \"threshold_value_unit\": \"string\",\n            \"snooze\": [\n              42,\n              8273\n            ],\n            \"severity\": 5855,\n            \"last_updated\": \"string\",\n            \"company_id\": \"string\",\n            \"object_type\": \"string\",\n            \"count\": 8398,\n            \"active\": false,\n            \"server_id\": \"string\",\n            \"object_id\": \"string\",\n            \"current_value\": \"string\",\n            \"current_value_unit\": \"string\",\n            \"threshold_value\": \"string\",\n            \"threshold_operator\": \"string\",\n            \"category\": \"string\"\n          }\n        ],\n        \"direction\": \"string\"\n      },\n      \"name\": \"string\",\n      \"systemUuid\": \"string\"\n    }\n  ],\n  \"limit\": 2798,\n  \"categories\": {\n    \"all\": 2741,\n    \"patch\": 7231,\n    \"database\": 7703,\n    \"vrops\": 1892,\n    \"assignedToMe\": 6132,\n    \"infrastructure\": 2895,\n    \"service\": 5433,\n    \"network\": 1903,\n    \"hardware\": 2246\n  },\n  \"totalActionItems\": 1815\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba29ffec-58e9-4338-962f-8551ced0879f",
+          "name": "Acknowledge Action Items",
+          "request": {
+            "name": "Acknowledge Action Items",
+            "description": {
+              "content": "Acknowledge one or more action items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "action-items",
+                "acknowledgment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"values\": [\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "284ca3dc-b32e-4be9-a31c-f3ffce197905",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    "acknowledgment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"values\": [\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"values\": [\n    {\n      \"lastUpdated\": \"string\",\n      \"deactivateMessage\": [\n        \"string\",\n        \"string\"\n      ],\n      \"active\": false,\n      \"uuid\": \"string\"\n    },\n    {\n      \"lastUpdated\": \"string\",\n      \"deactivateMessage\": [\n        \"string\",\n        \"string\"\n      ],\n      \"active\": true,\n      \"uuid\": \"string\"\n    }\n  ],\n  \"errors\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be1fcb5-994d-47be-b114-c7e058a96258",
+              "name": "400 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    "acknowledgment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"values\": [\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2060236-e1a3-4a08-a446-9db9167ab0b1",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    "acknowledgment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"values\": [\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f4ca16f-bdc2-47d7-8d86-ed2494ea14dc",
+              "name": "500 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-items",
+                    "acknowledgment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"values\": [\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5142,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "747ed4d8-c5f0-4abc-908a-e8442247c199",
+    "name": "Compass Action Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}

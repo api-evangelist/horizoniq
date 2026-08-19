@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Compass Action Items SSL Certificates API",
+    "version": "2023-05-30T22:28:43Z"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSL Certificates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SSL Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/ssl-certificates/:certificateId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "certificateId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a single SSL certificate by certificateId."
+        },
+        {
+          "info": {
+            "name": "List SSL Certificates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.compass.horizoniq.com/{basePath}/ssl-certificates",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Object list sort direction."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limits the number of returned objects."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Name of key on which to sort object list."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Designates the start index of the object list."
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter on object property.<br> **Example: ?filters[objectPropertyName]=objectPropertyValue**<br> \n[block:callout] { \"type\": \"info\", \"title\": \"Regular Expression Filtering.\", \"body\": \"The property value can be a valid regular expression to better define list results. The regex must contain valid delimiters such as /.\" } [/block]\n"
+              }
+            ]
+          },
+          "docs": "Retrieves a JSON object containing a list of SSL certificates."
+        },
+        {
+          "info": {
+            "name": "Finalize SSL Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/ssl-certificates/:certificateId/finalize",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "certificateId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finalize the creation of an SSL certificate.<br><br> \n[block:callout] { \"type\": \"danger\", \"title\": \"Warning:\", \"body\": \"A valid approver email address returned from certificate initialization must be used to finalize your certificate.\" } [/block]\n"
+        },
+        {
+          "info": {
+            "name": "SSL Certificate approval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/ssl-certificates/:certificateId/resend-approval",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "certificateId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint."
+              }
+            ]
+          },
+          "docs": "Re-send the ssl certificate approval."
+        },
+        {
+          "info": {
+            "name": "Initialize SSL Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.compass.horizoniq.com/{basePath}/ssl-certificates/initialize",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initialize the creation of a new SSL certificate.<br><br> \n[block:callout] { \"type\": \"info\", \"title\": \"Information:\", \"body\": \"On successful hostname validation, this operation will return a list of valid approver email addresses, one of which must be used to finalize your certificate.\" } [/block]\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

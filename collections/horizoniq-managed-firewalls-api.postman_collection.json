@@ -1,0 +1,392 @@
+{
+  "item": [
+    {
+      "id": "c7ea9976-e1ce-4149-a247-37eb27158841",
+      "name": "Managed Firewalls",
+      "description": {
+        "content": "Endpoints related to managed firewalls",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4e2cb75-17eb-43dd-a7a4-ff8e59590863",
+          "name": "Get Firewall",
+          "request": {
+            "name": "Get Firewall",
+            "description": {
+              "content": "Retrieves a JSON object containing a single managed firewall.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "firewalls",
+                ":firewallUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "firewallUUID",
+                  "description": "(Required) The UUID of the managed firewall, can be retrieved from the firewall list endpoint."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f278342-f4ae-439f-9a61-f7b3f14ae570",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "firewalls",
+                    ":firewallUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "firewallUUID",
+                      "description": "(Required) The UUID of the managed firewall, can be retrieved from the firewall list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"failoverStandbyStatus\": \"string\",\n  \"serialNumber\": \"string\",\n  \"notes\": \"string\",\n  \"ipAddress\": \"string\",\n  \"className\": \"string\",\n  \"manageUuid\": \"string\",\n  \"companyUuid\": \"string\",\n  \"updatedDate\": 9211.267778719333,\n  \"uuid\": \"string\",\n  \"version\": \"string\",\n  \"uberClientId\": 5709.720923064326,\n  \"failoverMateVersion\": \"string\",\n  \"license\": \"string\",\n  \"hostname\": \"string\",\n  \"createdDate\": 9845.745064435903,\n  \"fwConfigUuid\": \"string\",\n  \"manageId\": 612.0573030864796,\n  \"name\": \"string\",\n  \"failoverEnabled\": false,\n  \"model\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb63c5f-569a-42a8-a734-a50675197fef",
+              "name": "404 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "firewalls",
+                    ":firewallUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "firewallUUID",
+                      "description": "(Required) The UUID of the managed firewall, can be retrieved from the firewall list endpoint."
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5517,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "103e99f9-9194-4f1d-9013-0177b8aaef64",
+          "name": "List Firewalls",
+          "request": {
+            "name": "List Firewalls",
+            "description": {
+              "content": "Retrieves a JSON object containing a list of managed firewalls currently provisioned in inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "firewalls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Object list sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "Limits the number of returned objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Name of key on which to sort object list."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "Designates the start index of the object list."
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{basePath}}",
+                  "key": "basePath"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f6b0512-6b56-45cd-901d-723a69e6205d",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "firewalls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{basePath}}",
+                      "key": "basePath"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required with Compass API token.<br>Provide keyword **Bearer** and space before token.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9370,\n  \"offset\": 5350,\n  \"limit\": 4977,\n  \"sortBy\": \"string\",\n  \"totalUnfiltered\": 5946,\n  \"list\": [\n    {\n      \"failoverStandbyStatus\": \"string\",\n      \"serialNumber\": \"string\",\n      \"notes\": \"string\",\n      \"ipAddress\": \"string\",\n      \"className\": \"string\",\n      \"manageUuid\": \"string\",\n      \"companyUuid\": \"string\",\n      \"updatedDate\": 7901.0633286752245,\n      \"uuid\": \"string\",\n      \"version\": \"string\",\n      \"uberClientId\": 5954.997580232827,\n      \"failoverMateVersion\": \"string\",\n      \"license\": \"string\",\n      \"hostname\": \"string\",\n      \"createdDate\": 1948.4897483686848,\n      \"fwConfigUuid\": \"string\",\n      \"manageId\": 3918.910862994649,\n      \"name\": \"string\",\n      \"failoverEnabled\": true,\n      \"model\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"failoverStandbyStatus\": \"string\",\n      \"serialNumber\": \"string\",\n      \"notes\": \"string\",\n      \"ipAddress\": \"string\",\n      \"className\": \"string\",\n      \"manageUuid\": \"string\",\n      \"companyUuid\": \"string\",\n      \"updatedDate\": 9496.562102879507,\n      \"uuid\": \"string\",\n      \"version\": \"string\",\n      \"uberClientId\": 7940.312719286206,\n      \"failoverMateVersion\": \"string\",\n      \"license\": \"string\",\n      \"hostname\": \"string\",\n      \"createdDate\": 2602.4798633626533,\n      \"fwConfigUuid\": \"string\",\n      \"manageId\": 9365.585570338219,\n      \"name\": \"string\",\n      \"failoverEnabled\": false,\n      \"model\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"direction\": 4489\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "v1",
+      "key": "basePath"
+    },
+    {
+      "type": "string",
+      "value": "https://api.compass.horizoniq.com/{{basePath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c3a08d3a-a49d-4a66-9cb7-a26071b249d5",
+    "name": "Compass Action Items Managed Firewalls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.",
+      "type": "text/plain"
+    }
+  }
+}
