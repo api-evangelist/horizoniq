@@ -39,6 +39,17 @@ tags:
 - Infrastructure
 - Private Cloud
 - Hosting
+- Data-Center
+- Compute
+- Storage
+tags_raw:
+- Company
+- Enterprise
+- Cloud
+- Bare Metal
+- Infrastructure
+- Private Cloud
+- Hosting
 - Data Center
 - Compute
 - Storage
@@ -97,6 +108,8 @@ apis:
   humanURL: https://compass-horizoniq.readme.io/reference/introduction
   baseURL: https://api.compass.horizoniq.com/v1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
