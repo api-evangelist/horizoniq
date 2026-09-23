@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items Devices API
+  title: Compass Devices API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -94,6 +94,23 @@ paths:
       operationId: getDevices
 components:
   schemas:
+    DeviceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
     ErrorModel:
       type: object
       properties:
@@ -131,23 +148,6 @@ components:
           type: string
         dc:
           type: string
-    DeviceListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http

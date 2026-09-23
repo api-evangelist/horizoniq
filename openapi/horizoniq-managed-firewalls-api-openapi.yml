@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items Managed Firewalls API
+  title: Compass Managed Firewalls API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:

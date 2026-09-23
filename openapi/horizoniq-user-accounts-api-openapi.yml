@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items User Accounts API
+  title: Compass User Accounts API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -377,6 +377,71 @@ paths:
       operationId: updateUsersByUserUUIDRoles
 components:
   schemas:
+    UserAddPostModel:
+      required:
+      - email
+      - firstName
+      - lastName
+      - username
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
+    UserRoleListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRoleGetModel'
+        direction:
+          type: integer
+    UserAddResponseModel:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
     UserGetModel:
       type: object
       properties:
@@ -481,30 +546,11 @@ components:
           type: string
         status:
           type: integer
-    UserAddPostModel:
-      required:
-      - email
-      - firstName
-      - lastName
-      - username
+    SuccessModel:
       type: object
       properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phone:
-          type: string
-        active:
+        success:
           type: boolean
-        title:
-          type: string
-        department:
-          type: string
-        email:
-          type: string
-        username:
-          type: string
     UserRoleGetModel:
       type: object
       properties:
@@ -520,29 +566,16 @@ components:
           type: string
         uuid:
           type: string
-    ErrorModel:
+    UserPermissionGetModel:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    UserAddResponseModel:
-      type: object
-      properties:
-        href:
+        createdAt:
+          type: string
+        name:
           type: string
         uuid:
           type: string
-    UserRolePatchModel:
-      required:
-      - roleUuid
-      type: object
-      properties:
-        roleUuid:
+        value:
           type: string
     UserListModel:
       type: object
@@ -561,22 +594,6 @@ components:
             $ref: '#/components/schemas/UserGetModel'
         direction:
           type: integer
-    UserPermissionGetModel:
-      type: object
-      properties:
-        createdAt:
-          type: string
-        name:
-          type: string
-        uuid:
-          type: string
-        value:
-          type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
     UserUpdatePatchModel:
       type: object
       properties:
@@ -596,23 +613,6 @@ components:
           type: string
         username:
           type: string
-    UserRoleListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRoleGetModel'
-        direction:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items Images API
+  title: Compass Images API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -99,6 +99,11 @@ paths:
       operationId: createImages
 components:
   schemas:
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
     ImageListModel:
       type: object
       properties:
@@ -165,21 +170,6 @@ components:
           type: string
         direction:
           type: string
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
     ImageUploadFormModel:
       required:
       - image
@@ -201,6 +191,16 @@ components:
         osname:
           type: string
           description: The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

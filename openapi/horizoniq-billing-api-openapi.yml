@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items Billing API
+  title: Compass Billing API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -284,23 +284,6 @@ paths:
       operationId: getBillingServicesCancelled
 components:
   schemas:
-    CreditListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
     InvoiceListModel:
       type: object
       properties:
@@ -320,6 +303,13 @@ components:
           type: string
         direction:
           type: integer
+    InvoiceGetCsvModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
     ErrorModel:
       type: object
       properties:
@@ -330,13 +320,52 @@ components:
               type: integer
             message:
               type: string
-    InvoiceGetPdfModel:
+    CreditListModel:
       type: object
       properties:
-        data:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGetModel'
+        limit:
+          type: integer
+        sortBy:
           type: string
-        success:
+        direction:
+          type: integer
+    ServiceListModel:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceGetModel'
+    CreditGetModel:
+      type: object
+      properties:
+        reason:
+          type: string
+        amount:
+          type: number
+        payment_type:
+          type: string
+        balance:
+          type: number
+        payment_number:
+          type: string
+        active:
           type: boolean
+        comment:
+          type: string
+        comment_total:
+          type: integer
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
     ServiceGetModel:
       type: object
       properties:
@@ -378,17 +407,6 @@ components:
           type: string
         renewDate:
           type: number
-    InvoiceGetCsvModel:
-      type: object
-      properties:
-        data:
-          type: string
-        success:
-          type: boolean
-    ServiceListModel:
-      type: array
-      items:
-        $ref: '#/components/schemas/ServiceGetModel'
     InvoiceGetModel:
       type: object
       properties:
@@ -414,31 +432,13 @@ components:
           type: number
         status:
           type: string
-    CreditGetModel:
+    InvoiceGetPdfModel:
       type: object
       properties:
-        reason:
+        data:
           type: string
-        amount:
-          type: number
-        payment_type:
-          type: string
-        balance:
-          type: number
-        payment_number:
-          type: string
-        active:
+        success:
           type: boolean
-        comment:
-          type: string
-        comment_total:
-          type: integer
-        id:
-          type: string
-        created_date:
-          type: number
-        uuid:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

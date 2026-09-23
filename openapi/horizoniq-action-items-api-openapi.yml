@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Compass Action Items API
   version: '2023-05-30T22:28:43Z'
@@ -146,38 +146,6 @@ paths:
       operationId: updateActionItemsAcknowledgment
 components:
   schemas:
-    ActionItemsAckResponseModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              lastUpdated:
-                type: string
-              deactivateMessage:
-                type: array
-                items:
-                  type: string
-              active:
-                type: boolean
-              uuid:
-                type: string
-        errors:
-          type: boolean
-    ActionItemsAckModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              active:
-                type: boolean
-              uuid:
-                type: string
     ActionItemsListModel:
       type: object
       properties:
@@ -205,51 +173,26 @@ components:
               type: integer
             message:
               type: string
-    ActionItemsGroupListModel:
+    ActionItemsAckResponseModel:
       type: object
       properties:
-        total:
-          type: integer
-        offset:
-          type: integer
         values:
           type: array
           items:
             type: object
             properties:
-              severity:
-                type: integer
-              actionItems:
-                $ref: '#/components/schemas/ActionItemsListModel'
-              name:
+              lastUpdated:
                 type: string
-              systemUuid:
+              deactivateMessage:
+                type: array
+                items:
+                  type: string
+              active:
+                type: boolean
+              uuid:
                 type: string
-        limit:
-          type: integer
-        categories:
-          type: object
-          properties:
-            all:
-              type: integer
-            patch:
-              type: integer
-            database:
-              type: integer
-            vrops:
-              type: integer
-            assignedToMe:
-              type: integer
-            infrastructure:
-              type: integer
-            service:
-              type: integer
-            network:
-              type: integer
-            hardware:
-              type: integer
-        totalActionItems:
-          type: integer
+        errors:
+          type: boolean
     ActionItemsGetModel:
       type: object
       properties:
@@ -461,6 +404,63 @@ components:
           type: string
         category:
           type: string
+    ActionItemsGroupListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: integer
+              actionItems:
+                $ref: '#/components/schemas/ActionItemsListModel'
+              name:
+                type: string
+              systemUuid:
+                type: string
+        limit:
+          type: integer
+        categories:
+          type: object
+          properties:
+            all:
+              type: integer
+            patch:
+              type: integer
+            database:
+              type: integer
+            vrops:
+              type: integer
+            assignedToMe:
+              type: integer
+            infrastructure:
+              type: integer
+            service:
+              type: integer
+            network:
+              type: integer
+            hardware:
+              type: integer
+        totalActionItems:
+          type: integer
+    ActionItemsAckModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              uuid:
+                type: string
   securitySchemes:
     bearerAuth:
       type: http

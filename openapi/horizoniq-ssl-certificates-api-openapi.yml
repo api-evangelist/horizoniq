@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items SSL Certificates API
+  title: Compass SSL Certificates API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -96,7 +96,10 @@ paths:
       operationId: getSslCertificates
   /ssl-certificates/{certificateId}/finalize:
     post:
-      description: "Finalize the creation of an SSL certificate.<br><br> \n[block:callout] { \"type\": \"danger\", \"title\": \"Warning:\", \"body\": \"A valid approver email address returned from certificate initialization must be used to finalize your certificate.\" } [/block]\n"
+      description: 'Finalize the creation of an SSL certificate.
+
+
+        [block:callout] { "type": "danger", "title": "Warning:", "body": "A valid approver email address returned from certificate initialization must be used to finalize your certificate." } [/block]'
       parameters:
       - description: The ID of the SSL certificate returned from certificate initialization or can be retrieved from the certificate list endpoint.
         in: path
@@ -168,7 +171,10 @@ paths:
       operationId: createSslCertificatesByCertificateIdResendApproval
   /ssl-certificates/initialize:
     post:
-      description: "Initialize the creation of a new SSL certificate.<br><br> \n[block:callout] { \"type\": \"info\", \"title\": \"Information:\", \"body\": \"On successful hostname validation, this operation will return a list of valid approver email addresses, one of which must be used to finalize your certificate.\" } [/block]\n"
+      description: 'Initialize the creation of a new SSL certificate.
+
+
+        [block:callout] { "type": "info", "title": "Information:", "body": "On successful hostname validation, this operation will return a list of valid approver email addresses, one of which must be used to finalize your certificate." } [/block]'
       parameters:
       - description: Required with Compass API token.<br>Provide keyword **Bearer** and space before token.
         in: header
@@ -201,66 +207,6 @@ paths:
       operationId: createSslCertificatesInitialize
 components:
   schemas:
-    CertificateInitializeResponseModel:
-      type: object
-      properties:
-        approverEmails:
-          type: array
-          items:
-            type: string
-        success:
-          type: boolean
-        certId:
-          type: string
-    CertificateListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              hostname:
-                type: string
-              createdDate:
-                type: number
-              expireDate:
-                type: number
-              certId:
-                type: string
-              isExpired:
-                type: boolean
-              status:
-                type: string
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        totalUnfiltered:
-          type: integer
-        filters:
-          type: array
-        direction:
-          type: integer
-    CertificateFinalizePostModel:
-      required:
-      - approverEmailAddress
-      - csr
-      type: object
-      properties:
-        csr:
-          type: string
-        approverEmailAddress:
-          type: string
-    SuccessStringModel:
-      type: object
-      properties:
-        success:
-          type: string
     ErrorModel:
       type: object
       properties:
@@ -271,24 +217,10 @@ components:
               type: integer
             message:
               type: string
-    CertificateInitializePostModel:
-      required:
-      - contactEmailAddress
-      - contactFirstName
-      - contactLastName
-      - contactPhoneNumber
-      - hostname
+    SuccessStringModel:
       type: object
       properties:
-        contactEmailAddress:
-          type: string
-        hostname:
-          type: string
-        contactFirstName:
-          type: string
-        contactLastName:
-          type: string
-        contactPhoneNumber:
+        success:
           type: string
     CertificateGetModel:
       type: object
@@ -326,6 +258,80 @@ components:
           items:
             type: string
         status:
+          type: string
+    CertificateListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              createdDate:
+                type: number
+              expireDate:
+                type: number
+              certId:
+                type: string
+              isExpired:
+                type: boolean
+              status:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        filters:
+          type: array
+        direction:
+          type: integer
+    CertificateInitializeResponseModel:
+      type: object
+      properties:
+        approverEmails:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+        certId:
+          type: string
+    CertificateFinalizePostModel:
+      required:
+      - approverEmailAddress
+      - csr
+      type: object
+      properties:
+        csr:
+          type: string
+        approverEmailAddress:
+          type: string
+    CertificateInitializePostModel:
+      required:
+      - contactEmailAddress
+      - contactFirstName
+      - contactLastName
+      - contactPhoneNumber
+      - hostname
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        hostname:
+          type: string
+        contactFirstName:
+          type: string
+        contactLastName:
+          type: string
+        contactPhoneNumber:
           type: string
   securitySchemes:
     bearerAuth:

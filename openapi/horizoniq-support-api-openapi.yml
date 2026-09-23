@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Compass Action Items Support API
+  title: Compass Support API
   version: '2023-05-30T22:28:43Z'
   description: HorizonIQ Compass REST API - manage bare metal and cloud infrastructure resources (servers, devices, managed firewalls, OS images, SSL certificates, billing, users, support cases, and action items) on the HorizonIQ (formerly INAP) Compass platform. Assembled from the per-endpoint OpenAPI fragments published at https://compass-horizoniq.readme.io/reference; operationIds and the documented Bearer securityScheme added by API Evangelist.
 servers:
@@ -265,7 +265,10 @@ paths:
       - Support
       operationId: getSupportCasesByCaseId
     patch:
-      description: 'Updates the state of the case.<br><br>**NOTE:: some cases cannot be placed on hold or re-opened through the API.**'
+      description: 'Updates the state of the case.
+
+
+        **NOTE:: some cases cannot be placed on hold or re-opened through the API.**'
       parameters:
       - description: The ID of the support case, can be retrieved from the support case list endpoint.
         in: path
@@ -396,40 +399,15 @@ paths:
       operationId: createSupportCases
 components:
   schemas:
-    SupportCategoryGetModel:
+    SupportDepartmentGetModel:
       type: object
       properties:
-        departmentName:
-          type: string
         name:
           type: string
         id:
-          type: number
-        department:
-          $ref: '#/components/schemas/SupportDepartmentGetModel'
-        subcategory:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportSubcategoryGetModel'
+          type: string
         uuid:
           type: string
-    SupportCaseListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportCaseGetModel'
-        direction:
-          type: integer
     SupportCasePostModel:
       required:
       - description
@@ -450,6 +428,61 @@ components:
           - Moderate
           - High
           - Critical
+    SupportCaseAttachmentGetModel:
+      type: object
+      properties:
+        fileName:
+          type: string
+        createdDate:
+          type: number
+        fileSize:
+          type: number
+        id:
+          type: string
+    SupportCaseCommentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseCommentGetModel'
+        direction:
+          type: integer
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SupportCaseAttachmentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+        direction:
+          type: integer
     SupportCaseGetModel:
       type: object
       properties:
@@ -509,7 +542,27 @@ components:
           $ref: '#/components/schemas/SupportCategoryGetModel'
         subcategory:
           $ref: '#/components/schemas/SupportSubcategoryGetModel'
-    SupportCaseAttachmentListModel:
+    SupportCaseAttachmentUploadFormModel:
+      required:
+      - files0
+      type: object
+      properties:
+        files0:
+          type: string
+          format: binary
+        files1:
+          type: string
+          format: binary
+    SupportSubcategoryGetModel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: number
+        uuid:
+          type: string
+    SupportCaseListModel:
       type: object
       properties:
         total:
@@ -523,9 +576,29 @@ components:
         list:
           type: array
           items:
-            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+            $ref: '#/components/schemas/SupportCaseGetModel'
         direction:
           type: integer
+    SupportCaseCommentPostModel:
+      required:
+      - comment
+      type: object
+      properties:
+        comment:
+          type: string
+    SupportCaseCommentAddedModel:
+      type: object
+      properties:
+        createdDate:
+          type: number
+        updatedBy:
+          type: string
+        caseNumber:
+          type: string
+        statusMessage:
+          type: string
+        status:
+          type: string
     SupportCaseCommentGetModel:
       type: object
       properties:
@@ -543,73 +616,11 @@ components:
           type: string
         body:
           type: string
-    SupportDepartmentGetModel:
+    SuccessModel:
       type: object
       properties:
-        name:
-          type: string
-        id:
-          type: string
-        uuid:
-          type: string
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    SupportCaseCommentAddedModel:
-      type: object
-      properties:
-        createdDate:
-          type: number
-        updatedBy:
-          type: string
-        caseNumber:
-          type: string
-        statusMessage:
-          type: string
-        status:
-          type: string
-    SupportCaseAttachmentUploadFormModel:
-      required:
-      - files0
-      type: object
-      properties:
-        files0:
-          type: string
-          format: binary
-        files1:
-          type: string
-          format: binary
-    SupportCaseCommentPostModel:
-      required:
-      - comment
-      type: object
-      properties:
-        comment:
-          type: string
-    SupportCaseCommentListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportCaseCommentGetModel'
-        direction:
-          type: integer
+        success:
+          type: boolean
     SupportCasePatchModel:
       required:
       - reason
@@ -658,29 +669,21 @@ components:
           type: string
         state:
           type: string
-    SuccessModel:
+    SupportCategoryGetModel:
       type: object
       properties:
-        success:
-          type: boolean
-    SupportCaseAttachmentGetModel:
-      type: object
-      properties:
-        fileName:
+        departmentName:
           type: string
-        createdDate:
-          type: number
-        fileSize:
-          type: number
-        id:
-          type: string
-    SupportSubcategoryGetModel:
-      type: object
-      properties:
         name:
           type: string
         id:
           type: number
+        department:
+          $ref: '#/components/schemas/SupportDepartmentGetModel'
+        subcategory:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportSubcategoryGetModel'
         uuid:
           type: string
   securitySchemes:

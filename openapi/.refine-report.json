@@ -1,15 +1,7 @@
 {
   "provider": "horizoniq",
   "sources": [
-    "horizoniq-action-items-api-openapi.yml",
-    "horizoniq-billing-api-openapi.yml",
-    "horizoniq-devices-api-openapi.yml",
-    "horizoniq-images-api-openapi.yml",
-    "horizoniq-managed-firewalls-api-openapi.yml",
-    "horizoniq-servers-api-openapi.yml",
-    "horizoniq-ssl-certificates-api-openapi.yml",
-    "horizoniq-support-api-openapi.yml",
-    "horizoniq-user-accounts-api-openapi.yml"
+    "_original/horizoniq-compass-openapi-original.yml"
   ],
   "outputs": [
     "horizoniq-action-items-api-openapi.yml",
@@ -17,14 +9,29 @@
     "horizoniq-devices-api-openapi.yml",
     "horizoniq-images-api-openapi.yml",
     "horizoniq-managed-firewalls-api-openapi.yml",
-    "horizoniq-servers-api-openapi.yml",
     "horizoniq-ssl-certificates-api-openapi.yml",
+    "horizoniq-servers-api-openapi.yml",
     "horizoniq-support-api-openapi.yml",
     "horizoniq-user-accounts-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "horizoniq-compass-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "horizoniq-compass-openapi-original.yml: declared missing tag: SSL Certificates",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "horizoniq-action-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-billing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-managed-firewalls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-servers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-ssl-certificates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-support-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "horizoniq-user-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
