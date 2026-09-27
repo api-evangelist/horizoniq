@@ -52,7 +52,7 @@ tags:
 - Infrastructure
 - Private Cloud
 - Hosting
-- Data-Center
+- Data Center
 - Compute
 - Storage
 tags_raw:
@@ -66,6 +66,7 @@ tags_raw:
 - Data Center
 - Compute
 - Storage
+- Data-Center
 apis:
 - aid: horizoniq:horizoniq-action-items-api
   name: HorizonIQ Action Items API

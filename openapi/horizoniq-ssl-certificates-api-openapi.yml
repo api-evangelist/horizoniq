@@ -217,10 +217,74 @@ components:
               type: integer
             message:
               type: string
+    CertificateListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              createdDate:
+                type: number
+              expireDate:
+                type: number
+              certId:
+                type: string
+              isExpired:
+                type: boolean
+              status:
+                type: string
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        totalUnfiltered:
+          type: integer
+        filters:
+          type: array
+        direction:
+          type: integer
     SuccessStringModel:
       type: object
       properties:
         success:
+          type: string
+    CertificateInitializeResponseModel:
+      type: object
+      properties:
+        approverEmails:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+        certId:
+          type: string
+    CertificateInitializePostModel:
+      required:
+      - contactEmailAddress
+      - contactFirstName
+      - contactLastName
+      - contactPhoneNumber
+      - hostname
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        hostname:
+          type: string
+        contactFirstName:
+          type: string
+        contactLastName:
+          type: string
+        contactPhoneNumber:
           type: string
     CertificateGetModel:
       type: object
@@ -259,51 +323,6 @@ components:
             type: string
         status:
           type: string
-    CertificateListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              hostname:
-                type: string
-              createdDate:
-                type: number
-              expireDate:
-                type: number
-              certId:
-                type: string
-              isExpired:
-                type: boolean
-              status:
-                type: string
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        totalUnfiltered:
-          type: integer
-        filters:
-          type: array
-        direction:
-          type: integer
-    CertificateInitializeResponseModel:
-      type: object
-      properties:
-        approverEmails:
-          type: array
-          items:
-            type: string
-        success:
-          type: boolean
-        certId:
-          type: string
     CertificateFinalizePostModel:
       required:
       - approverEmailAddress
@@ -313,25 +332,6 @@ components:
         csr:
           type: string
         approverEmailAddress:
-          type: string
-    CertificateInitializePostModel:
-      required:
-      - contactEmailAddress
-      - contactFirstName
-      - contactLastName
-      - contactPhoneNumber
-      - hostname
-      type: object
-      properties:
-        contactEmailAddress:
-          type: string
-        hostname:
-          type: string
-        contactFirstName:
-          type: string
-        contactLastName:
-          type: string
-        contactPhoneNumber:
           type: string
   securitySchemes:
     bearerAuth:

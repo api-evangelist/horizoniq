@@ -146,23 +146,6 @@ paths:
       operationId: updateActionItemsAcknowledgment
 components:
   schemas:
-    ActionItemsListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionItemsGetModel'
-        direction:
-          type: string
     ErrorModel:
       type: object
       properties:
@@ -173,26 +156,6 @@ components:
               type: integer
             message:
               type: string
-    ActionItemsAckResponseModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              lastUpdated:
-                type: string
-              deactivateMessage:
-                type: array
-                items:
-                  type: string
-              active:
-                type: boolean
-              uuid:
-                type: string
-        errors:
-          type: boolean
     ActionItemsGetModel:
       type: object
       properties:
@@ -449,6 +412,23 @@ components:
               type: integer
         totalActionItems:
           type: integer
+    ActionItemsListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
+          type: string
     ActionItemsAckModel:
       type: object
       properties:
@@ -461,6 +441,26 @@ components:
                 type: boolean
               uuid:
                 type: string
+    ActionItemsAckResponseModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              lastUpdated:
+                type: string
+              deactivateMessage:
+                type: array
+                items:
+                  type: string
+              active:
+                type: boolean
+              uuid:
+                type: string
+        errors:
+          type: boolean
   securitySchemes:
     bearerAuth:
       type: http
