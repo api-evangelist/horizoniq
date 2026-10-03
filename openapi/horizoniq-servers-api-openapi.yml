@@ -702,16 +702,11 @@ paths:
       operationId: createServersByServerUUIDReinstall
 components:
   schemas:
-    ErrorModel:
+    ServerRdnsFqdnPatchModel:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
+        fqdn:
+          type: string
     ActionItemsGetModel:
       type: object
       properties:
@@ -923,33 +918,24 @@ components:
           type: string
         category:
           type: string
-    SuccessModel:
+    ActionItemsListModel:
       type: object
       properties:
-        success:
-          type: boolean
-    ServerMaintenanceRespModel:
-      type: object
-      properties:
-        values:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
           type: array
           items:
-            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
-        errors:
-          type: array
-          items:
-            type: string
-    RootPasswordPatchModel:
-      type: object
-      properties:
-        password:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
           type: string
-    RootPasswordGetModel:
-      type: object
-      properties:
-        password:
-          type: string
-    ServerListModel:
+    ImageListModel:
       type: object
       properties:
         total:
@@ -959,13 +945,62 @@ components:
         values:
           type: array
           items:
-            $ref: '#/components/schemas/ServerGetModel'
+            type: object
+            properties:
+              skip_upgrade:
+                type: boolean
+              os:
+                type: string
+              service_price:
+                type: number
+              min_disk:
+                type: integer
+              service_plan:
+                type: string
+              region_id:
+                type: string
+              includes_cpanel:
+                type: string
+              cloud_init:
+                type: boolean
+              type:
+                type: string
+              uuid:
+                type: string
+              version:
+                type: string
+              client_id:
+                type: string
+              hourly_per_gb:
+                type: number
+              ready:
+                type: boolean
+              price:
+                type: number
+              name:
+                type: string
+              gb_on_disk:
+                type: number
+              is_custom:
+                type: string
+              id:
+                type: integer
+              arch:
+                type: string
+              cloud_id:
+                type: string
+              cpanel_price:
+                type: number
+              min_ram:
+                type: integer
+              region_code:
+                type: string
         limit:
           type: integer
         sortBy:
           type: string
         direction:
-          type: integer
+          type: string
     ServerGetModel:
       type: object
       properties:
@@ -1082,96 +1117,6 @@ components:
           type: boolean
         status:
           type: string
-    ActionItemsListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionItemsGetModel'
-        direction:
-          type: string
-    ImageListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              skip_upgrade:
-                type: boolean
-              os:
-                type: string
-              service_price:
-                type: number
-              min_disk:
-                type: integer
-              service_plan:
-                type: string
-              region_id:
-                type: string
-              includes_cpanel:
-                type: string
-              cloud_init:
-                type: boolean
-              type:
-                type: string
-              uuid:
-                type: string
-              version:
-                type: string
-              client_id:
-                type: string
-              hourly_per_gb:
-                type: number
-              ready:
-                type: boolean
-              price:
-                type: number
-              name:
-                type: string
-              gb_on_disk:
-                type: number
-              is_custom:
-                type: string
-              id:
-                type: integer
-              arch:
-                type: string
-              cloud_id:
-                type: string
-              cpanel_price:
-                type: number
-              min_ram:
-                type: integer
-              region_code:
-                type: string
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: string
-    ServersMaintenancePatchModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
     ServerReverseDNSGetModel:
       type: object
       properties:
@@ -1200,39 +1145,21 @@ components:
           type: array
         direction:
           type: integer
-    ReinstallPostModel:
-      required:
-      - auto
-      - imageId
+    ServerMaintenanceRespModel:
       type: object
       properties:
-        auto:
-          type: boolean
-          description: Set to **true** for automatic reinstall, set to **false** for technician reinstall.
-          default: true
-        imageId:
-          type: string
-          description: Retrieve valid image ID for server from <span style="color:blue">**[List Server Reinstall Images](./get_servers-serveruuid-images)**</span> endpoint.
-        partitioning:
-          type: string
-          description: "Defines the disk layout for the installation. Specify a comma-separated list of partition definitions using: `mountpoint=size[:filesystem][:drivenumber]`\n\n- **mountpoint** — Target mount location (e.g., `/`, `/var`, `/data`). Use `none` to create an unformatted partition.  \n- **size** — Either a size in megabytes (e.g., `102400`), a percentage of total disk space (e.g., `50%`), or `rest` to consume remaining space.  \n- **filesystem** (optional) — Defaults to `ext3` (ext2 for /boot) if omitted. Supported filesystems include `ext2`, `ext3`, `ext4`, `xfs`, and `jfs`. Use `none` for unformatted partitions.  \n- **drivenumber** (optional) — Target disk number (e.g., `1`, `2`). Starts at disk `1`. If omitted, the primary disk is used.  \n\nExamples\n- One Drive Partitions String: `/=102400,/var=204800,/data=rest`\n    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition using the remainder of the space on the drive, all with ext3 formatting\n- Multiple Drives Partitions String: `/=102400:ext4:1,/var=204800:ext4:1,/data=rest:ext4:1,/backup=rest:xfs:2,/tmp=102400:ext4:3,none=rest:none:3`\n    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition using the remainder of the space on the drive, all with ext4 formatting\n    - Drive 2 has a single /backup partition formatted in XFS using the entire drive\n    - Drive 3 has a /tmp partition using 100GB formatted in ext4, with the remainder of the space on the drive in an unformatted partition\n\nSoftware RAID can be configured using the partitions string with the following format: `raid=size:raidlevel:drivenumber,raid=size:raidlevel:drivenumber,mountpoint=rest[:filesystem]:raid`\n- **size** — Functions as before, with `rest` being the recommended value to consume the full drive for RAID usage\n- **drivenumber** — Functions as before and is used to indicate which drives are participating in the RAID\n- **raidlevel** — The requested RAID level. Supported are `1` (mirroring) and `0` (striping)\n- **mountpoint** — Functions as before, except that `raid` is used instead of drive number for any partitions intended for the RAID\n\nExamples\n- RAID 1 partitions string: `raid=rest:1:1,raid=rest:1:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n    - RAID 1 has both drives allocated fully with a 100GB root (/) partition formatted with ext4 and the remainder in the `/data` partition formatted with XFS\n- RAID 0 partitions string: `raid=rest:0:1,raid=rest:0:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n    - RAID 0 has both drives striped with a 100GB root (/) partition formatted with ext4 and the remainder in the `/data` partition formatted with XFS"
-        lvm:
-          type: boolean
-          description: Logical volume manager enabled.
-        gpt:
-          type: boolean
-          description: GUID partition table enabled.
-        instructions:
-          type: string
-          description: Instructions for technician reinstall
-    ReinstallModel:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
+        errors:
+          type: array
+          items:
+            type: string
+    RootPasswordGetModel:
       type: object
       properties:
         password:
-          type: string
-        success:
-          type: boolean
-        message:
           type: string
     ServerNetworksGetModel:
       type: object
@@ -1295,6 +1222,86 @@ components:
                 type: array
                 items:
                   type: string
+    ReinstallPostModel:
+      required:
+      - auto
+      - imageId
+      type: object
+      properties:
+        auto:
+          type: boolean
+          description: Set to **true** for automatic reinstall, set to **false** for technician reinstall.
+          default: true
+        imageId:
+          type: string
+          description: Retrieve valid image ID for server from <span style="color:blue">**[List Server Reinstall Images](./get_servers-serveruuid-images)**</span> endpoint.
+        partitioning:
+          type: string
+          description: "Defines the disk layout for the installation. Specify a comma-separated list of partition definitions using: `mountpoint=size[:filesystem][:drivenumber]`\n\n- **mountpoint** — Target mount location (e.g., `/`, `/var`, `/data`). Use `none` to create an unformatted partition.  \n- **size** — Either a size in megabytes (e.g., `102400`), a percentage of total disk space (e.g., `50%`), or `rest` to consume remaining space.  \n- **filesystem** (optional) — Defaults to `ext3` (ext2 for /boot) if omitted. Supported filesystems include `ext2`, `ext3`, `ext4`, `xfs`, and `jfs`. Use `none` for unformatted partitions.  \n- **drivenumber** (optional) — Target disk number (e.g., `1`, `2`). Starts at disk `1`. If omitted, the primary disk is used.  \n\nExamples\n- One Drive Partitions String: `/=102400,/var=204800,/data=rest`\n    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition using the remainder of the space on the drive, all with ext3 formatting\n- Multiple Drives Partitions String: `/=102400:ext4:1,/var=204800:ext4:1,/data=rest:ext4:1,/backup=rest:xfs:2,/tmp=102400:ext4:3,none=rest:none:3`\n    - Drive 1 has a 100GB root (/) partition, a 200GB /var partition, and a /data partition using the remainder of the space on the drive, all with ext4 formatting\n    - Drive 2 has a single /backup partition formatted in XFS using the entire drive\n    - Drive 3 has a /tmp partition using 100GB formatted in ext4, with the remainder of the space on the drive in an unformatted partition\n\nSoftware RAID can be configured using the partitions string with the following format: `raid=size:raidlevel:drivenumber,raid=size:raidlevel:drivenumber,mountpoint=rest[:filesystem]:raid`\n- **size** — Functions as before, with `rest` being the recommended value to consume the full drive for RAID usage\n- **drivenumber** — Functions as before and is used to indicate which drives are participating in the RAID\n- **raidlevel** — The requested RAID level. Supported are `1` (mirroring) and `0` (striping)\n- **mountpoint** — Functions as before, except that `raid` is used instead of drive number for any partitions intended for the RAID\n\nExamples\n- RAID 1 partitions string: `raid=rest:1:1,raid=rest:1:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n    - RAID 1 has both drives allocated fully with a 100GB root (/) partition formatted with ext4 and the remainder in the `/data` partition formatted with XFS\n- RAID 0 partitions string: `raid=rest:0:1,raid=rest:0:2,/=102400:ext4:raid,/data=rest:xfs:raid`\n    - RAID 0 has both drives striped with a 100GB root (/) partition formatted with ext4 and the remainder in the `/data` partition formatted with XFS"
+        lvm:
+          type: boolean
+          description: Logical volume manager enabled.
+        gpt:
+          type: boolean
+          description: GUID partition table enabled.
+        instructions:
+          type: string
+          description: Instructions for technician reinstall
+    ServerMaintenanceObjectModel:
+      type: object
+      properties:
+        uuid:
+          type: string
+        maintenance:
+          type: boolean
+    RootPasswordPatchModel:
+      type: object
+      properties:
+        password:
+          type: string
+    ServersMaintenancePatchModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerMaintenanceObjectModel'
+    ServerListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    ReinstallModel:
+      type: object
+      properties:
+        password:
+          type: string
+        success:
+          type: boolean
+        message:
+          type: string
     InstallProgressResponseModel:
       type: object
       properties:
@@ -1333,17 +1340,10 @@ components:
               type: string
             finished:
               type: string
-    ServerRdnsFqdnPatchModel:
+    SuccessModel:
       type: object
       properties:
-        fqdn:
-          type: string
-    ServerMaintenanceObjectModel:
-      type: object
-      properties:
-        uuid:
-          type: string
-        maintenance:
+        success:
           type: boolean
   securitySchemes:
     bearerAuth:

@@ -284,66 +284,6 @@ paths:
       operationId: getBillingServicesCancelled
 components:
   schemas:
-    InvoiceListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        status:
-          type: string
-        direction:
-          type: integer
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    InvoiceGetCsvModel:
-      type: object
-      properties:
-        data:
-          type: string
-        success:
-          type: boolean
-    CreditListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
-    InvoiceGetPdfModel:
-      type: object
-      properties:
-        data:
-          type: string
-        success:
-          type: boolean
     ServiceGetModel:
       type: object
       properties:
@@ -385,35 +325,6 @@ components:
           type: string
         renewDate:
           type: number
-    CreditGetModel:
-      type: object
-      properties:
-        reason:
-          type: string
-        amount:
-          type: number
-        payment_type:
-          type: string
-        balance:
-          type: number
-        payment_number:
-          type: string
-        active:
-          type: boolean
-        comment:
-          type: string
-        comment_total:
-          type: integer
-        id:
-          type: string
-        created_date:
-          type: number
-        uuid:
-          type: string
-    ServiceListModel:
-      type: array
-      items:
-        $ref: '#/components/schemas/ServiceGetModel'
     InvoiceGetModel:
       type: object
       properties:
@@ -439,6 +350,95 @@ components:
           type: number
         status:
           type: string
+    InvoiceGetPdfModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    InvoiceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        status:
+          type: string
+        direction:
+          type: integer
+    InvoiceGetCsvModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    CreditListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
+    CreditGetModel:
+      type: object
+      properties:
+        reason:
+          type: string
+        amount:
+          type: number
+        payment_type:
+          type: string
+        balance:
+          type: number
+        payment_number:
+          type: string
+        active:
+          type: boolean
+        comment:
+          type: string
+        comment_total:
+          type: integer
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    ServiceListModel:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceGetModel'
   securitySchemes:
     bearerAuth:
       type: http

@@ -99,16 +99,6 @@ paths:
       operationId: createImages
 components:
   schemas:
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
     ImageUploadFormModel:
       required:
       - image
@@ -201,6 +191,16 @@ components:
           type: string
         direction:
           type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -146,16 +146,6 @@ paths:
       operationId: updateActionItemsAcknowledgment
 components:
   schemas:
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
     ActionItemsGetModel:
       type: object
       properties:
@@ -367,6 +357,35 @@ components:
           type: string
         category:
           type: string
+    ActionItemsListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
+          type: string
+    ActionItemsAckModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              uuid:
+                type: string
     ActionItemsGroupListModel:
       type: object
       properties:
@@ -412,35 +431,16 @@ components:
               type: integer
         totalActionItems:
           type: integer
-    ActionItemsListModel:
+    ErrorModel:
       type: object
       properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionItemsGetModel'
-        direction:
-          type: string
-    ActionItemsAckModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              active:
-                type: boolean
-              uuid:
-                type: string
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     ActionItemsAckResponseModel:
       type: object
       properties:

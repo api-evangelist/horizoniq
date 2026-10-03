@@ -94,33 +94,6 @@ paths:
       operationId: getDevices
 components:
   schemas:
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    DeviceListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
     DeviceGetModel:
       type: object
       properties:
@@ -148,6 +121,33 @@ components:
           type: string
         dc:
           type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    DeviceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http

@@ -377,43 +377,6 @@ paths:
       operationId: updateUsersByUserUUIDRoles
 components:
   schemas:
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    UserRoleGetModel:
-      type: object
-      properties:
-        company_uuid:
-          type: string
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserPermissionGetModel'
-        name:
-          type: string
-        description:
-          type: string
-        uuid:
-          type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
-    UserRolePatchModel:
-      required:
-      - roleUuid
-      type: object
-      properties:
-        roleUuid:
-          type: string
     UserRoleListModel:
       type: object
       properties:
@@ -431,24 +394,12 @@ components:
             $ref: '#/components/schemas/UserRoleGetModel'
         direction:
           type: integer
-    UserListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGetModel'
-        direction:
-          type: integer
-    UserUpdatePatchModel:
+    UserAddPostModel:
+      required:
+      - email
+      - firstName
+      - lastName
+      - username
       type: object
       properties:
         firstName:
@@ -467,13 +418,23 @@ components:
           type: string
         username:
           type: string
-    UserAddResponseModel:
+    UserListModel:
       type: object
       properties:
-        href:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
           type: string
-        uuid:
-          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGetModel'
+        direction:
+          type: integer
     UserGetModel:
       type: object
       properties:
@@ -578,23 +539,14 @@ components:
           type: string
         status:
           type: integer
-    UserPermissionGetModel:
+    UserAddResponseModel:
       type: object
       properties:
-        createdAt:
-          type: string
-        name:
+        href:
           type: string
         uuid:
           type: string
-        value:
-          type: string
-    UserAddPostModel:
-      required:
-      - email
-      - firstName
-      - lastName
-      - username
+    UserUpdatePatchModel:
       type: object
       properties:
         firstName:
@@ -613,6 +565,54 @@ components:
           type: string
         username:
           type: string
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
+    UserRoleGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPermissionGetModel'
+        name:
+          type: string
+        description:
+          type: string
+        uuid:
+          type: string
+    UserPermissionGetModel:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        name:
+          type: string
+        uuid:
+          type: string
+        value:
+          type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
   securitySchemes:
     bearerAuth:
       type: http

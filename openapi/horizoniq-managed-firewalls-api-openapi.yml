@@ -94,16 +94,6 @@ paths:
       operationId: getFirewalls
 components:
   schemas:
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
     FirewallGetModel:
       type: object
       properties:
@@ -149,6 +139,16 @@ components:
           type: string
         status:
           type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     FirewallListModel:
       type: object
       properties:

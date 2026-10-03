@@ -399,16 +399,40 @@ paths:
       operationId: createSupportCases
 components:
   schemas:
-    ErrorModel:
+    SupportCaseCommentGetModel:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
+        cc:
+          type: string
+        authorEmail:
+          type: string
+        createdDate:
+          type: number
+        authorName:
+          type: string
+        id:
+          type: string
+        to:
+          type: string
+        body:
+          type: string
+    SupportCaseListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseGetModel'
+        direction:
+          type: integer
     SupportCaseAttachmentUploadFormModel:
       required:
       - files0
@@ -429,11 +453,6 @@ components:
           type: number
         uuid:
           type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
     SupportDepartmentGetModel:
       type: object
       properties:
@@ -442,17 +461,6 @@ components:
         id:
           type: string
         uuid:
-          type: string
-    SupportCaseAttachmentGetModel:
-      type: object
-      properties:
-        fileName:
-          type: string
-        createdDate:
-          type: number
-        fileSize:
-          type: number
-        id:
           type: string
     SupportCaseGetModel:
       type: object
@@ -513,6 +521,112 @@ components:
           $ref: '#/components/schemas/SupportCategoryGetModel'
         subcategory:
           $ref: '#/components/schemas/SupportSubcategoryGetModel'
+    SupportCaseCommentPostModel:
+      required:
+      - comment
+      type: object
+      properties:
+        comment:
+          type: string
+    SupportCaseCommentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseCommentGetModel'
+        direction:
+          type: integer
+    SupportCaseCommentAddedModel:
+      type: object
+      properties:
+        createdDate:
+          type: number
+        updatedBy:
+          type: string
+        caseNumber:
+          type: string
+        statusMessage:
+          type: string
+        status:
+          type: string
+    SupportCaseAttachmentListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
+        direction:
+          type: integer
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SupportCategoryGetModel:
+      type: object
+      properties:
+        departmentName:
+          type: string
+        name:
+          type: string
+        id:
+          type: number
+        department:
+          $ref: '#/components/schemas/SupportDepartmentGetModel'
+        subcategory:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportSubcategoryGetModel'
+        uuid:
+          type: string
+    SupportCaseAttachmentGetModel:
+      type: object
+      properties:
+        fileName:
+          type: string
+        createdDate:
+          type: number
+        fileSize:
+          type: number
+        id:
+          type: string
+    SupportCasePatchModel:
+      required:
+      - reason
+      - state
+      type: object
+      properties:
+        reason:
+          type: string
+        state:
+          type: string
+          enum:
+          - open
+          - closed
+          - on_hold
     SupportCasePostModel:
       required:
       - description
@@ -533,98 +647,6 @@ components:
           - Moderate
           - High
           - Critical
-    SupportCategoryGetModel:
-      type: object
-      properties:
-        departmentName:
-          type: string
-        name:
-          type: string
-        id:
-          type: number
-        department:
-          $ref: '#/components/schemas/SupportDepartmentGetModel'
-        subcategory:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportSubcategoryGetModel'
-        uuid:
-          type: string
-    SupportCasePatchModel:
-      required:
-      - reason
-      - state
-      type: object
-      properties:
-        reason:
-          type: string
-        state:
-          type: string
-          enum:
-          - open
-          - closed
-          - on_hold
-    SupportCaseCommentGetModel:
-      type: object
-      properties:
-        cc:
-          type: string
-        authorEmail:
-          type: string
-        createdDate:
-          type: number
-        authorName:
-          type: string
-        id:
-          type: string
-        to:
-          type: string
-        body:
-          type: string
-    SupportCaseListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportCaseGetModel'
-        direction:
-          type: integer
-    SupportCaseUpdatedModel:
-      type: object
-      properties:
-        id:
-          type: string
-        state:
-          type: string
-    SupportCaseCommentAddedModel:
-      type: object
-      properties:
-        createdDate:
-          type: number
-        updatedBy:
-          type: string
-        caseNumber:
-          type: string
-        statusMessage:
-          type: string
-        status:
-          type: string
-    SupportCaseCommentPostModel:
-      required:
-      - comment
-      type: object
-      properties:
-        comment:
-          type: string
     SupportLocationGetModel:
       type: object
       properties:
@@ -652,40 +674,18 @@ components:
           type: string
         uuid:
           type: string
-    SupportCaseAttachmentListModel:
+    SuccessModel:
       type: object
       properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportCaseAttachmentGetModel'
-        direction:
-          type: integer
-    SupportCaseCommentListModel:
+        success:
+          type: boolean
+    SupportCaseUpdatedModel:
       type: object
       properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
+        id:
           type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportCaseCommentGetModel'
-        direction:
-          type: integer
+        state:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
