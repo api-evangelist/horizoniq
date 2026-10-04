@@ -99,27 +99,6 @@ paths:
       operationId: createImages
 components:
   schemas:
-    ImageUploadFormModel:
-      required:
-      - image
-      - imagename
-      - osname
-      - osversion
-      type: object
-      properties:
-        image:
-          type: string
-          description: The QCOW2 file of your image (3GB limit)
-          format: binary
-        imagename:
-          type: string
-          description: The descriptive name of your image to help you identify it (e.g. my-centos-image)
-        osversion:
-          type: string
-          description: The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)
-        osname:
-          type: string
-          description: The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)
     SuccessModel:
       type: object
       properties:
@@ -191,6 +170,27 @@ components:
           type: string
         direction:
           type: string
+    ImageUploadFormModel:
+      required:
+      - image
+      - imagename
+      - osname
+      - osversion
+      type: object
+      properties:
+        image:
+          type: string
+          description: The QCOW2 file of your image (3GB limit)
+          format: binary
+        imagename:
+          type: string
+          description: The descriptive name of your image to help you identify it (e.g. my-centos-image)
+        osversion:
+          type: string
+          description: The numerical version of the Operating System in your image (e.g. 20.04 LTS, 8.5, etc.)
+        osname:
+          type: string
+          description: The name of the Operating System in your image (e.g. Ubuntu, CentOS, AlmaLinux, etc.)
     ErrorModel:
       type: object
       properties:

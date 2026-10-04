@@ -139,16 +139,6 @@ components:
           type: string
         status:
           type: string
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
     FirewallListModel:
       type: object
       properties:
@@ -168,6 +158,16 @@ components:
             $ref: '#/components/schemas/FirewallGetModel'
         direction:
           type: integer
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

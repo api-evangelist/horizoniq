@@ -418,6 +418,69 @@ components:
           type: string
         username:
           type: string
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    UserUpdatePatchModel:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        active:
+          type: boolean
+        title:
+          type: string
+        department:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+    SuccessModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+    UserRoleGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPermissionGetModel'
+        name:
+          type: string
+        description:
+          type: string
+        uuid:
+          type: string
+    UserAddResponseModel:
+      type: object
+      properties:
+        href:
+          type: string
+        uuid:
+          type: string
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
     UserListModel:
       type: object
       properties:
@@ -435,6 +498,17 @@ components:
             $ref: '#/components/schemas/UserGetModel'
         direction:
           type: integer
+    UserPermissionGetModel:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        name:
+          type: string
+        uuid:
+          type: string
+        value:
+          type: string
     UserGetModel:
       type: object
       properties:
@@ -539,80 +613,6 @@ components:
           type: string
         status:
           type: integer
-    UserAddResponseModel:
-      type: object
-      properties:
-        href:
-          type: string
-        uuid:
-          type: string
-    UserUpdatePatchModel:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phone:
-          type: string
-        active:
-          type: boolean
-        title:
-          type: string
-        department:
-          type: string
-        email:
-          type: string
-        username:
-          type: string
-    UserRolePatchModel:
-      required:
-      - roleUuid
-      type: object
-      properties:
-        roleUuid:
-          type: string
-    UserRoleGetModel:
-      type: object
-      properties:
-        company_uuid:
-          type: string
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserPermissionGetModel'
-        name:
-          type: string
-        description:
-          type: string
-        uuid:
-          type: string
-    UserPermissionGetModel:
-      type: object
-      properties:
-        createdAt:
-          type: string
-        name:
-          type: string
-        uuid:
-          type: string
-        value:
-          type: string
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
   securitySchemes:
     bearerAuth:
       type: http

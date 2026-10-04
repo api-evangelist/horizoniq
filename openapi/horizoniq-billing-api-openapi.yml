@@ -284,6 +284,34 @@ paths:
       operationId: getBillingServicesCancelled
 components:
   schemas:
+    ServiceListModel:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceGetModel'
+    InvoiceGetPdfModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    CreditListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
     ServiceGetModel:
       type: object
       properties:
@@ -325,81 +353,6 @@ components:
           type: string
         renewDate:
           type: number
-    InvoiceGetModel:
-      type: object
-      properties:
-        amount_unpaid:
-          type: number
-        invoice_services_count:
-          type: string
-        amount_credited:
-          type: number
-        due_date:
-          type: number
-        overdue_date:
-          type: number
-        amount_due:
-          type: number
-        id:
-          type: string
-        created_date:
-          type: number
-        uuid:
-          type: string
-        payment_date:
-          type: number
-        status:
-          type: string
-    InvoiceGetPdfModel:
-      type: object
-      properties:
-        data:
-          type: string
-        success:
-          type: boolean
-    InvoiceListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        status:
-          type: string
-        direction:
-          type: integer
-    InvoiceGetCsvModel:
-      type: object
-      properties:
-        data:
-          type: string
-        success:
-          type: boolean
-    CreditListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
     CreditGetModel:
       type: object
       properties:
@@ -425,6 +378,31 @@ components:
           type: number
         uuid:
           type: string
+    InvoiceGetModel:
+      type: object
+      properties:
+        amount_unpaid:
+          type: number
+        invoice_services_count:
+          type: string
+        amount_credited:
+          type: number
+        due_date:
+          type: number
+        overdue_date:
+          type: number
+        amount_due:
+          type: number
+        id:
+          type: string
+        created_date:
+          type: number
+        uuid:
+          type: string
+        payment_date:
+          type: number
+        status:
+          type: string
     ErrorModel:
       type: object
       properties:
@@ -435,10 +413,32 @@ components:
               type: integer
             message:
               type: string
-    ServiceListModel:
-      type: array
-      items:
-        $ref: '#/components/schemas/ServiceGetModel'
+    InvoiceGetCsvModel:
+      type: object
+      properties:
+        data:
+          type: string
+        success:
+          type: boolean
+    InvoiceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        status:
+          type: string
+        direction:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http

@@ -94,6 +94,23 @@ paths:
       operationId: getDevices
 components:
   schemas:
+    DeviceListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceGetModel'
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        direction:
+          type: integer
     DeviceGetModel:
       type: object
       properties:
@@ -131,23 +148,6 @@ components:
               type: integer
             message:
               type: string
-    DeviceListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceGetModel'
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        direction:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http
