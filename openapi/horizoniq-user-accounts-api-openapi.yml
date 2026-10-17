@@ -377,7 +377,7 @@ paths:
       operationId: updateUsersByUserUUIDRoles
 components:
   schemas:
-    UserRoleListModel:
+    UserListModel:
       type: object
       properties:
         total:
@@ -391,7 +391,7 @@ components:
         list:
           type: array
           items:
-            $ref: '#/components/schemas/UserRoleGetModel'
+            $ref: '#/components/schemas/UserGetModel'
         direction:
           type: integer
     UserAddPostModel:
@@ -418,6 +418,32 @@ components:
           type: string
         username:
           type: string
+    UserRoleGetModel:
+      type: object
+      properties:
+        company_uuid:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPermissionGetModel'
+        name:
+          type: string
+        description:
+          type: string
+        uuid:
+          type: string
+    UserPermissionGetModel:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        name:
+          type: string
+        uuid:
+          type: string
+        value:
+          type: string
     ErrorModel:
       type: object
       properties:
@@ -428,6 +454,30 @@ components:
               type: integer
             message:
               type: string
+    UserRoleListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRoleGetModel'
+        direction:
+          type: integer
+    UserRolePatchModel:
+      required:
+      - roleUuid
+      type: object
+      properties:
+        roleUuid:
+          type: string
     UserUpdatePatchModel:
       type: object
       properties:
@@ -447,26 +497,6 @@ components:
           type: string
         username:
           type: string
-    SuccessModel:
-      type: object
-      properties:
-        success:
-          type: boolean
-    UserRoleGetModel:
-      type: object
-      properties:
-        company_uuid:
-          type: string
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserPermissionGetModel'
-        name:
-          type: string
-        description:
-          type: string
-        uuid:
-          type: string
     UserAddResponseModel:
       type: object
       properties:
@@ -474,41 +504,11 @@ components:
           type: string
         uuid:
           type: string
-    UserRolePatchModel:
-      required:
-      - roleUuid
+    SuccessModel:
       type: object
       properties:
-        roleUuid:
-          type: string
-    UserListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGetModel'
-        direction:
-          type: integer
-    UserPermissionGetModel:
-      type: object
-      properties:
-        createdAt:
-          type: string
-        name:
-          type: string
-        uuid:
-          type: string
-        value:
-          type: string
+        success:
+          type: boolean
     UserGetModel:
       type: object
       properties:

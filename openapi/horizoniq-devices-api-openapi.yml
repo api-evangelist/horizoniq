@@ -94,6 +94,16 @@ paths:
       operationId: getDevices
 components:
   schemas:
+    ErrorModel:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     DeviceListModel:
       type: object
       properties:
@@ -138,16 +148,6 @@ components:
           type: string
         dc:
           type: string
-    ErrorModel:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -207,6 +207,25 @@ paths:
       operationId: createSslCertificatesInitialize
 components:
   schemas:
+    CertificateInitializePostModel:
+      required:
+      - contactEmailAddress
+      - contactFirstName
+      - contactLastName
+      - contactPhoneNumber
+      - hostname
+      type: object
+      properties:
+        contactEmailAddress:
+          type: string
+        hostname:
+          type: string
+        contactFirstName:
+          type: string
+        contactLastName:
+          type: string
+        contactPhoneNumber:
+          type: string
     CertificateListModel:
       type: object
       properties:
@@ -241,11 +260,6 @@ components:
           type: array
         direction:
           type: integer
-    SuccessStringModel:
-      type: object
-      properties:
-        success:
-          type: string
     ErrorModel:
       type: object
       properties:
@@ -256,35 +270,15 @@ components:
               type: integer
             message:
               type: string
-    CertificateInitializeResponseModel:
-      type: object
-      properties:
-        approverEmails:
-          type: array
-          items:
-            type: string
-        success:
-          type: boolean
-        certId:
-          type: string
-    CertificateInitializePostModel:
+    CertificateFinalizePostModel:
       required:
-      - contactEmailAddress
-      - contactFirstName
-      - contactLastName
-      - contactPhoneNumber
-      - hostname
+      - approverEmailAddress
+      - csr
       type: object
       properties:
-        contactEmailAddress:
+        csr:
           type: string
-        hostname:
-          type: string
-        contactFirstName:
-          type: string
-        contactLastName:
-          type: string
-        contactPhoneNumber:
+        approverEmailAddress:
           type: string
     CertificateGetModel:
       type: object
@@ -323,15 +317,21 @@ components:
             type: string
         status:
           type: string
-    CertificateFinalizePostModel:
-      required:
-      - approverEmailAddress
-      - csr
+    SuccessStringModel:
       type: object
       properties:
-        csr:
+        success:
           type: string
-        approverEmailAddress:
+    CertificateInitializeResponseModel:
+      type: object
+      properties:
+        approverEmails:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+        certId:
           type: string
   securitySchemes:
     bearerAuth:

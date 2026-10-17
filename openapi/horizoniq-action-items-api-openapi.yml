@@ -146,6 +146,23 @@ paths:
       operationId: updateActionItemsAcknowledgment
 components:
   schemas:
+    ActionItemsListModel:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        sortBy:
+          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionItemsGetModel'
+        direction:
+          type: string
     ActionItemsGroupListModel:
       type: object
       properties:
@@ -191,18 +208,6 @@ components:
               type: integer
         totalActionItems:
           type: integer
-    ActionItemsAckModel:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            properties:
-              active:
-                type: boolean
-              uuid:
-                type: string
     ActionItemsAckResponseModel:
       type: object
       properties:
@@ -233,6 +238,18 @@ components:
               type: integer
             message:
               type: string
+    ActionItemsAckModel:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              uuid:
+                type: string
     ActionItemsGetModel:
       type: object
       properties:
@@ -443,23 +460,6 @@ components:
         threshold_operator:
           type: string
         category:
-          type: string
-    ActionItemsListModel:
-      type: object
-      properties:
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-        sortBy:
-          type: string
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionItemsGetModel'
-        direction:
           type: string
   securitySchemes:
     bearerAuth:
