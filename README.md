@@ -64,6 +64,137 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-HorizonIQ is a company surfaced as a portfolio company of dcm-ventures and added to the API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment pipeline.
+HorizonIQ (formerly INAP / Internap) is a US infrastructure provider delivering fully managed private cloud, bare metal servers, and GPU dedicated servers, along with block and object storage, backup and recovery, connectivity, load balancing, firewalls, and DDoS mitigation across its data center footprint. Its Compass platform gives customers self-service provisioning, monitoring, and automation, exposed programmatically through the Compass REST API for managing servers, devices, managed firewalls, OS images, SSL certificates, billing, users, action items, and support cases. HorizonIQ holds SOC 2 Type II, ISO 27001, and PCI DSS certifications.
 
-Backed by: dcm-ventures — https://www.horizoniq.com/
+**Areas:** Company · Enterprise · Cloud · Bare Metal · Infrastructure · Private Cloud · Hosting · Data Center · Compute · Storage
+
+## HorizonIQ on APIs.io
+
+Everything profiled for HorizonIQ is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/horizoniq/](https://apis.io/providers/horizoniq/)** — or go straight to one of the APIs or properties below.
+
+### APIs (9)
+
+- [HorizonIQ Action Items API](https://apis.io/apis/horizoniq/horizoniq-action-items-api/) — Endpoints related to Action Items
+- [HorizonIQ Billing API](https://apis.io/apis/horizoniq/horizoniq-billing-api/) — Endpoints related to Billing
+- [HorizonIQ Devices API](https://apis.io/apis/horizoniq/horizoniq-devices-api/) — Endpoints related to devices
+- [HorizonIQ Images API](https://apis.io/apis/horizoniq/horizoniq-images-api/) — Endpoints related to images
+- [HorizonIQ Managed Firewalls API](https://apis.io/apis/horizoniq/horizoniq-managed-firewalls-api/) — Endpoints related to managed firewalls
+- [HorizonIQ Servers API](https://apis.io/apis/horizoniq/horizoniq-servers-api/) — Endpoints related to Servers
+- [HorizonIQ SSL Certificates API](https://apis.io/apis/horizoniq/horizoniq-ssl-certificates-api/) — The SSL Certificates API from HorizonIQ — 5 operation(s) for ssl certificates.
+- [HorizonIQ Support API](https://apis.io/apis/horizoniq/horizoniq-support-api/) — Endpoints related to support cases
+- [HorizonIQ User Accounts API](https://apis.io/apis/horizoniq/horizoniq-user-accounts-api/) — Enpionts related to user accounts
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [horizoniq-compass](https://apis.io/servers/horizoniq/horizoniq-compass/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Horizoniq Agentic Access](https://apis.io/agentic-access/horizoniq/horizoniq-agentic-access/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Compass Action Items API](https://apis.io/collections/horizoniq/open-horizoniq-action-items-api/)
+- [Compass Action Items Billing API](https://apis.io/collections/horizoniq/open-horizoniq-billing-api/)
+- [Compass Action Items Devices API](https://apis.io/collections/horizoniq/open-horizoniq-devices-api/)
+- [Compass Action Items Images API](https://apis.io/collections/horizoniq/open-horizoniq-images-api/)
+- [Compass Action Items Managed Firewalls API](https://apis.io/collections/horizoniq/open-horizoniq-managed-firewalls-api/)
+- [Compass Action Items Servers API](https://apis.io/collections/horizoniq/open-horizoniq-servers-api/)
+- [Compass Action Items SSL Certificates API](https://apis.io/collections/horizoniq/open-horizoniq-ssl-certificates-api/)
+- [Compass Action Items Support API](https://apis.io/collections/horizoniq/open-horizoniq-support-api/)
+- [Compass Action Items User Accounts API](https://apis.io/collections/horizoniq/open-horizoniq-user-accounts-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Horizoniq Compass Overlay](https://apis.io/overlays/horizoniq/horizoniq-compass-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Horizoniq Authentication](https://apis.io/security/horizoniq/horizoniq-authentication/)
+- [Horizoniq Domain Security](https://apis.io/security/horizoniq/horizoniq-domain-security/)
+- [Horizoniq Trust Center](https://apis.io/security/horizoniq/horizoniq-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.horizoniq.com/)
+- [Documentation](https://compass-horizoniq.readme.io/docs)
+- [Getting started](https://compass-horizoniq.readme.io/reference/general-api-information)
+- [API reference](https://compass-horizoniq.readme.io/reference/introduction)
+- [Pricing](https://shop.horizoniq.com/)
+- [Sign up](https://horizoniq.com/free-trial)
+- [Support](https://www.horizoniq.com/contact-us/)
+- [Blog](https://www.horizoniq.com/blog/)
+- [Compliance](https://www.horizoniq.com/compliance/)
+- [Terms of service](https://www.horizoniq.com/legal)
+- [Privacy policy](https://www.horizoniq.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 41.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 50.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 39.9 |
+| Access clarity | 55.3 |
+
+**Agent readiness 29.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/horizoniq/](https://apis.io/providers/horizoniq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for HorizonIQ: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/horizoniq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
